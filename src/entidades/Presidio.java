@@ -6,6 +6,8 @@ public class Presidio {
 	private  String nomePresidio;
 	private String localidade;
 	private String tipoPresidio;
+	
+	
 	public int getIdPresidio() {
 		return idPresidio;
 	}
