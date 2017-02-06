@@ -31,17 +31,10 @@
    </td>
    
   </tr>
+  
   <tr>
    <td>
-    <label for="bairro">Bairro: </label>
-   </td>
-   <td align="left">
-    <input type="text" name="bairro">
-   </td>
-  </tr>
-  <tr>
-   <td>
-    <label for="estado">Localidade:</label>
+    <label for="estado">Estado:</label>
    </td>
    <td align="left">
     <select name="estado"> 
