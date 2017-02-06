@@ -4,8 +4,9 @@ public class Presidio {
 	
 	private  int idPresidio;
 	private  String nomePresidio;
-	private String localidade;
+	private String estado;
 	private String tipoPresidio;
+	private String cidade;
 	
 	
 	public int getIdPresidio() {
@@ -20,11 +21,11 @@ public class Presidio {
 	public void setNomePresidio(String nomePresidio) {
 		this.nomePresidio = nomePresidio;
 	}
-	public String getLocalidade() {
-		return localidade;
+	public String getEstado() {
+		return estado;
 	}
-	public void setLocalidade(String localidade) {
-		this.localidade = localidade;
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	public String getTipoPresidio() {
 		return tipoPresidio;
@@ -32,6 +33,14 @@ public class Presidio {
 	public void setTipoPresidio(String tipoPresidio) {
 		this.tipoPresidio = tipoPresidio;
 	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	
+	
 	
 	
 	
