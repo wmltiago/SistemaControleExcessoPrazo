@@ -24,8 +24,9 @@ public class PresidioDao {
 			String sql = "INSERT INTO presidio (#####, ######, #######) VALUES (?,?,?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, presidio.getNomePresidio());
-			stmt.setString(2, presidio.getLocalidade());
+			stmt.setString(2, presidio.getCidade());
 			stmt.setString(3, presidio.getTipoPresidio());
+			stmt.setString(2, presidio.getEstado());
 			
 			stmt.execute();
 			connection.close();
