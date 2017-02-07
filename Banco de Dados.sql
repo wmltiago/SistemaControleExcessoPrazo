@@ -1,5 +1,5 @@
 CREATE TABLE presidio (
-	id_presidio int(10) NOT NULL,
+	id_presidio int(10) NOT NULL AUTO_INCREMENT,
 	nome varchar(120) NOT NULL,
 	estado varchar(120) NOT NULL,
   cidade varchar(120) NOT NULL,

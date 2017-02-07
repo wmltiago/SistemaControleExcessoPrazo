@@ -12,7 +12,7 @@
 
   <h2><b> Cadastro de presídio</b></h2>
 
-<form action="#########" method="post">
+<form action="cadastrarPresidio" method="post">
 
 
 
@@ -24,7 +24,7 @@
 
   <tr>
    <td>
-    <label for="rua">Nome</label>
+    <label >Nome</label>
    </td>
    <td align="left">
     <input type="text" name="nomePresidio">
@@ -81,7 +81,7 @@
   <label for="estado">Tipo:</label>
    </td>
    <td align="left">
-    <select name="estado"> 
+    <select name="tipoPresidio"> 
     <option value=""></option>
     <option value="estadual">Estadual</option> 
     <option value="federal">Federal</option> 
@@ -97,7 +97,7 @@
 
 
 <br />
-<input type="submit">
+<input type="submit" value="inserir">
 <input type="reset" value="Limpar">
 </form>
 

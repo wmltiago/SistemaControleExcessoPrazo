@@ -21,11 +21,11 @@ public class PresidioDao {
 	public void salvar(Presidio presidio) {
 
 		try {
-			String sql = "INSERT INTO presidio (#####, ######, #######) VALUES (?,?,?)";
+			String sql = "INSERT INTO presidio (nome, estado, cidade, tipo) VALUES (?,?,?,?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, presidio.getNomePresidio());
-			stmt.setString(2, presidio.getCidade());
-			stmt.setString(3, presidio.getTipoPresidio());
+			stmt.setString(3, presidio.getCidade());
+			stmt.setString(4, presidio.getTipoPresidio());
 			stmt.setString(2, presidio.getEstado());
 			
 			stmt.execute();
