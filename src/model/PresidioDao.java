@@ -2,7 +2,10 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import util.ConnectionFactory;
 
@@ -48,6 +51,42 @@ public class PresidioDao {
 			}
 		}
 	
+	//====================daivson - listar ===================================//
+	 
+	 public List<Presidio> listar() {
+
+			try {
+				List<Presidio> listaPresidio = new ArrayList<Presidio>();
+
+				String sql = "SELECT * FROM presidio ORDER BY idPresidio";
+				PreparedStatement stmt = this.connection.prepareStatement(sql);
+
+				ResultSet rs = stmt.executeQuery();
+
+				while (rs.next()) {
+
+					Presidio presidios = new Presidio();
+					
+					presidios.setIdPresidio(rs.getInt("idPresidio"));
+					presidios.setNomePresidio(rs.getString("nome"));
+					presidios.setEstado(rs.getString("estado"));
+					presidios.setCidade(rs.getString("cidade"));
+					presidios.setTipoPresidio(rs.getString("tipo"));
+					
+
+					listaPresidio.add(presidios);
+				}
+
+				rs.close();
+				stmt.close();
+				connection.close();
+
+				return listaPresidio;
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
 	
-	
+	 //==================================================================================//
 }

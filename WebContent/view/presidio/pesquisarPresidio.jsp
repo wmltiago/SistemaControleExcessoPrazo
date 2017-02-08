@@ -42,10 +42,10 @@
 			<c:forEach var="presidio" items="${listaPresidio}">
 				<tr>
 					<td>${presidio.idPresidio}</td>
-					<td>${presidio.nome}</td> 
+					<td>${presidio.nomePresidio}</td> 
 					<td>${presidio.estado}</td>
 					<td>${presidio.cidade}</td>
-					<td>${presidio.tipo}</td>
+					<td>${presidio.tipoPresidio}</td>
 				
 					
 					
