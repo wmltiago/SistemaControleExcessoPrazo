@@ -1,4 +1,4 @@
-package model;
+package model.presidio;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

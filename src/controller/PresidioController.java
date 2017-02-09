@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import model.Presidio;
-import model.PresidioDao;
+import model.presidio.Presidio;
+import model.presidio.PresidioDao;
 
 @Controller
 public class PresidioController {
