@@ -5,8 +5,41 @@
 <head>
 <title> Cadastrar presídio</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript" src ="../mycode.js"></script>
+<script type="text/javascript" src ="mycode.js"></script>
 
+<script type="text/javascript">
+
+function verificaTudo() {
+	var nome = document.getElementById("nomePresidio");
+
+	if (nome.value == "") {
+		alert("preencha o campo nome");
+		nome.focus();
+		return false;
+	}
+	var selectEstado = document.getElementById("estado");
+	var selectCidade = document.getElementById("cidade");
+	var selectTipo = document.getElementById("tipoPresidio");
+
+	if (selectEstado.value == "") {
+		alert("Escolha um estado");
+		selectEstado.focus();
+		return false;
+	}
+	if (selectCidade.value == "") {
+		alert("Escolha uma Cidade");
+		selectCidade.focus();
+		return false;
+	}
+	if (selectTipo.value == "") {
+		alert("Escolha um Tipo");
+		selectTipo.focus();
+		return false;
+	}
+	return true;
+}
+
+</script>
 </head>
 <body>
 
@@ -28,7 +61,7 @@
     <label >Nome</label>
    </td>
    <td align="left">
-    <input type="text" name="nomePresidio">
+    <input type="text" name="nomePresidio" id="nomePresidio">
    </td>
    
   </tr>
@@ -38,7 +71,8 @@
     <label for="estado">Estado:</label>
    </td>
    <td align="left">
-    <select name="estado"> 
+    <select name="estado" id="estado"> 
+    <option value=""></option>
     <option value="ac">Acre</option> 
     <option value="al">Alagoas</option> 
     <option value="am">Amazonas</option> 
@@ -74,7 +108,7 @@
     <label for="cidade">Cidade: </label>
    </td>
    <td align="left">
-    <input type="text" name="cidade">
+    <input type="text" name="cidade" id="cidade">
    </td>
   </tr>
   <tr>
@@ -82,7 +116,7 @@
   <label for="estado">Tipo:</label>
    </td>
    <td align="left">
-    <select name="tipoPresidio"> 
+    <select name="tipoPresidio" id="tipoPresidio"> 
     <option value=""></option>
     <option value="estadual">Estadual</option> 
     <option value="federal">Federal</option> 
@@ -98,7 +132,7 @@
 
 
 <br />
-<input type="submit" value="inserir">
+<input type="submit" value="inserir" onclick='return verificaTudo();'>
 <input type="reset" value="Limpar">
 </form>
 
