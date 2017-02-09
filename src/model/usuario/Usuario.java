@@ -9,10 +9,6 @@ private String senha;
 private String endereco;
 private int id_tipousuario;
 
-
-
-
-
 public int getId() {
 	return id;
 }
