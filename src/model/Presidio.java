@@ -1,9 +1,14 @@
 package model;
 
+import com.sun.istack.internal.NotNull;
+
 public class Presidio {
 	
 	private  int idPresidio;
+	
+	
 	private  String nomePresidio;
+	
 	private String estado;
 	private String tipoPresidio;
 	private String cidade;
