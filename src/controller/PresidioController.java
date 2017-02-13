@@ -41,8 +41,17 @@ public class PresidioController {
 		model.addAttribute("listaPresidio", listaPresidio);
 
 		return "presidio/pesquisarPresidio";
-	
+	}
 		//===================================================//
+		
+		@RequestMapping("/alterarPresidio")
+		public String alterarPresidio(Presidio presidio) {
+
+			PresidioDao dao = new PresidioDao();
+			dao.alterar(presidio);
+
+			return "presidio/AlterarPresidio";
+				
 		
 	}
 	
