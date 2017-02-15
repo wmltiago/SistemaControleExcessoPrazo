@@ -12,32 +12,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Listagem de usuários</title>
 </head>
 <body>
 
-<table border='1' style='width: 100%;'>
-		<tr>
-			<td> ID </td>
-			<td> cpf </td>
-			<td> nome</td>
-			<td> senha</td>
-			<td> endereco </td>
-			
-			
-			<td> AÇÕES </td>
-		</tr>
-		
-		<jsp:useBean id="dao" class="model.usuario.UsuarioDao"/>
-		
-	<c:forEach var="usuario" items="${listarUsuario}"> 
+<center><hr><h3>Lista de usuários</h3><hr></center>
+	
+	<div style="text-align: center; color: red;"> ${mensagem} </div>
 
-		<tr>
-			<td> ${usuario.id} </td>
-			<td> ${usuario.cpf} </td>
-			<td> ${usuario.nome} </td>
-			<td> ${usuario.senha} </td>
-			<td> ${usuario.endereco} </td>
-</c:forEach> 
+	<table border='1' style='width: 100%;'>
+		<tr style='background-color: #E6E6E6; font-weight: bold;'>
+			<td> ID </td>
+			<td> CPF </td>
+			<td> NOME </td>
+			<td> ENDEREÇO </td>
+			<td> TIPO USUÁRIO </td>
+			<td> # </td>
+		</tr>
+	
+		<c:forEach var="usuario" items="${listaUsuario}">
+			<tr>
+				<td> ${usuario.id} </td>
+				<td> ${usuario.cpf} </td>
+				<td> ${usuario.nome} </td>
+				<td> ${usuario.endereco} </td>
+				<td> ${usuario.id_tipousuario} </td>
+				
+				<td><a href="removerUsuario?id=${usuario.id}">Remover</a></td>
+			</tr>
+		</c:forEach>
+	</table>
+</body>
 </body>
 </html>
