@@ -11,8 +11,8 @@ CREATE TABLE presidio (
 
 CREATE TABLE usuario (
 	id_usuario int not null auto_increment,
-	nome varchar not null,
-	cpf int(15) not null unique,
+	nome varchar(15) not null,
+	cpf varchar(15) not null unique,
 	senha varchar(15) not null,
 	endereco varchar(120) not null,
 	id_tipousuario int(1) not null,

@@ -21,6 +21,29 @@ public class UsuarioDao {
 			throw new RuntimeException(e);
 		}
 	}
+	
+
+	public void salvar(Usuario usuario) {
+
+		try {
+			String sql = "INSERT INTO usuario (nome, cpf, senha, endereco, id_tipousuario) VALUES (?,?,?,?,?)";
+			
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+					stmt.setString(1, usuario.getNome());
+					stmt.setString(2, usuario.getCpf());
+					stmt.setString(3, usuario.getSenha());
+					stmt.setString(4, usuario.getEndereco());
+					stmt.setInt(5, usuario.getId_tipousuario());
+					
+
+			stmt.execute();
+			connection.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 	public void remover(int id) {
 

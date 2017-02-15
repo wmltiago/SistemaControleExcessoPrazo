@@ -9,7 +9,7 @@ public class ConnectionFactory {
 
     public Connection getConnection() throws SQLException {
 
-	String nomeBanco = "presidios";
+	String nomeBanco = "scep";
 	String usuario = "root";
 	String senha = "@luno1fpe";
 

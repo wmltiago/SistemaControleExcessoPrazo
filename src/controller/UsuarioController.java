@@ -12,6 +12,25 @@ import model.usuario.UsuarioDao;
 
 @Controller
 public class UsuarioController {
+	
+	
+	@RequestMapping("/exibirCadastrarUsuario")
+	public String exibirIncluirProduto() {
+
+		return "usuario/CadastrarUsuario";
+	}
+
+	@RequestMapping("/CadastrarUsuario")
+	public String incluirProduto(Usuario usuario,  Model model) {
+
+		
+
+		UsuarioDao dao = new UsuarioDao();
+		dao.salvar(usuario);
+		model.addAttribute("msg", "O usuário " + usuario.getNome() + " foi cadastrado com sucesso !");
+
+		return "usuario/CadastrarUsuario";
+	}
 
 	@RequestMapping("/removerUsuario")
 	public String removerUsuario(Usuario usuario, Model model ) {
