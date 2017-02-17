@@ -28,3 +28,11 @@ create table tipousuario (
 );
 
 ALTER TABLE usuario ADD constraint usuario_fk0 foreign key (id_tipousuario) references tipousuario(id_tipousuario);
+
+
+
+CREATE TABLE pena (
+	id_pena int(70) NOT NULL,
+	pena varchar(100) NOT NULL,
+	PRIMARY KEY (id_pena)
+);
