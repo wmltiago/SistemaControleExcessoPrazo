@@ -39,5 +39,6 @@
 			<td> ${usuario.senha} </td>
 			<td> ${usuario.endereco} </td>
 </c:forEach> 
+</table>
 </body>
 </html>

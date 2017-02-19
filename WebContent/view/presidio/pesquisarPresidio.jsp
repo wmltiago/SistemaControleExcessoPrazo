@@ -7,8 +7,8 @@
 
 
 <%@ page import="java.util.List"%>
-<%@ page import="model.PresidioDao"%>
-<%@ page import="model.Presidio"%>
+<%@ page import="model.presidio.PresidioDao"%>
+<%@ page import="model.presidio.Presidio"%>
 
 
 

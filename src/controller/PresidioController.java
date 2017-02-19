@@ -13,13 +13,13 @@ import model.presidio.PresidioDao;
 public class PresidioController {
 	
 	@RequestMapping("/exibirCadastrarPresidio")
-	public String exibirIncluirProduto() {
+	public String exibirIncluirPresidio() {
 
 		return "presidio/CadastroPresidio";
 	}
 
 	@RequestMapping("/cadastrarPresidio")
-	public String incluirProduto(Presidio presidio) {
+	public String incluirPresidio(Presidio presidio) {
 
 		PresidioDao dao = new PresidioDao();
 		dao.salvar(presidio);
