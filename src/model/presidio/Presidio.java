@@ -18,7 +18,7 @@ public class Presidio {
 	
 	//--validação cidade--//
 	@NotEmpty(message="O Nome da Cidade deve ser preenchido!")
-	@Size(min = 4, max = 20,  message="O campo Cidade deve deve ter um tamanho de 5 a 50 caracteres")
+	@Size(min = 4, max = 50,  message="O campo Cidade deve deve ter um tamanho de 4 a 50 caracteres")
 	private String cidade;
 	
 	
