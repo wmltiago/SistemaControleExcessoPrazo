@@ -1,16 +1,24 @@
 package model.presidio;
 
-import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Presidio {
 	
 	private  int idPresidio;
 	
-	
+	//--validação nomePresidio--//
+	@NotEmpty(message="O Nome do Presídio deve ser preenchido!")
+	@Size(min = 10, max = 50, message="O campo Nome deve deve ter um tamanho de 5 a 50 caracteres")
 	private  String nomePresidio;
 	
 	private String estado;
 	private String tipoPresidio;
+	
+	//--validação cidade--//
+	@NotEmpty(message="O Nome da Cidade deve ser preenchido!")
+	@Size(min = 4, max = 20,  message="O campo Cidade deve deve ter um tamanho de 5 a 50 caracteres")
 	private String cidade;
 	
 	

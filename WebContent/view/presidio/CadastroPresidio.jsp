@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<%@page import ="model.presidio.Presidio" %>
+    
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -48,7 +55,9 @@ function verificaTudo() {
 
 <form action="cadastrarPresidio" method="post">
 
-
+<!-- TAGLIB form:errors logo abaixo -->
+<form:errors path="Presidio.nomePresidio" cssStyle="color:red" />
+<form:errors path="Presidio.cidade" cssStyle="color:red" />
 
 <br />
 <!-- ENDEREÇO -->
