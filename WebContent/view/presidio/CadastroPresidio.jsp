@@ -141,7 +141,7 @@ function verificaTudo() {
 
 
 <br />
-<input type="submit" value="inserir" onclick='return verificaTudo();'>
+<input type="submit" value="inserir" >
 <input type="reset" value="Limpar">
 </form>
 

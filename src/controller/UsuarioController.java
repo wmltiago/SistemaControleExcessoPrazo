@@ -17,19 +17,19 @@ public class UsuarioController {
 	@RequestMapping("/exibirCadastrarUsuario")
 	public String exibirIncluirProduto() {
 
-		return "usuario/CadastrarUsuario";
+		return "usuario/CadastrarUsuario2";
 	}
 
-	@RequestMapping("/CadastrarUsuario")
+	@RequestMapping("/CadastrarUsuario2")
 	public String incluirProduto(Usuario usuario,  Model model) {
 
 		
 
 		UsuarioDao dao = new UsuarioDao();
 		dao.salvar(usuario);
-		model.addAttribute("msg", "O usuário " + usuario.getNome() + " foi cadastrado com sucesso !");
+		model.addAttribute("msg", "O usuÃ¡rio " + usuario.getNome() + " foi cadastrado com sucesso !");
 
-		return "usuario/CadastrarUsuario";
+		return "usuario/CadastrarUsuario2";
 	}
 
 	
@@ -49,7 +49,7 @@ public class UsuarioController {
 
 		UsuarioDao dao = new UsuarioDao();
 		dao.remover(usuario);
-		model.addAttribute("mensagem", "Usuário Removido com Sucesso");
+		model.addAttribute("mensagem", "Usuï¿½rio Removido com Sucesso");
 
 		return "forward:listarUsuario";
 	}
