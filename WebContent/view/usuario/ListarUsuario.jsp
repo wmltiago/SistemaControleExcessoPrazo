@@ -38,7 +38,10 @@
 				<td> ${usuario.endereco} </td>
 				<td> ${usuario.id_tipousuario} </td>
 				
-				<td><a href="removerUsuario?id=${usuario.id}">Remover</a></td>
+				<td><a href="removerUsuario?id=${usuario.id}">Remover</a>
+					<a href="exibirAlterarUsuario?id=${usuario.id}">Alterar</a> <!-- Aqui envia pro jsp com o id, para que ele busque no abnco -->
+				</td>
+				
 			</tr>
 		</c:forEach>
 	</table>

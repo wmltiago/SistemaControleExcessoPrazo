@@ -18,25 +18,27 @@
 	<div style="text-align: center; color: red;"> ${msg} </div>
 	
 	<form action="AlterarUsuario" method="post">
+	
+		<input type="hidden" name="senha" value="${usuario.senha}" />
 
 
 		<input type="hidden" name="id" value="${usuario.id}" />
 	
 		<p>
 			Nome: <br />
-			<input type="text" name="codigo" value="${usuario.nome}" />
+			<input type="text" name="nome" value="${usuario.nome}" />
 		</p>
 		
 		
 		
 		<p>
 			CPF: <br />
-			<input type="text" name="descricao" value="${usuario.cpf}" />
+			<input type="text" name="cpf" value="${usuario.cpf}" />
 		</p>
 		
 		<p>
 			Endereço: <br />
-			<input type="text" name="precoCusto" value="${usuario.endereco}" />
+			<input type="text" name="endereco" value="${usuario.endereco}" />
 		</p>
 		
 		

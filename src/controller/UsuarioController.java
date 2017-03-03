@@ -73,7 +73,7 @@ public class UsuarioController {
 		dao.alterar(usuario);
 		model.addAttribute("mensagem", "O usuario " + usuario.getNome() + " foi alterado com sucesso !");
 
-		return "forward:ListarUsuario";
+		return "forward:listarUsuario";
 	}
 	
 }
