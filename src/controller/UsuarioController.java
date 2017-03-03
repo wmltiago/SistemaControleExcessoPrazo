@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import model.usuario.Usuario;
 import model.usuario.UsuarioDao;
@@ -15,13 +14,13 @@ public class UsuarioController {
 	
 	
 	@RequestMapping("/exibirCadastrarUsuario")
-	public String exibirIncluirProduto() {
+	public String exibirCadastrarUsuario() {
 
 		return "usuario/CadastrarUsuario2";
 	}
 
 	@RequestMapping("/CadastrarUsuario2")
-	public String incluirProduto(Usuario usuario,  Model model) {
+	public String incluirUsuario(Usuario usuario,  Model model) {
 
 		
 
@@ -52,6 +51,29 @@ public class UsuarioController {
 		model.addAttribute("mensagem", "Usu�rio Removido com Sucesso");
 
 		return "forward:listarUsuario";
+	}
+	
+	@RequestMapping("exibirAlterarUsuario")
+	public String exibirAlterarUsuario(Usuario usuario, Model model) {
+
+		UsuarioDao dao = new UsuarioDao();
+		
+		Usuario usuarioCompleto = dao.buscarPorId(usuario.getId());
+		model.addAttribute("usuario", usuarioCompleto);
+
+		
+
+		return "usuario/AlterarUsuario";
+	}
+	
+	@RequestMapping("/AlterarUsuario")
+	public String alterarUsuario(Usuario usuario, Model model) {
+
+		UsuarioDao dao = new UsuarioDao();
+		dao.alterar(usuario);
+		model.addAttribute("mensagem", "O usuario " + usuario.getNome() + " foi alterado com sucesso !");
+
+		return "forward:ListarUsuario";
 	}
 	
 }

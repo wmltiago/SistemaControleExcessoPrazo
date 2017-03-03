@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.usuario.Usuario;
 import util.ConnectionFactory;
 
 public class UsuarioDao {
@@ -97,6 +96,57 @@ public class UsuarioDao {
 		}
 	}
 
+	public void alterar(Usuario usuario) {
+
+		try {
+			String sql = "UPDATE usuario SET nome = ?, cpf = ?, senha = ?, endereco = ? WHERE id_usuario = ?";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setString(1, usuario.getNome());
+			stmt.setString(2, usuario.getCpf());
+			stmt.setString(3, usuario.getSenha());
+			stmt.setString(4, usuario.getEndereco());			
+			stmt.setInt(5, usuario.getId());
+
+			stmt.execute();
+			connection.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public Usuario buscarPorId(int id) {
+
+		try {
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM usuario WHERE id_usuario = ?");
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+
+			Usuario usuario = null;
+
+			if (rs.next()) {
+
+				usuario = new Usuario();
+
+				usuario.setId(rs.getInt("id_usuario"));
+				usuario.setNome(rs.getString("nome"));
+				usuario.setCpf(rs.getString("cpf"));
+				usuario.setEndereco(rs.getString("endereco"));				
+
+				
+			}
+
+			rs.close();
+			stmt.close();
+			connection.close();
+
+			return usuario;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 
 }
