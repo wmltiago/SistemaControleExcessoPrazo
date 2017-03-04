@@ -63,10 +63,10 @@ public class UsuarioController {
 
 		
 
-		return "usuario/AlterarUsuario";
+		return "usuario/AlterarUsuario2";
 	}
 	
-	@RequestMapping("/AlterarUsuario")
+	@RequestMapping("/AlterarUsuario2")
 	public String alterarUsuario(Usuario usuario, Model model) {
 
 		UsuarioDao dao = new UsuarioDao();

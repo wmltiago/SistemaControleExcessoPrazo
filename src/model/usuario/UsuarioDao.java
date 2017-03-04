@@ -99,14 +99,16 @@ public class UsuarioDao {
 	public void alterar(Usuario usuario) {
 
 		try {
-			String sql = "UPDATE usuario SET nome = ?, cpf = ?, senha = ?, endereco = ? WHERE id_usuario = ?";
+			String sql = "UPDATE usuario SET nome = ?, cpf = ?, senha = ?, endereco = ?, id_tipousuario=? WHERE id_usuario = ?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			stmt.setString(1, usuario.getNome());
 			stmt.setString(2, usuario.getCpf());
 			stmt.setString(3, usuario.getSenha());
 			stmt.setString(4, usuario.getEndereco());			
-			stmt.setInt(5, usuario.getId());
+			stmt.setInt(5, usuario.getId_tipousuario());
+			stmt.setInt(6, usuario.getId());
+			
 
 			stmt.execute();
 			connection.close();

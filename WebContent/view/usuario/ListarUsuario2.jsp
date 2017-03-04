@@ -44,7 +44,7 @@
                     <h3 class="panel-title">Listas de usuários</h3>
                   </div>
                   <div class="col col-xs-6 text-right">
-                   <a href="exibirCadastrarUsuario" > <button type="button" class="btn btn-sm btn-primary btn-create" >  Create </button></a>
+                   <a href="exibirCadastrarUsuario" > <button type="button" class="btn btn-success" >  Cadastrar novo usuário </button></a>
                   </div>
                 </div>
               </div>
@@ -66,8 +66,8 @@
                   <tbody>
                           <tr>
                             <td align="center">
-                              <a href="exibirAlterarUsuario?id=${usuario.id}" class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                              <a href="removerUsuario?id=${usuario.id}" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                              <a href="exibirAlterarUsuario?id=${usuario.id}" class="btn btn-default"><em class="fa fa-pencil" title="Alterar usuário"></em></a>
+                              <a href="removerUsuario?id=${usuario.id}" class="btn btn-danger"><em class="fa fa-trash" title="Remover usuário"></em></a>
                               
                             </td>
                             <td class="hidden-xs">${usuario.id}</td>
