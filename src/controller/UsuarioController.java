@@ -40,7 +40,7 @@ public class UsuarioController {
 		List<Usuario> listaUsuario = dao.listar();
 		model.addAttribute("listaUsuario", listaUsuario);
 
-		return "usuario/ListarUsuario";
+		return "usuario/ListarUsuario2";
 	}	
 	
 	@RequestMapping("removerUsuario")
@@ -48,7 +48,7 @@ public class UsuarioController {
 
 		UsuarioDao dao = new UsuarioDao();
 		dao.remover(usuario);
-		model.addAttribute("mensagem", "Usu�rio Removido com Sucesso");
+		model.addAttribute("mensagem", "Usuário Removido com Sucesso");
 
 		return "forward:listarUsuario";
 	}
