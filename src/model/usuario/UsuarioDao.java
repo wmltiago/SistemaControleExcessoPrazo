@@ -80,7 +80,7 @@ public class UsuarioDao {
 				usuario.setNome(rs.getString("nome"));
 				usuario.setSenha(rs.getString("senha"));
 				usuario.setEndereco(rs.getString("endereco"));
-				usuario.setId_tipousuario(rs.getInt("id_tipousuario"));
+				usuario.setId_tipousuario(rs.getInt("id_tipoUsuario"));
 
 				listaUsuario.add(usuario);
 			}

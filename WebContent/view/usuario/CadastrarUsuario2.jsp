@@ -19,6 +19,7 @@
 </head>
 <body>
 <div style="text-align: center; color: red; font-size: 30px;"> ${msg} </div>
+<c:import url="/view/comum/menu.jsp" />
 <form class="form-horizontal" action="CadastrarUsuario2" method="post">
 <fieldset>
 <br>
@@ -38,11 +39,11 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Tipo de usuário</label>
   <div class="col-md-4">
-    <select id="id_tipousuario" name="id_tipousuario" class="form-control">
-      <option value=""></option>
-      <option value="1">ADM</option>
-      <option value="2">Gerência</option>
-      <option value="3">Colaborador</option>
+    <select id="id_tipousuario" name="idTipoUsuario" class="form-control">
+      <option value="">  </option>
+				<c:forEach items="${listaTipoUsuario}" var="obj">
+					<option value="${obj.idTipoUsuario}"> ${obj.descricao} </option> <!-- VARIAVEL IGUAL AO NOME DA CLASSE BASICA -->
+				</c:forEach> 
     </select>
   </div>
 </div>

@@ -32,10 +32,12 @@ public class TipoUsuarioController {
 		
 		TipoUsuarioDao dao = new TipoUsuarioDao();
 		dao.salvar(tipoUsuario);
-		model.addAttribute("msg", "O tipo de usuário " + tipoUsuario.getDescricao() + " foi Inserida com Sucesso !");
+		model.addAttribute("msg", "O tipo usuário '" + tipoUsuario.getDescricao() + "' foi Inserido com Sucesso !");
 
-		return "forward:listarTipoUsuario"; //link
+		return "forward:exibirIncluirTipoUsuario"; //link //vou alterar pra voltar pra pag de inserir, mas é pra ir pro listarTipoUsuario
 	}
+	
+	//-------------------------------------------------------------------------------------------------------------------------------------
 
 	@RequestMapping("/listarTipoUsuario")
 	public String listarTipoUsuario(Model model) {
@@ -46,6 +48,8 @@ public class TipoUsuarioController {
 
 		return "tipoUsuario/PesquisarTipoUsuario";
 	}
+	
+	//-------------------------------------------------------------------------------------------------------------------------------------
 
 	@RequestMapping("removerTipoUsuario") //observar isso aqui
 	public String removerTipoUsuario(TipoUsuario tipoUsuario, Model model) {
@@ -56,6 +60,8 @@ public class TipoUsuarioController {
 
 		return "forward:listarTipoUsuario";
 	}
+	
+	//-------------------------------------------------------------------------------------------------------------------------------------
 
 	@RequestMapping("exibirAlterarTipoUsuario")
 	public String exibirAlterarTipoUsuario(TipoUsuario tipoUsuario, Model model) {
@@ -67,7 +73,7 @@ public class TipoUsuarioController {
 		return "tipoUsuario/AlterarTipoUsuario";
 	}
 
-	@RequestMapping("alterarTipoUsuario")
+	@RequestMapping("AlterarTipoUsuario")
 	public String alterarTipoUsuario(TipoUsuario tipoUsuario, Model model) {
 
 		TipoUsuarioDao dao = new TipoUsuarioDao();

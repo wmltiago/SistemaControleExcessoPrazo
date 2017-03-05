@@ -1,11 +1,17 @@
 package controller;
 
+
+
+
+
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import model.usuario.TipoUsuario;
+import model.usuario.TipoUsuarioDao;
 import model.usuario.Usuario;
 import model.usuario.UsuarioDao;
 
@@ -14,9 +20,16 @@ public class UsuarioController {
 	
 	
 	@RequestMapping("/exibirCadastrarUsuario")
-	public String exibirCadastrarUsuario() {
+	public String exibirCadastrarUsuario(Model model) {
+		
+		
+		// Codigo para popular o combo de categoria de produto
+				TipoUsuarioDao dao = new TipoUsuarioDao();
+				List<TipoUsuario> listaTipoUsuario = dao.listar();
+				model.addAttribute("listaTipoUsuario", listaTipoUsuario);
 
 		return "usuario/CadastrarUsuario2";
+		
 	}
 
 	@RequestMapping("/CadastrarUsuario2")
@@ -60,6 +73,11 @@ public class UsuarioController {
 		
 		Usuario usuarioCompleto = dao.buscarPorId(usuario.getId());
 		model.addAttribute("usuario", usuarioCompleto);
+		
+		// Codigo para popular o combo de categoria de produto
+		TipoUsuarioDao dao2 = new TipoUsuarioDao();
+				List<TipoUsuario> listaTipoUsuario = dao2.listar();
+				model.addAttribute("listaTipoUsuario", listaTipoUsuario);
 
 		
 
