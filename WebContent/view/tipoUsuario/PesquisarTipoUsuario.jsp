@@ -70,9 +70,9 @@
                   <tbody>
                           <tr>
                             <td align="center">
-                              <a href="exibirAlterarTipoUsuario?id=${c.idTipoUsuario}" class="btn btn-default"><em class="fa fa-pencil" title="Alterar usuário"></em></a>
-                              <a href="removerTipoUsuario?id=${c.idTipoUsuario}" class="btn btn-danger"><em class="fa fa-trash" title="Remover usuário"></em></a>
-                              
+                              <a href="exibirAlterarTipoUsuario?idTipoUsuario=${c.idTipoUsuario}" class="btn btn-default"><em class="fa fa-pencil" title="Alterar usuário"></em></a>
+                              <a href="removerTipoUsuario?idTipoUsuario=${c.idTipoUsuario}" class="btn btn-danger"><em class="fa fa-trash" title="Remover usuário"></em></a>
+                              <!-- QNDO FOR MANDA PELO ID TEM QUE SER MSM NOME DA CLASSE BASICA EX: idTipoUsario, ou id; -->
                             </td>                            
                             <td class="hidden-xs"> ${c.idTipoUsuario}</td> <!-- variavel igual o noem da classe basica -->  	
 	    					<td> ${c.descricao}</td>
