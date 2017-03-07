@@ -1,5 +1,5 @@
 CREATE TABLE detento (
-	idDetento INT NOT NULL,
+	idDetento INT NOT NULL auto_increment,
 	nomeDetento varchar(120) NOT NULL,
 	cpfDeteneto varchar(120) NOT NULL UNIQUE,
 	nomeMae varchar(120) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE detento (
 );
 
 CREATE TABLE dadosdetento (
-	idDadosdetento INT NOT NULL,
+	idDadosdetento INT NOT NULL auto_increment,
 	detento_idDetento INT NOT NULL,
 	presidio_idPresidio INT NOT NULL,
 	dataJulgamento DATE NOT NULL,
@@ -20,16 +20,16 @@ CREATE TABLE dadosdetento (
 );
 
 CREATE TABLE presidio (
-	idPresidio INT NOT NULL,
+	idPresidio INT NOT NULL auto_increment,
 	nomePresidio varchar(120) NOT NULL,
 	estadoPresidio varchar(50) NOT NULL,
 	cidadePresidio varchar(50) NOT NULL,
-	tipoPresidio varchar(50) NOT NULL,
+	tipoPresidio enum ('aberto', 'fechado', 'semiAberto'),
 	PRIMARY KEY (idPresidio)
 );
 
 CREATE TABLE Pena (
-	idPEna INT NOT NULL,
+	idPEna INT NOT NULL auto_increment,
 	detento_idDetento INT NOT NULL,
 	tipoPena varchar(100) NOT NULL,
 	descricaoPena varchar(100) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE Pena (
 );
 
 CREATE TABLE usuario (
-	idUsuario INT NOT NULL,
+	idUsuario INT NOT NULL auto_increment,
 	tipousuario_idTipousuario INT NOT NULL,
 	nomeUsuario varchar(120) NOT NULL,
 	cpfUsuario varchar(15) NOT NULL UNIQUE,
@@ -50,7 +50,7 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE tipousuario (
-	idTipousuario INT NOT NULL,
+	idTipousuario INT NOT NULL auto_increment,
 	descricaoUsuario varchar(50) NOT NULL,
 	PRIMARY KEY (idTipousuario)
 );
