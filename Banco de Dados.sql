@@ -24,7 +24,7 @@ CREATE TABLE presidio (
 	nomePresidio varchar(120) NOT NULL,
 	estadoPresidio varchar(50) NOT NULL,
 	cidadePresidio varchar(50) NOT NULL,
-	tipoPresidio enum ('aberto', 'fechado', 'semiAberto'),
+	tipoPresidio varchar(50) not null,
 	PRIMARY KEY (idPresidio)
 );
 
