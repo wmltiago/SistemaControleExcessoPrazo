@@ -21,27 +21,36 @@
 <body  >
 
 
- <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="text-center">Welcome</h1>
-        </div>
-         <div class="modal-body">
-             <div class="form-group">
-                 <input type="text" class="form-control input-lg" placeholder="Username"/>
-             </div>
-
-             <div class="form-group">
-                 <input type="password" class="form-control input-lg" placeholder="Password"/>
-             </div>
-
-             <div class="form-group">
-                 <input type="submit" class="btn btn-block btn-lg btn-primary" value="Login"/>
-                 <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Forgot Password</a></span>
-             </div>
-         </div>
-    </div>
- </div>
+ <div class="container">
+ <br>
+    <div class="row">
+		<div class="col-md-4 col-md-offset-4">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title">Acesso</h3>
+			 	</div>
+			  	<div class="panel-body">
+			    	<form accept-charset="UTF-8" role="form">
+                    <fieldset>
+			    	  	<div class="form-group">
+			    		    <input class="form-control" placeholder="CPF" name="cpf" type="text">
+			    		</div>
+			    		<div class="form-group">
+			    			<input class="form-control" placeholder="Senha" name="senha" type="password" value="">
+			    		</div>
+			    		<div class="checkbox">
+			    	    	<label>
+			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
+			    	    	</label>
+			    	    </div>
+			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Entrar">
+			    	</fieldset>
+			      	</form>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
