@@ -48,7 +48,8 @@ public class TipoUsuarioDao {
 		try {
 			List<TipoUsuario> listaTipoUsuario = new ArrayList<TipoUsuario>();
 			PreparedStatement stmt = this.connection
-					.prepareStatement("SELECT * FROM tipo_usuario ORDER BY descricao");
+					.prepareStatement("SELECT * FROM tipo_usuario ORDER BY idTipoUsuario");
+			
 
 			ResultSet rs = stmt.executeQuery();
 
@@ -71,6 +72,7 @@ public class TipoUsuarioDao {
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement("DELETE FROM tipo_usuario WHERE idTipoUsuario = ?");
+			//System.out.println(tipoUsuario.getIdTipoUsuario()); pra testar se esta mandando o id do tipo usuario
 			stmt.setLong(1, tipoUsuario.getIdTipoUsuario());
 			stmt.execute();
 			stmt.close();
