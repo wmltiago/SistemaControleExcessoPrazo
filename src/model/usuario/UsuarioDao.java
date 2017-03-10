@@ -33,7 +33,7 @@ public class UsuarioDao {
 					stmt.setString(2, usuario.getCpf());
 					stmt.setString(3, usuario.getSenha());
 					stmt.setString(4, usuario.getEndereco());
-					stmt.setInt(5, usuario.getId_tipousuario());
+					stmt.setInt(5, usuario.getTipousuario().getIdTipoUsuario());
 					
 
 			stmt.execute();
@@ -80,7 +80,11 @@ public class UsuarioDao {
 				usuario.setNome(rs.getString("nome"));
 				usuario.setSenha(rs.getString("senha"));
 				usuario.setEndereco(rs.getString("endereco"));
-				usuario.setId_tipousuario(rs.getInt("id_tipoUsuario"));
+				
+				TipoUsuarioDao dao = new TipoUsuarioDao();
+				TipoUsuario tipousuario = dao.buscarPorId(rs.getInt("id_tipousuario"));
+				usuario.setTipousuario(tipousuario);
+				
 
 				listaUsuario.add(usuario);
 			}
@@ -106,7 +110,7 @@ public class UsuarioDao {
 			stmt.setString(2, usuario.getCpf());
 			stmt.setString(3, usuario.getSenha());
 			stmt.setString(4, usuario.getEndereco());			
-			stmt.setInt(5, usuario.getId_tipousuario());
+			
 			stmt.setInt(6, usuario.getId());
 			
 

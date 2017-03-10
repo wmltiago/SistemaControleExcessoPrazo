@@ -7,7 +7,7 @@ private String cpf;
 private String	nome; 
 private String senha;
 private String endereco;
-private int id_tipousuario;
+private TipoUsuario tipousuario;
 
 public int getId() {
 	return id;
@@ -39,11 +39,11 @@ public String getEndereco() {
 public void setEndereco(String endereco) {
 	this.endereco = endereco;
 }
-public int getId_tipousuario() {
-	return id_tipousuario;
+public TipoUsuario getTipousuario() {
+	return tipousuario;
 }
-public void setId_tipousuario(int id_tipousuario) {
-	this.id_tipousuario = id_tipousuario;
+public void setTipousuario(TipoUsuario tipousuario) {
+	this.tipousuario = tipousuario;
 }
 
 

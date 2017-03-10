@@ -74,7 +74,7 @@
                             <td>${usuario.cpf} </td>
                             <td>${usuario.nome}</td>
                             <td>${usuario.endereco}</td>
-                            <td>${usuario.id_tipousuario}</td>
+                            <td>${usuario.tipousuario.descricao}</td> <!-- aqui chamo a descricao ou id do tipo suuario ex: usuario.tipousuario.id_tipousuario -->
                           </tr>
                         </tbody>
                         
