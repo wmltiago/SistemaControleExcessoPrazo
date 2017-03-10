@@ -70,7 +70,7 @@
                             <td><input type="text" name="cpf" value="${usuario.cpf}" /></td>
                             <td><input type="text" name="nome" value="${usuario.nome}" /></td>
                             <td><input type="text" name="endereco" value="${usuario.endereco}" /></td>
-                            <td><input type="text" name="endereco" value="${usuario.id_tipousuario}"/></td>
+                            <td><input type="text" name="id_tipousuario" value="${usuario.id_tipousuario}"/></td>
                             <td><button id="button1id" name="button1id" class="btn btn-success" type="submit" value="inserir">Alterar</button></td>
                           </tr>
                         </tbody>

@@ -66,15 +66,15 @@
                   <tbody>
                           <tr>
                             <td align="center">
-                              <a href="exibirAlterarUsuario?id=${usuario.id_usuario}" class="btn btn-default"><em class="fa fa-pencil" title="Alterar usuário"></em></a>
-                              <a href="removerUsuario?id=${usuario.id_usuario}" class="btn btn-danger"><em class="fa fa-trash" title="Remover usuário"></em></a>
+                              <a href="exibirAlterarUsuario?id=${usuario.id}" class="btn btn-default"><em class="fa fa-pencil" title="Alterar usuário"></em></a>
+                              <a href="removerUsuario?id=${usuario.id}" class="btn btn-danger"><em class="fa fa-trash" title="Remover usuário"></em></a>
                               
                             </td>
-                            <td class="hidden-xs">${usuario.id_usuario}</td>
+                            <td class="hidden-xs">${usuario.id}</td>
                             <td>${usuario.cpf} </td>
                             <td>${usuario.nome}</td>
                             <td>${usuario.endereco}</td>
-                            <td>${usuario.id_tipoUsuario}</td>
+                            <td>${usuario.id_tipousuario}</td>
                           </tr>
                         </tbody>
                         
