@@ -33,7 +33,15 @@
 			
 			<td>NOME DA MÃE</td> 
 			
-			<td>ENDEREÇO</td> 
+			<td>ENDEREÇO</td>
+			
+			<td>Data de Julgamento</td>
+			
+			<td>Liberdade Provisória</td>
+			
+			<td>Numero do Processo</td>
+			
+			<td>PRESIDIO</td>
 			
 			<td>AÇÕES </td>
 			
@@ -48,7 +56,11 @@
 					<td>${detento.cpfDetento}</td>
 					<td>${detento.nomeMae}</td>
 					<td>${detento.enderecoDetento}</td>
-					<td><a href='#'>Editar</a> &nbsp;
+					<td><fmt:formatDate value='${detento.dataJulgamento}' pattern='dd/MM/yyyy' /></td>
+					<td>${detento.liberdadeProvisoria}</td>
+					<td>${detento.numeroProcesso}</td>
+					<td>${detento.presidio.nomePresidio}</td>
+					<td><a href='exibirAlterarDetento?id=${detento.idDetento}'>Editar</a> &nbsp;
 	    		<a href='removerDetento?id=${detento.idDetento}'>Remover</a>
 				</td>
 					

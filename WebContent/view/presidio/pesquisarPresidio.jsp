@@ -43,8 +43,8 @@
 				<tr>
 					<td>${presidio.idPresidio}</td>
 					<td>${presidio.nomePresidio}</td> 
-					<td>${presidio.estado}</td>
-					<td>${presidio.cidade}</td>
+					<td>${presidio.estadoPresidio}</td>
+					<td>${presidio.cidadePresidio}</td>
 					<td>${presidio.tipoPresidio}</td>
 				
 					

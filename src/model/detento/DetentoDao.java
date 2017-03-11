@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.presidio.Presidio;
+import model.presidio.PresidioDao;
+import model.usuario.Usuario;
 import util.ConnectionFactory;
 
 public class DetentoDao {
@@ -24,13 +27,16 @@ public class DetentoDao {
 	public void salvar(Detento detento) {
 
 		try {
-			String sql = "INSERT INTO detento (nomeDetento, cpfDetento, nomeMae, enderecoDetento) VALUES (?,?,?,?)";
+			String sql = "INSERT INTO detento (presidio_idPresidio, nomeDetento,cpfDetento, nomeMae, enderecoDetento,dataJulgamento,liberdadeProvisoria,numeroProcesso) VALUES (?,?,?,?,?,?,?,?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1,detento.getNomeDetento());
-			stmt.setString(2,detento.getCpfDetento());
-			stmt.setString(3,detento.getNomeMae());
-			stmt.setString(4,detento.getEnderecoDetento());
-			
+			stmt.setInt(1,detento.getPresidio().getIdPresidio());
+			stmt.setString(2,detento.getNomeDetento());
+			stmt.setString(3,detento.getCpfDetento());
+			stmt.setString(4,detento.getNomeMae());
+			stmt.setString(5,detento.getEnderecoDetento());
+			stmt.setDate(6, new java.sql.Date(detento.getDataJulgamento().getTime()));
+			stmt.setInt(7,detento.getLiberdadeProvisoria());
+			stmt.setString(8,detento.getNumeroProcesso());
 			stmt.execute();
 			connection.close();
 
@@ -61,6 +67,13 @@ public class DetentoDao {
 					detento.setCpfDetento(rs.getString("cpfDetento"));
 					detento.setNomeMae(rs.getString("nomeMae"));
 					detento.setEnderecoDetento(rs.getString("enderecoDetento"));
+					detento.setDataJulgamento(rs.getDate("dataJulgamento"));
+					detento.setLiberdadeProvisoria(rs.getInt("liberdadeProvisoria"));
+					detento.setNumeroProcesso(rs.getString("numeroProcesso"));
+
+					PresidioDao dao = new PresidioDao();
+					Presidio descricao  = dao.buscarPorId(rs.getInt("presidio_idPresidio"));
+					detento.setPresidio(descricao);
 					
 					
 
@@ -92,6 +105,66 @@ public class DetentoDao {
 				throw new RuntimeException(e);
 			}
 		}
+	 public Detento buscarPorId(int id) {
 
+			try {
+				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM detento WHERE idDetento = ?");
+				stmt.setInt(1, id);
+				ResultSet rs = stmt.executeQuery();
 
+				Detento detento = null;
+
+				if (rs.next()) {
+
+					detento = new Detento();
+
+					detento.setIdDetento(rs.getInt("idDetento"));
+					detento.setNomeDetento(rs.getString("nomeDetento"));
+					detento.setCpfDetento(rs.getString("cpfDetento"));
+					detento.setNomeMae(rs.getString("nomeMae"));
+					detento.setEnderecoDetento(rs.getString("enderecoDetento"));
+					detento.setDataJulgamento(rs.getDate("dataJulgamento"));
+					detento.setLiberdadeProvisoria(rs.getInt("liberdadeProvisoria"));
+					detento.setNumeroProcesso(rs.getString("numeroProcesso"));
+
+					PresidioDao dao = new PresidioDao();
+					Presidio descricao  = dao.buscarPorId(rs.getInt("presidio_idPresidio"));
+					detento.setPresidio(descricao);		
+
+					
+				}
+
+				rs.close();
+				stmt.close();
+				connection.close();
+
+				return detento;
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
+
+	 public void alterar(Detento detento) {
+
+			try {
+				String sql = "UPDATE detento SET presidio_idPresidio = ?, nomeDetento = ?, cpfDetento = ?, nomeMae = ?, enderecoDetento = ?, dataJulgamento = ?, liberdadeProvisoria = ?, numeroProcesso = ? WHERE idDetento = ?";
+				PreparedStatement stmt = connection.prepareStatement(sql);
+				stmt.setInt(1, detento.getPresidio().getIdPresidio());
+				stmt.setString(2,detento.getNomeDetento());
+				stmt.setString(3,detento.getCpfDetento());
+				stmt.setString(4,detento.getNomeMae());
+				stmt.setString(5,detento.getEnderecoDetento());
+				stmt.setDate(6, new java.sql.Date(detento.getDataJulgamento().getTime()));
+				stmt.setInt(7, detento.getLiberdadeProvisoria());
+				stmt.setString(8,detento.getNumeroProcesso());
+				stmt.setInt(9,detento.getIdDetento());
+
+				stmt.execute();
+				connection.close();
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
 }

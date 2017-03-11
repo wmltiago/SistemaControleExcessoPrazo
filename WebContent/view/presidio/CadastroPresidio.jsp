@@ -11,47 +11,18 @@
 <html>
 <head>
 <title> Cadastrar presídio</title>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script type="text/javascript" src ="mycode.js"></script>
 
-<script type="text/javascript">
 
-function verificaTudo() {
-	var nome = document.getElementById("nomePresidio");
-
-	if (nome.value == "") {
-		alert("preencha o campo nome");
-		nome.focus();
-		return false;
-	}
-	var selectEstado = document.getElementById("estado");
-	var selectCidade = document.getElementById("cidade");
-	var selectTipo = document.getElementById("tipoPresidio");
-
-	if (selectEstado.value == "") {
-		alert("Escolha um estado");
-		selectEstado.focus();
-		return false;
-	}
-	if (selectCidade.value == "") {
-		alert("Escolha uma Cidade");
-		selectCidade.focus();
-		return false;
-	}
-	if (selectTipo.value == "") {
-		alert("Escolha um Tipo");
-		selectTipo.focus();
-		return false;
-	}
-	return true;
-}
-
-</script>
 </head>
 <body>
 
 
-  <h2><b> Cadastro de presídio</b></h2>
+  <h2><b> Cadastro de presídio</b></h2><br>
+  <div style="text-align: center; color: red;"> ${msg} </div>
 
 <form action="cadastrarPresidio" method="post">
 
@@ -80,7 +51,7 @@ function verificaTudo() {
     <label for="estado">Estado:</label>
    </td>
    <td align="left">
-    <select name="estado" id="estado"> 
+    <select name="estadoPresidio" id="estado"> 
     <option value=""></option>
     <option value="ac">Acre</option> 
     <option value="al">Alagoas</option> 
@@ -114,15 +85,15 @@ function verificaTudo() {
   </tr>
   <tr>
    <td>
-    <label for="cidade">Cidade: </label>
+    <label for="cidadePresidio">Cidade: </label>
    </td>
    <td align="left">
-    <input type="text" name="cidade" id="cidade">
+    <input type="text" name="cidadePresidio" id="cidade">
    </td>
   </tr>
   <tr>
   <td>
-  <label for="estado">Tipo:</label>
+  <label for="tipo">Tipo:</label>
    </td>
    <td align="left">
     <select name="tipoPresidio" id="tipoPresidio"> 

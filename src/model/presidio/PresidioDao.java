@@ -24,12 +24,13 @@ public class PresidioDao {
 	public void salvar(Presidio presidio) {
 
 		try {
-			String sql = "INSERT INTO presidio (nome, estado, cidade, tipo) VALUES (?,?,?,?)";
+			String sql = "INSERT INTO presidio(nomePresidio, estadoPresidio, cidadePresidio, tipoPresidio) VALUES (?,?,?,?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, presidio.getNomePresidio());
-			stmt.setString(3, presidio.getCidade());
+			stmt.setString(2, presidio.getEstadoPresidio());
+			stmt.setString(3, presidio.getCidadePresidio());
 			stmt.setString(4, presidio.getTipoPresidio());
-			stmt.setString(2, presidio.getEstado());
+			
 
 			stmt.execute();
 			connection.close();
@@ -41,7 +42,7 @@ public class PresidioDao {
 	public void remover(int id) {
 
 		try {
-			String sql = "DELETE FROM presidio WHERE id = ?";
+			String sql = "DELETE FROM presidio WHERE idPresidio = ?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			stmt.execute();
@@ -58,7 +59,7 @@ public class PresidioDao {
 		try {
 			List<Presidio> listaPresidio = new ArrayList<Presidio>();
 
-			String sql = "SELECT * FROM presidio ORDER BY idPresidio";
+			String sql = "SELECT * FROM presidio";
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 
 			ResultSet rs = stmt.executeQuery();
@@ -68,10 +69,10 @@ public class PresidioDao {
 				Presidio presidios = new Presidio();
 
 				presidios.setIdPresidio(rs.getInt("idPresidio"));
-				presidios.setNomePresidio(rs.getString("nome"));
-				presidios.setEstado(rs.getString("estado"));
-				presidios.setCidade(rs.getString("cidade"));
-				presidios.setTipoPresidio(rs.getString("tipo"));
+				presidios.setNomePresidio(rs.getString("nomePresidio"));
+				presidios.setEstadoPresidio(rs.getString("estadoPresidio"));
+				presidios.setCidadePresidio(rs.getString("cidadePresidio"));
+				presidios.setTipoPresidio(rs.getString("tipoPresidio"));
 
 
 				listaPresidio.add(presidios);
@@ -94,13 +95,13 @@ public class PresidioDao {
 	public void alterar(Presidio presidio) {
 
 		try {
-			String sql = "UPDATE Presidio SET nome=?, estado=?, cidade=?, tipo=? WHERE id = ?, ";
+			String sql = "UPDATE Presidio SET nomePresidio=?, estadoPresidio=?, cidadePresidio=?, tipoPresidio=? WHERE idPresidio = ?, ";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
 			
 			stmt.setString(1, presidio.getNomePresidio());
-			stmt.setString(2, presidio.getEstado());
-			stmt.setString(3, presidio.getCidade());
+			stmt.setString(2, presidio.getEstadoPresidio());
+			stmt.setString(3, presidio.getCidadePresidio());
 			stmt.setString(4, presidio.getTipoPresidio());
 			stmt.setInt(5, presidio.getIdPresidio());
 			
@@ -111,5 +112,43 @@ public class PresidioDao {
 			throw new RuntimeException(e);
 		}
 	}
+	public Presidio buscarPorId(int id) {
 
+		try {
+			
+
+			String sql = "SELECT * FROM presidio where idPresidio = ?";
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+  
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+
+	
+
+				Presidio presidio = new Presidio();
+				if (rs.next()) {
+				presidio.setIdPresidio(rs.getInt("idPresidio"));
+				presidio.setNomePresidio(rs.getString("nomePresidio"));
+				presidio.setEstadoPresidio(rs.getString("estadoPresidio"));
+				presidio.setCidadePresidio(rs.getString("cidadePresidio"));
+				presidio.setTipoPresidio(rs.getString("tipoPresidio"));
+
+				}
+
+				
+			
+
+			rs.close();
+			stmt.close();
+			connection.close();
+
+			return presidio;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	
+	
 }

@@ -4,10 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import model.detento.Detento;
 import model.detento.DetentoDao;
+import model.presidio.Presidio;
+import model.presidio.PresidioDao;
+import model.usuario.Usuario;
+import model.usuario.UsuarioDao;
 
 
 
@@ -15,25 +20,31 @@ import model.detento.DetentoDao;
 public class DetentoController {
 
 	@RequestMapping("/exibirCadastrarDetento")
-	public String exibirIncluirDetento() {
+	public String exibirIncluirDetento(Model model) {
+		PresidioDao dao = new PresidioDao();
+
+		List<Presidio> listaPresidio = dao.listar();
+
+		model.addAttribute("listaPresidio", listaPresidio);
 
 		return "detento/CadastroDetento";
 	}
-
-	@RequestMapping("/cadastrarDetento")
-	public String incluirDetento(Detento detento) {
+	@RequestMapping("/CadastrarDetento")
+	public String incluirDetento(Detento detento,  Model model) {
 
 		DetentoDao dao = new DetentoDao();
 		dao.salvar(detento);
+		model.addAttribute("msg", " foi cadastrado com sucesso !");
 
-		return "detento/CadastroDetentoSucesso";
+		return "forward:exibirCadastrarDetento";
 	}
+
 	
 	
 	
 	
 	@RequestMapping("/listarDetento")
-	public String listarDetento( Model model){
+	public String listarDetento(Model model){
 		
 		DetentoDao dao = new DetentoDao();
 		
@@ -46,16 +57,30 @@ public class DetentoController {
 	}
 		
 		
-		@RequestMapping("/alterarDetento")
-		public String alterarDetento(Detento detento) {
+	@RequestMapping("exibirAlterarDetento")
+	public String exibirAlterarDetento(Detento detento, Model model, int id) {
 
-			//PresidioDao dao = new PresidioDao();
-			//dao.alterar(presidio);
+		DetentoDao dao = new DetentoDao();
+		Detento detentoCompleto = dao.buscarPorId(id);
+		model.addAttribute("detento", detentoCompleto);
 
-			return "detento/AlterarDetento";
-				
+		PresidioDao dao2 = new PresidioDao();
+		List<Presidio> listaPresidio= dao2.listar();
+		model.addAttribute("listaPresidio", listaPresidio);
 		
+
+		return "detento/AlterarDetento";
 	}
+	@RequestMapping("/alterarDetento")
+	public String alterarDetento(Detento detento, Model model) {
+
+		DetentoDao dao = new DetentoDao();
+		dao.alterar(detento);
+		model.addAttribute("msg", "O Detento " + detento.getNomeDetento() + " foi alterado com sucesso !");
+
+		return "forward:listarDetento";
+	}
+	
 		 @RequestMapping("/removerDetento")
 		    public String removerDetento(int id, Model model) {
 

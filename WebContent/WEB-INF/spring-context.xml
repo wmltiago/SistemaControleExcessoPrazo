@@ -20,6 +20,7 @@ class="org.springframework.context.support.ConversionServiceFactoryBean">
 <property name="converters">
 <list>
 <bean class="controller.TipoUsuarioConverter" />
+<bean class="controller.PresidioConverter" />
 </list>
 </property>
 </bean>

@@ -17,22 +17,22 @@ public class PresidioController {
 
 	@RequestMapping("/exibirCadastrarPresidio")
 	public String exibirIncluirPresidio() {
+	
+		
 
+		
 		return "presidio/CadastroPresidio";
 	}
 
 	//inclusao do @Valid, BindingResult result e do if para retornar ao exibirCadastrarPresidio//
 	@RequestMapping("/cadastrarPresidio")
-	public String incluirPresidio(@Valid Presidio presidio, BindingResult result) {
-
-		if (result.hasErrors()) {
-			return "forward:exibirCadastrarPresidio";
-		}
-
+	public String incluirPresidio(@Valid Presidio presidio, BindingResult result,Model model) {
+		
+		model.addAttribute("msg", "Cadastrado Com Sucesso!" );
 		PresidioDao dao = new PresidioDao();
 		dao.salvar(presidio);
 
-		return "presidio/CadastroPresidioSucesso";
+		return "presidio/CadastroPresidio";
 	}
 
 	// =========== daivson - listar =======================//
