@@ -1,8 +1,7 @@
 CREATE TABLE detento (
 	idDetento INT NOT NULL auto_increment,
 	nomeDetento varchar(120) NOT NULL,
-	cpfDeteneto varchar(120) NOT NULL UNIQUE,
-	nomeMae varchar(120) NOT NULL,
+	cpfDetento varchar(120) NOT NULL UNIQUE,
 	nomeMae varchar(120) NOT NULL,
 	enderecoDetento varchar(120) NOT NULL,
 	fotoDetento varchar(120) NOT NULL,
