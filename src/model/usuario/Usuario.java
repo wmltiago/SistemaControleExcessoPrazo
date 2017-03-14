@@ -3,11 +3,11 @@ package model.usuario;
 public class Usuario {
 
 private int id;	
-private String cpf;
-private String	nome; 
-private String senha;
-private String endereco;
-private TipoUsuario tipousuario;
+private String cpfUsuario;
+private String	nomeUsuario; 
+private String senhaUsuario;
+private String enderecoUsuario;
+private TipoUsuario tipousuario_idTipousuario;
 
 public int getId() {
 	return id;
@@ -15,36 +15,38 @@ public int getId() {
 public void setId(int id) {
 	this.id = id;
 }
-public String getCpf() {
-	return cpf;
+public String getCpfUsuario() {
+	return cpfUsuario;
 }
-public void setCpf(String cpf) {
-	this.cpf = cpf;
+public void setCpfUsuario(String cpfUsuario) {
+	this.cpfUsuario = cpfUsuario;
 }
-public String getNome() {
-	return nome;
+public String getNomeUsuario() {
+	return nomeUsuario;
 }
-public void setNome(String nome) {
-	this.nome = nome;
+public void setNomeUsuario(String nomeUsuario) {
+	this.nomeUsuario = nomeUsuario;
 }
-public String getSenha() {
-	return senha;
+
+public String getSenhaUsuario() {
+	return senhaUsuario;
 }
-public void setSenha(String senha) {
-	this.senha = senha;
+public void setSenhaUsuario(String senhaUsuario) {
+	this.senhaUsuario = senhaUsuario;
 }
-public String getEndereco() {
-	return endereco;
+public String getEnderecoUsuario() {
+	return enderecoUsuario;
 }
-public void setEndereco(String endereco) {
-	this.endereco = endereco;
+public void setEnderecoUsuario(String enderecoUsuario) {
+	this.enderecoUsuario = enderecoUsuario;
 }
-public TipoUsuario getTipousuario() {
-	return tipousuario;
+public TipoUsuario getTipousuario_idTipousuario() {
+	return tipousuario_idTipousuario;
 }
-public void setTipousuario(TipoUsuario tipousuario) {
-	this.tipousuario = tipousuario;
+public void setTipousuario_idTipousuario(TipoUsuario tipousuario_idTipousuario) {
+	this.tipousuario_idTipousuario = tipousuario_idTipousuario;
 }
+
 
 
 	

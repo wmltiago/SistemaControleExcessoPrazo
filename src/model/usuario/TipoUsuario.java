@@ -3,7 +3,7 @@ package model.usuario;
 public class TipoUsuario {
 	
 	private int idTipoUsuario;
-	private String descricao;
+	private String descricaoUsuario;
 	
 	
 	public int getIdTipoUsuario() {
@@ -12,11 +12,12 @@ public class TipoUsuario {
 	public void setIdTipoUsuario(int idTipoUsuario) {
 		this.idTipoUsuario = idTipoUsuario;
 	}
-	public String getDescricao() {
-		return descricao;
+	public String getDescricaoUsuario() {
+		return descricaoUsuario;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescricaoUsuario(String descricaoUsuario) {
+		this.descricaoUsuario = descricaoUsuario;
 	}
+	
 
 }

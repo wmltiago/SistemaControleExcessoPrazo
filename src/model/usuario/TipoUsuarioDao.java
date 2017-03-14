@@ -29,11 +29,11 @@ public class TipoUsuarioDao {
 
 		try {
 
-			String sql = "INSERT INTO tipo_usuario (idTipoUsuario, descricao) VALUES (?,?)";
+			String sql = "INSERT INTO tipousuario (idTipousuario, descricaoUsuario) VALUES (?,?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			stmt.setInt(1, tipoUsuario.getIdTipoUsuario());
-			stmt.setString(2, tipoUsuario.getDescricao());
+			stmt.setString(2, tipoUsuario.getDescricaoUsuario());
 			stmt.execute();
 			stmt.close();
 			connection.close();
@@ -48,7 +48,7 @@ public class TipoUsuarioDao {
 		try {
 			List<TipoUsuario> listaTipoUsuario = new ArrayList<TipoUsuario>();
 			PreparedStatement stmt = this.connection
-					.prepareStatement("SELECT * FROM tipo_usuario ORDER BY idTipoUsuario");
+					.prepareStatement("SELECT * FROM tipousuario ORDER BY idTipousuario");
 			
 
 			ResultSet rs = stmt.executeQuery();
@@ -71,7 +71,7 @@ public class TipoUsuarioDao {
 	public void remover(TipoUsuario tipoUsuario) {
 
 		try {
-			PreparedStatement stmt = connection.prepareStatement("DELETE FROM tipo_usuario WHERE idTipoUsuario = ?");
+			PreparedStatement stmt = connection.prepareStatement("DELETE FROM tipousuario WHERE idTipousuario = ?");
 			//System.out.println(tipoUsuario.getIdTipoUsuario()); pra testar se esta mandando o id do tipo usuario
 			stmt.setLong(1, tipoUsuario.getIdTipoUsuario());
 			stmt.execute();
@@ -85,7 +85,7 @@ public class TipoUsuarioDao {
 	public TipoUsuario buscarPorId(int id) {
 
 		try {
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM tipo_usuario WHERE idTipoUsuario = ?");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM tipousuario WHERE idTipousuario = ?");
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 
@@ -106,14 +106,14 @@ public class TipoUsuarioDao {
 
 	public void alterar(TipoUsuario tipoUsuario) {
 
-		String sql = "UPDATE tipo_usuario SET descricao = ? WHERE idTipoUsuario = ?";
+		String sql = "UPDATE tipousuario SET descricaoUsuario = ? WHERE idTipousuario = ?";
 
 		try {
 
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			
-			stmt.setString(2, tipoUsuario.getDescricao());
+			stmt.setString(2, tipoUsuario.getDescricaoUsuario());
 			stmt.setInt(3, tipoUsuario.getIdTipoUsuario());
 			stmt.execute();
 			stmt.close();
@@ -127,8 +127,8 @@ public class TipoUsuarioDao {
 	private TipoUsuario montarObjeto(ResultSet rs) throws SQLException {
 
 		TipoUsuario tipoUsuario = new TipoUsuario();
-		tipoUsuario.setIdTipoUsuario(rs.getInt("idTipoUsuario"));
-		tipoUsuario.setDescricao(rs.getString("descricao"));
+		tipoUsuario.setIdTipoUsuario(rs.getInt("idTipousuario"));
+		tipoUsuario.setDescricaoUsuario(rs.getString("descricaoUsuario"));
 
 		return tipoUsuario;
 	}

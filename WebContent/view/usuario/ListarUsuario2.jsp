@@ -44,7 +44,7 @@
                     <h3 class="panel-title">Listas de usuários</h3>
                   </div>
                   <div class="col col-xs-6 text-right">
-                   <a href="exibirCadastrarUsuario" > <button type="button" class="btn btn-default" >  Cadastrar novo usuário </button></a>
+                   <a href="exibirCadastrarUsuario" > <button type="button" class="btn btn-success" >  Cadastrar novo usuário </button></a>
                   </div>
                 </div>
               </div>
@@ -71,10 +71,10 @@
                               
                             </td>
                             <td class="hidden-xs">${usuario.id}</td>
-                            <td>${usuario.cpf} </td>
-                            <td>${usuario.nome}</td>
-                            <td>${usuario.endereco}</td>
-                            <td>${usuario.tipousuario.descricao}</td> <!-- aqui chamo a descricao ou id do tipo suuario ex: usuario.tipousuario.id_tipousuario -->
+                            <td>${usuario.cpfUsuario} </td>
+                            <td>${usuario.nomeUsuario}</td>
+                            <td>${usuario.enderecoUsuario}</td>
+                            <td>${usuario.tipousuario_idTipousuario.descricaoUsuario}</td> <!-- aqui chamo a descricao ou id do tipo suuario ex: usuario.tipousuario.id_tipousuario -->
                           </tr>
                         </tbody>
                         

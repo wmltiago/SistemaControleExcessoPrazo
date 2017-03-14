@@ -46,7 +46,7 @@
               </div>
               <div class="panel-body">
               
-              <input type="hidden" name="senha" value="${usuario.senha}" />
+             				 <input type="hidden" name="senha" value="${usuario.senhaUsuario}" />
 							<input type="hidden" name="id" value="${usuario.id}" />
 							
                 <table class="table table-striped table-bordered table-list">
@@ -67,10 +67,21 @@
                           <tr>
                             
                             
-                            <td><input type="text" name="cpf" value="${usuario.cpf}" /></td>
-                            <td><input type="text" name="nome" value="${usuario.nome}" /></td>
-                            <td><input type="text" name="endereco" value="${usuario.endereco}" /></td>
-                            <td><input type="text" name="id_tipousuario" value="${usuario.tipousuario}"/></td>
+                            <td><input type="text" name="cpfUsuario" value="${usuario.cpfUsuario}" /></td>
+                            <td><input type="text" name="nomeUsuario" value="${usuario.nomeUsuario}" /></td>
+                            <td><input type="text" name="enderecoUsuario" value="${usuario.enderecoUsuario}" /></td>
+                            <td>
+                            <div class="form-group">
+							  <label class="col-md-4 control-label" for="selectbasic">Tipo de usuário</label>
+							  <div class="col-md-4">
+							    <select id="id_tipousuario" name="tipousuario_idTipousuario" class="form-control">
+							      <option value="">  </option>
+											<c:forEach items="${listaTipoUsuario}" var="obj">
+												<option value="${obj.idTipoUsuario}"> ${obj.descricaoUsuario} </option> <!-- VARIAVEL IGUAL AO NOME DA CLASSE BASICA -->
+											</c:forEach> 
+   								 </select>
+ 								 </div></div>		
+  				</td>
                             <td><button id="button1id" name="button1id" class="btn btn-success" type="submit" value="inserir">Alterar</button></td>
                           </tr>
                         </tbody>

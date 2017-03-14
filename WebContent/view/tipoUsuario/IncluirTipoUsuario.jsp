@@ -40,7 +40,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="">Descrição</label>  
   <div class="col-md-4">
-  <input id="" name="descricao" placeholder="" class="form-control input-md" type="text">
+  <input id="" name="descricaoUsuario" placeholder="" class="form-control input-md" type="text" value="">
     
   </div>
 </div>

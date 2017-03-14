@@ -32,7 +32,7 @@ public class TipoUsuarioController {
 		
 		TipoUsuarioDao dao = new TipoUsuarioDao();
 		dao.salvar(tipoUsuario);
-		model.addAttribute("msg", "O tipo usuário '" + tipoUsuario.getDescricao() + "' foi Inserido com Sucesso !");
+		model.addAttribute("msg", "O tipo usuário '" + tipoUsuario.getDescricaoUsuario() + "' foi Inserido com Sucesso !");
 
 		return "forward:exibirIncluirTipoUsuario"; //link //vou alterar pra voltar pra pag de inserir, mas é pra ir pro listarTipoUsuario
 	}

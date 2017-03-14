@@ -30,7 +30,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="">Nome</label>  
   <div class="col-md-4">
-  <input id="" name="nome" placeholder="" class="form-control input-md" type="text">
+  <input id="" name="nomeUsuario" placeholder="" class="form-control input-md" type="text">
     
   </div>
 </div>
@@ -39,10 +39,10 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Tipo de usuário</label>
   <div class="col-md-4">
-    <select id="id_tipousuario" name="id_tipousuario" class="form-control">
+    <select id="id_tipousuario" name="tipousuario_idTipousuario" class="form-control">
       <option value="">  </option>
 				<c:forEach items="${listaTipoUsuario}" var="obj">
-					<option value="${obj.idTipoUsuario}"> ${obj.descricao} </option> <!-- VARIAVEL IGUAL AO NOME DA CLASSE BASICA -->
+					<option value="${obj.idTipoUsuario}"> ${obj.descricaoUsuario} </option> <!-- VARIAVEL IGUAL AO NOME DA CLASSE BASICA -->
 				</c:forEach> 
     </select>
   </div>
@@ -52,7 +52,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Endereço</label>  
   <div class="col-md-4">
-  <input id="textinput" name="endereco" placeholder="Rua Amarela, Piedade, 250" class="form-control input-md" type="text">
+  <input id="textinput" name="enderecoUsuario" placeholder="Rua Amarela, Piedade, 250" class="form-control input-md" type="text">
     
   </div>
 </div>
@@ -61,7 +61,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="passwordinput">Senha</label>
   <div class="col-md-4">
-    <input id="passwordinput" name="senha" placeholder="********" class="form-control input-md" type="password">
+    <input id="passwordinput" name="senhaUsuario" placeholder="********" class="form-control input-md" type="password">
     
   </div>
 </div>
@@ -70,7 +70,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">CPF</label>  
   <div class="col-md-4">
-  <input id="textinput" name="cpf" placeholder="000.000.000-00" class="form-control input-md" type="text">
+  <input id="textinput" name="cpfUsuario" placeholder="000.000.000-00" class="form-control input-md" type="text">
     
   </div>
 </div>

@@ -25,15 +25,17 @@ public class UsuarioDao {
 	public void salvar(Usuario usuario) {
 
 		try {
-			String sql = "INSERT INTO usuario (nome, cpf, senha, endereco, id_tipousuario) VALUES (?,?,?,?,?)";
+			String sql = "INSERT INTO usuario (nomeUsuario, cpfUsuario, senhaUsuario, enderecoUsuario, tipousuario_idTipousuario, idUsuario) VALUES (?,?,?,?,?,?)";
 			
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			
-					stmt.setString(1, usuario.getNome());
-					stmt.setString(2, usuario.getCpf());
-					stmt.setString(3, usuario.getSenha());
-					stmt.setString(4, usuario.getEndereco());
-					stmt.setInt(5, usuario.getTipousuario().getIdTipoUsuario());
+			System.out.println(usuario.getId());
+					stmt.setString(1, usuario.getNomeUsuario());
+					stmt.setString(2, usuario.getCpfUsuario());
+					stmt.setString(3, usuario.getSenhaUsuario());
+					stmt.setString(4, usuario.getEnderecoUsuario());
+					stmt.setInt(5, usuario.getTipousuario_idTipousuario().getIdTipoUsuario());
+					stmt.setInt(6, usuario.getId());
+					
 					
 
 			stmt.execute();
@@ -47,7 +49,7 @@ public class UsuarioDao {
 	public void remover(Usuario usuario) {
 
 		try {
-			String sql = "DELETE FROM usuario WHERE id_usuario = ?";
+			String sql = "DELETE FROM usuario WHERE idUsuario = ?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, usuario.getId());
 			stmt.execute();
@@ -65,7 +67,7 @@ public class UsuarioDao {
 		try {
 			List<Usuario> listaUsuario = new ArrayList<Usuario>();
 
-			String sql = "SELECT * FROM usuario ORDER BY id_usuario";
+			String sql = "SELECT * FROM usuario ORDER BY idUsuario";
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
 
 			ResultSet rs = stmt.executeQuery();
@@ -75,15 +77,15 @@ public class UsuarioDao {
 
 
 				Usuario usuario = new Usuario();
-				usuario.setId(rs.getInt("id_usuario"));
-				usuario.setCpf(rs.getString("cpf"));
-				usuario.setNome(rs.getString("nome"));
-				usuario.setSenha(rs.getString("senha"));
-				usuario.setEndereco(rs.getString("endereco"));
+				usuario.setId(rs.getInt("idUsuario"));
+				usuario.setCpfUsuario(rs.getString("cpfUsuario"));
+				usuario.setNomeUsuario(rs.getString("nomeUsuario"));
+				usuario.setSenhaUsuario(rs.getString("senhaUsuario"));
+				usuario.setEnderecoUsuario(rs.getString("enderecoUsuario"));
 				
 				TipoUsuarioDao dao = new TipoUsuarioDao();
-				TipoUsuario tipousuario = dao.buscarPorId(rs.getInt("id_tipousuario"));
-				usuario.setTipousuario(tipousuario);
+				TipoUsuario tipousuario = dao.buscarPorId(rs.getInt("tipousuario_idTipousuario"));
+				usuario.setTipousuario_idTipousuario(tipousuario);
 				
 
 				listaUsuario.add(usuario);
@@ -103,15 +105,14 @@ public class UsuarioDao {
 	public void alterar(Usuario usuario) {
 
 		try {
-			String sql = "UPDATE usuario SET nome = ?, cpf = ?, senha = ?, endereco = ?, id_tipousuario=? WHERE id_usuario = ?";
+			String sql = "UPDATE usuario SET nomeUsuario = ?, cpfUsuario = ?, enderecoUsuario = ? WHERE idUsuario = ?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
-			stmt.setString(1, usuario.getNome());
-			stmt.setString(2, usuario.getCpf());
-			stmt.setString(3, usuario.getSenha());
-			stmt.setString(4, usuario.getEndereco());			
-			
-			stmt.setInt(6, usuario.getId());
+			stmt.setString(1, usuario.getNomeUsuario());
+			stmt.setString(2, usuario.getCpfUsuario());
+			//stmt.setString(3, usuario.getSenhaUsuario());
+			stmt.setString(3, usuario.getEnderecoUsuario());			
+			stmt.setInt(4, usuario.getId());
 			
 
 			stmt.execute();
@@ -125,7 +126,7 @@ public class UsuarioDao {
 	public Usuario buscarPorId(int id) {
 
 		try {
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM usuario WHERE id_usuario = ?");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM usuario WHERE idUsuario = ?");
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 
@@ -135,10 +136,10 @@ public class UsuarioDao {
 
 				usuario = new Usuario();
 
-				usuario.setId(rs.getInt("id_usuario"));
-				usuario.setNome(rs.getString("nome"));
-				usuario.setCpf(rs.getString("cpf"));
-				usuario.setEndereco(rs.getString("endereco"));				
+				usuario.setId(rs.getInt("idUsuario"));
+				usuario.setNomeUsuario(rs.getString("nomeUsuario"));
+				usuario.setCpfUsuario(rs.getString("cpfUsuario"));
+				usuario.setEnderecoUsuario(rs.getString("enderecoUsuario"));				
 
 				
 			}

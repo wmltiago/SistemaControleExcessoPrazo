@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import model.detento.Detento;
+import model.detento.DetentoDao;
 import model.usuario.TipoUsuario;
 import model.usuario.TipoUsuarioDao;
 import model.usuario.Usuario;
@@ -39,7 +41,7 @@ public class UsuarioController {
 
 		UsuarioDao dao = new UsuarioDao();
 		dao.salvar(usuario);
-		model.addAttribute("msg", "O usuário " + usuario.getNome() + " foi cadastrado com sucesso !");
+		model.addAttribute("msg", "O usuário " + usuario.getNomeUsuario() + " foi cadastrado com sucesso !");
 
 		return "usuario/CadastrarUsuario2";
 	}
@@ -78,7 +80,8 @@ public class UsuarioController {
 		TipoUsuarioDao dao2 = new TipoUsuarioDao();
 				List<TipoUsuario> listaTipoUsuario = dao2.listar();
 				model.addAttribute("listaTipoUsuario", listaTipoUsuario);
-
+				
+				
 		
 
 		return "usuario/AlterarUsuario2";
@@ -89,7 +92,7 @@ public class UsuarioController {
 
 		UsuarioDao dao = new UsuarioDao();
 		dao.alterar(usuario);
-		model.addAttribute("mensagem", "O usuario " + usuario.getNome() + " foi alterado com sucesso !");
+		model.addAttribute("mensagem", "O usuario " + usuario.getNomeUsuario() + " foi alterado com sucesso !");
 
 		return "forward:listarUsuario";
 	}
