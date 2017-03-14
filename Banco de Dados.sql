@@ -34,7 +34,6 @@ CREATE TABLE Pena (
 	descricaoPena varchar(100) NOT NULL,
 	tempoPena varchar(50) NOT NULL,
 	regime varchar(50) NOT NULL,
-	multa FLOAT NOT NULL,
 	prestacaoServico INT NOT NULL,
 	PRIMARY KEY (idPEna)
 );
@@ -45,6 +44,7 @@ CREATE TABLE usuario (
 	nomeUsuario varchar(120) NOT NULL,
 	cpfUsuario varchar(15) NOT NULL UNIQUE,
 	enderecoUsuario varchar(120) NOT NULL,
+	senhaUsuario varchar(15) not null,
 	PRIMARY KEY (idUsuario)
 );
 
