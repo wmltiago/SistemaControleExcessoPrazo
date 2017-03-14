@@ -46,7 +46,9 @@
 					<td>${presidio.estadoPresidio}</td>
 					<td>${presidio.cidadePresidio}</td>
 					<td>${presidio.tipoPresidio}</td>
-				
+				     <td><a href='exibirAlterarPresidio?id=${presidio.idPresidio}'>Editar</a> &nbsp;
+	    		    <a href='removerPresidio?id=${presidio.idPresidio}'>Remover</a>
+				    </td>
 					
 					
 					

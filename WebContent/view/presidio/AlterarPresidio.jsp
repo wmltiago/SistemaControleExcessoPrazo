@@ -20,54 +20,38 @@
 
 <body>
 
-	<h2>
-		<b> Alterar Presídio </b>
-	</h2>
+	<hr><h3>Alterar Presidio</h3><hr>
+	
+	<div style="text-align: center; color: red;"> ${msg} </div>
+	
+	<form action="alterarPresidio" method="post">
 
-	<fieldset>
-		<legend>Dados para alterar Presídio</legend>
-		<table cellspacing="10">
+		<input type="hidden" name="idPresidio" value="${presidio.idPresidio}" />
+	
+		<p>
+			nomePresidio: <br />
+			<input type="text" name="nomePresidio" value="${presidio.nomePresidio}" />
+		</p>
+	
+	    <p>
+			estadoPresidio: <br />
+			<input type="text" name="estadoPresidio" value="${presidio.estadoPresidio}" />
+		</p>
+	    
+	    <p>
+			cidadePresidio: <br />
+			<input type="text" name="cidadePresidio" value="${presidio.cidadePresidio}" />
+		</p>
+	
+	    <p>
+			tipoPresidio: <br />
+			<input type="text" name="tipoPresidio" value="${presidio.tipoPresidio}" />
+		</p>
 
+     
+        <p> <input type="submit" value="Alterar"> </p>
+	   
+	   </form>
 
-			<table border='1' style='width: 100%;'>
-
-				<tr style='background-color: #E6E6E6; font-weight: bold;'>
-
-					<form action='alterarPresidio'>
-
-						<td>id</td>
-						<td>nome</td>
-						<td>estado</td>
-						<td>cidade</td>
-						<td>tipo</td>
-
-						<c:forEach var="presidio" items="${alterarPresidio}">
-							<tr>
-								<td><input type='hidden' name='id' value='${presidio.id}' />
-									<br /></td>
-							<tr>                      
-								<td align="left">Nome Presidio: <input type='text'
-									name='nome' value='${presidio.nome}' /> <br />
-								</td>
-							<tr>
-								<td align="left">Estado: <input type='text' name='estado'
-									value='${presidio.estado}' /> <br />
-								</td>
-							<tr>
-								<td align="left">Cidade: <input type='text' name='cidade'
-									value='${presidio.cidade}' /><br /> <br>
-								</td>
-							<tr>
-								<td align="left">Tipo: <input type='text' name='tipo'
-									value='${presidio.tipo}' /><br /> <br>
-								</td>
-					
-					</c:forEach>
-			</form>
-			</table>
-			</fieldset>
-			<br>
-
-			<input type='submit' value='Alterar' />
 </body>
 </html>
