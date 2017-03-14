@@ -7,7 +7,7 @@ private String cpfUsuario;
 private String	nomeUsuario; 
 private String senhaUsuario;
 private String enderecoUsuario;
-private TipoUsuario tipousuario_idTipousuario;
+private TipoUsuario tipoUsuario;
 
 public int getId() {
 	return id;
@@ -40,12 +40,13 @@ public String getEnderecoUsuario() {
 public void setEnderecoUsuario(String enderecoUsuario) {
 	this.enderecoUsuario = enderecoUsuario;
 }
-public TipoUsuario getTipousuario_idTipousuario() {
-	return tipousuario_idTipousuario;
+public TipoUsuario getTipoUsuario() {
+	return tipoUsuario;
 }
-public void setTipousuario_idTipousuario(TipoUsuario tipousuario_idTipousuario) {
-	this.tipousuario_idTipousuario = tipousuario_idTipousuario;
+public void setTipoUsuario(TipoUsuario tipoUsuario) {
+	this.tipoUsuario = tipoUsuario;
 }
+
 
 
 

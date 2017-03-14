@@ -33,7 +33,7 @@ public class UsuarioDao {
 					stmt.setString(2, usuario.getCpfUsuario());
 					stmt.setString(3, usuario.getSenhaUsuario());
 					stmt.setString(4, usuario.getEnderecoUsuario());
-					stmt.setInt(5, usuario.getTipousuario_idTipousuario().getIdTipoUsuario());
+					stmt.setInt(5, usuario.getTipoUsuario().getIdTipoUsuario());
 					stmt.setInt(6, usuario.getId());
 					
 					
@@ -85,7 +85,7 @@ public class UsuarioDao {
 				
 				TipoUsuarioDao dao = new TipoUsuarioDao();
 				TipoUsuario tipousuario = dao.buscarPorId(rs.getInt("tipousuario_idTipousuario"));
-				usuario.setTipousuario_idTipousuario(tipousuario);
+				usuario.setTipoUsuario(tipousuario);
 				
 
 				listaUsuario.add(usuario);
@@ -105,14 +105,15 @@ public class UsuarioDao {
 	public void alterar(Usuario usuario) {
 
 		try {
-			String sql = "UPDATE usuario SET nomeUsuario = ?, cpfUsuario = ?, enderecoUsuario = ? WHERE idUsuario = ?";
+			String sql = "UPDATE usuario SET nomeUsuario = ?, cpfUsuario = ?, tipousuario_idTipousuario=?, enderecoUsuario = ? WHERE idUsuario = ?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			stmt.setString(1, usuario.getNomeUsuario());
 			stmt.setString(2, usuario.getCpfUsuario());
 			//stmt.setString(3, usuario.getSenhaUsuario());
-			stmt.setString(3, usuario.getEnderecoUsuario());			
-			stmt.setInt(4, usuario.getId());
+			stmt.setString(4, usuario.getEnderecoUsuario());
+			stmt.setInt(3, usuario.getTipoUsuario().getIdTipoUsuario());
+			stmt.setInt(5, usuario.getId());
 			
 
 			stmt.execute();
