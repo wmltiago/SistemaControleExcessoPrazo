@@ -34,7 +34,7 @@ public class DetentoController {
 
 		DetentoDao dao = new DetentoDao();
 		dao.salvar(detento);
-		model.addAttribute("msg", " foi cadastrado com sucesso !");
+		model.addAttribute("msg", "O detento"+ detento.getNomeDetento()+ "foi cadastrado com sucesso !");
 
 		return "forward:exibirCadastrarDetento";
 	}
@@ -82,11 +82,11 @@ public class DetentoController {
 	}
 	
 		 @RequestMapping("/removerDetento")
-		    public String removerDetento(int id, Model model) {
+		    public String removerDetento(int id, Detento detento Model model) {
 
 			DetentoDao dao = new DetentoDao();
 			dao.remover(id);
-			model.addAttribute("msg", "Detento Removido com Sucesso !");
+			model.addAttribute("msg", "Detento " + detento.getNomeDetento() + " foi Removido com Sucesso !");
 
 			return "forward:listarDetento";
 		    }
