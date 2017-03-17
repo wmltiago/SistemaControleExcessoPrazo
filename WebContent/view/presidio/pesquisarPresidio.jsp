@@ -16,10 +16,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Listando Presídios</title>
+<title>Listando PresÃ­dios</title>
 </head>
 <body>
 
+	<div style="text-align: center; color: red;"> ${msg} </div><br>
 
 		<table border='1' style='width: 100%;'>
 	
@@ -27,13 +28,13 @@
 		
 			<td>ID</td>
 			
-			<td>NOME DO PRESÍDIO</td> 
+			<td>NOME DO PRESÃDIO</td> 
 			
 			<td>ESTADO</td> 
 			
 			<td>CIDADE</td> 
 			
-			<td>TIPO DO PRESÍDIO</td> 
+			<td>TIPO DO PRESÃDIO</td> 
 			
 			
 			
@@ -56,7 +57,7 @@
 	</table>
 	<br><br>
 	
-	<!-- <a href="incluirPresidio.jsp">Voltar a incluir Presídio</a> -->
+	<!-- <a href="incluirPresidio.jsp">Voltar a incluir PresÃ­dio</a> -->
 
 </body>
 </html>
