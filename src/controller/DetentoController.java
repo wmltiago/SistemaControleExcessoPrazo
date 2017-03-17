@@ -86,7 +86,7 @@ public class DetentoController {
 
 			DetentoDao dao = new DetentoDao();
 			dao.remover(id);
-			model.addAttribute("msg", "Detento " + detento.getNomeDetento() + " foi Removido com Sucesso !");
+			model.addAttribute("msg", "Detento foi Removido com Sucesso !");
 
 			return "forward:listarDetento";
 		    }
