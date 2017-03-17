@@ -5,10 +5,8 @@ import org.springframework.core.convert.converter.Converter;
 import model.usuario.TipoUsuario;
 import model.usuario.TipoUsuarioDao;
 
+public class TipoUsuarioConverter implements Converter<String, TipoUsuario> {
 
-
-public class TipoUsuarioConverter implements Converter<String, TipoUsuario>{
-	
 	public TipoUsuario convert(String id) {
 
 		TipoUsuarioDao dao = new TipoUsuarioDao();

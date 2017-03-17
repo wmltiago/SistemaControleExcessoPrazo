@@ -95,7 +95,7 @@ public class PresidioDao {
 	public void alterar(Presidio presidio) {
 
 		try {
-			String sql = "UPDATE Presidio SET nomePresidio=?, estadoPresidio=?, cidadePresidio=?, tipoPresidio=? WHERE idPresidio = ?, ";
+			String sql = "UPDATE Presidio SET nomePresidio=?, estadoPresidio=?, cidadePresidio=?, tipoPresidio=? WHERE idPresidio = ? ";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
 			

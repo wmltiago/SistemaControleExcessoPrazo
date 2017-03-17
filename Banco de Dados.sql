@@ -8,22 +8,27 @@ CREATE TABLE detento (
 	PRIMARY KEY (idDetento)
 );
 
-CREATE TABLE dadosdetento (
-	idDadosdetento INT NOT NULL auto_increment,
-	detento_idDetento INT NOT NULL,
+CREATE TABLE detento (
+	idDetento INT auto_increment NOT NULL,
 	presidio_idPresidio INT NOT NULL,
+	nomeDetento varchar(120) NOT NULL,
+	cpfDetento varchar(120) NOT NULL UNIQUE,
+	nomeMae varchar(120) NOT NULL,
+	enderecoDetento varchar(120) NOT NULL,
 	dataJulgamento DATE NOT NULL,
 	liberdadeProvisoria INT(1) NOT NULL,
 	numeroProcesso varchar(50) NOT NULL,
-	PRIMARY KEY (idDadosdetento)
+	PRIMARY KEY (idDetento)
 );
 
+
+
 CREATE TABLE presidio (
-	idPresidio INT NOT NULL auto_increment,
+	idPresidio INT auto_increment NOT NULL,
 	nomePresidio varchar(120) NOT NULL,
 	estadoPresidio varchar(50) NOT NULL,
 	cidadePresidio varchar(50) NOT NULL,
-	tipoPresidio varchar(50) not null,
+	tipoPresidio varchar(50) NOT NULL,
 	PRIMARY KEY (idPresidio)
 );
 
@@ -54,9 +59,8 @@ CREATE TABLE tipousuario (
 	PRIMARY KEY (idTipousuario)
 );
 
-ALTER TABLE dadosdetento ADD CONSTRAINT dadosdetento_fk0 FOREIGN KEY (detento_idDetento) REFERENCES detento(idDetento);
 
-ALTER TABLE dadosdetento ADD CONSTRAINT dadosdetento_fk1 FOREIGN KEY (presidio_idPresidio) REFERENCES presidio(idPresidio);
+ALTER TABLE detento ADD CONSTRAINT detento_fk0 FOREIGN KEY (presidio_idPresidio) REFERENCES presidio(idPresidio);
 
 ALTER TABLE Pena ADD CONSTRAINT Pena_fk0 FOREIGN KEY (detento_idDetento) REFERENCES detento(idDetento);
 

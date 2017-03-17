@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -21,6 +22,10 @@
 <div style="text-align: center; color: red; font-size: 30px;"> ${msg} </div>
 <c:import url="/view/comum/menu.jsp" />
 <form class="form-horizontal" action="CadastrarUsuario2" method="post">
+
+
+
+
 <fieldset>
 <br>
 <!-- Form Name -->
@@ -31,7 +36,7 @@
   <label class="col-md-4 control-label" for="">Nome</label>  
   <div class="col-md-4">
   <input id="" name="nomeUsuario" placeholder="" class="form-control input-md" type="text">
-    
+    <div>  <form:errors path="usuario.nomeUsuario" cssStyle="color:red" /></div>
   </div>
 </div>
 
@@ -71,7 +76,7 @@
   <label class="col-md-4 control-label" for="textinput">CPF</label>  
   <div class="col-md-4">
   <input id="textinput" name="cpfUsuario" placeholder="000.000.000-00" class="form-control input-md" type="text">
-    
+    <div><form:errors path="usuario.cpfUsuario" cssStyle="color:red" /></div>
   </div>
 </div>
 
