@@ -31,6 +31,10 @@ public class DetentoController {
 	}
 	@RequestMapping("/CadastrarDetento")
 	public String incluirDetento(Detento detento,  Model model) {
+		
+		if (result.hasErrors()) {
+			return "forward:exibirCadastrarPresidio";
+		}
 
 		DetentoDao dao = new DetentoDao();
 		dao.salvar(detento);
