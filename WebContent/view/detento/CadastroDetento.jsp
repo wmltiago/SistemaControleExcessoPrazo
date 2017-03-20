@@ -2,17 +2,27 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 
 <%@ page import="java.util.List"%>
 <%@ page import="model.presidio.PresidioDao"%>
 <%@ page import="model.presidio.Presidio"%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" src="view/js/maskedinput.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>CADASTRO DE DETENTO</title>
+<script type="text/javascript">
+
+    jQuery(function($){
+       $("#dataJulgamento").mask("99/99/9999");
+    });
+
+</script>
 </head>
 <body>
 
@@ -35,6 +45,8 @@
    </td>
    <td align="left">
     <input type="text" name="nomeDetento" id="nomeDetento">
+    <br>
+    <form:errors path="detento.nomeDetento" cssStyle="color:red" />
    </td>
    
   </tr>
@@ -46,6 +58,8 @@
    </td>
    <td align="left">
     <input type="text" name="cpfDetento" id="cpfDetento">
+    <br>
+    <form:errors path="detento.cpfDetento" cssStyle="color:red" />
    </td>
   </tr>
   <tr>
@@ -76,7 +90,8 @@
     <label for="dataJulgamento">Data de Julgamento:</label>
    </td>
    <td align="left">
-    <input type="text" name="dataJulgamento" id="dataJulgamento">
+    <input type="text" name="dataJulgamento" id="dataJulgamento"><br>
+
    </td>
   </tr>
   <tr>
