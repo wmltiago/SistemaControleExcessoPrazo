@@ -4,7 +4,7 @@ import java.util.Date;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 
 import model.presidio.Presidio;
@@ -27,8 +27,10 @@ public class Detento {
 	private String nomeMae;
 	private String enderecoDetento;
 	
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+
+
 	private Date dataJulgamento;
+	
 	private int liberdadeProvisoria;
 	private String numeroProcesso;
 	private String fotoDetento;
