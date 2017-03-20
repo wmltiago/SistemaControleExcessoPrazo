@@ -2,6 +2,8 @@ package controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,8 +13,6 @@ import model.detento.Detento;
 import model.detento.DetentoDao;
 import model.presidio.Presidio;
 import model.presidio.PresidioDao;
-import model.usuario.Usuario;
-import model.usuario.UsuarioDao;
 
 
 
@@ -30,17 +30,19 @@ public class DetentoController {
 		return "detento/CadastroDetento";
 	}
 	@RequestMapping("/CadastrarDetento")
-	public String incluirDetento(Detento detento,  Model model) {
+	public String incluirDetento(@Valid Detento detento, BindingResult result , Model model) {
 		
 		if (result.hasErrors()) {
-			return "forward:exibirCadastrarPresidio";
-		}
+			return "forward:exibirCadastrarDetento";
+			
+		}else{
 
 		DetentoDao dao = new DetentoDao();
 		dao.salvar(detento);
 		model.addAttribute("msg", "O detento"+ detento.getNomeDetento()+ "foi cadastrado com sucesso !");
 
 		return "forward:exibirCadastrarDetento";
+		}
 	}
 
 	
@@ -86,7 +88,7 @@ public class DetentoController {
 	}
 	
 		 @RequestMapping("/removerDetento")
-		    public String removerDetento(int id, Detento detento Model model) {
+		    public String removerDetento(int id, Detento detento,Model model) {
 
 			DetentoDao dao = new DetentoDao();
 			dao.remover(id);
