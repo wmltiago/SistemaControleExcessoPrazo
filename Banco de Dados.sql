@@ -1,14 +1,4 @@
 CREATE TABLE detento (
-	idDetento INT NOT NULL auto_increment,
-	nomeDetento varchar(120) NOT NULL,
-	cpfDetento varchar(120) NOT NULL UNIQUE,
-	nomeMae varchar(120) NOT NULL,
-	enderecoDetento varchar(120) NOT NULL,
-	fotoDetento varchar(120) NOT NULL,
-	PRIMARY KEY (idDetento)
-);
-
-CREATE TABLE detento (
 	idDetento INT auto_increment NOT NULL,
 	presidio_idPresidio INT NOT NULL,
 	nomeDetento varchar(120) NOT NULL,
@@ -32,17 +22,6 @@ CREATE TABLE presidio (
 	PRIMARY KEY (idPresidio)
 );
 
-CREATE TABLE Pena (
-	idPEna INT NOT NULL auto_increment,
-	detento_idDetento INT NOT NULL,
-	tipoPena varchar(100) NOT NULL,
-	descricaoPena varchar(100) NOT NULL,
-	tempoPena varchar(50) NOT NULL,
-	regime varchar(50) NOT NULL,
-	prestacaoServico INT NOT NULL,
-	PRIMARY KEY (idPEna)
-);
-
 CREATE TABLE usuario (
 	idUsuario INT NOT NULL auto_increment,
 	tipousuario_idTipousuario INT NOT NULL,
@@ -54,15 +33,12 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE tipousuario (
-	idTipousuario INT NOT NULL auto_increment,
+	idTipousuario INT NOT NULL ,
 	descricaoUsuario varchar(50) NOT NULL,
 	PRIMARY KEY (idTipousuario)
 );
 
 
 ALTER TABLE detento ADD CONSTRAINT detento_fk0 FOREIGN KEY (presidio_idPresidio) REFERENCES presidio(idPresidio);
-
-ALTER TABLE Pena ADD CONSTRAINT Pena_fk0 FOREIGN KEY (detento_idDetento) REFERENCES detento(idDetento);
-
 ALTER TABLE usuario ADD CONSTRAINT usuario_fk0 FOREIGN KEY (tipousuario_idTipousuario) REFERENCES tipousuario(idTipousuario);
 
