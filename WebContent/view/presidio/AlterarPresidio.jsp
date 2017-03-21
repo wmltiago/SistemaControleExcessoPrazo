@@ -26,29 +26,77 @@
 	
 	<form action="alterarPresidio" method="post">
 
-		<input type="hidden" name="idPresidio" value="${presidio.idPresidio}" />
-	
-		<p>
-			nomePresidio: <br />
+		<form:errors path="presidio.estadoPresidio" cssStyle="color:red" />
+        <form:errors path="presidio.tipoPresidio" cssStyle="color:red" />
+		
+			NomePresidio: <br />
 			<input type="text" name="nomePresidio" value="${presidio.nomePresidio}" />
+			<input type="hidden" name="idPresidio" value="${presidio.idPresidio}" />
 		</p>
 	
 	    <p>
-			estadoPresidio: <br />
-			<input type="text" name="estadoPresidio" value="${presidio.estadoPresidio}" />
+			
+   <tr>
+   <td>
+    <label for="estado">Estado:</label>
+   </td>
+   <td align="left">
+    <select name="estadoPresidio" id="estado"> 
+    <option value=""></option>
+    <option value="AC">Acre</option> 
+    <option value="AL">Alagoas</option> 
+    <option value="AM">Amazonas</option> 
+    <option value="AP">Amapá</option> 
+    <option value="BA">Bahia</option> 
+    <option value="CE">Ceará</option> 
+    <option value="DF">Distrito Federal</option> 
+    <option value="ES">Espírito Santo</option> 
+    <option value="GO">Goiás</option> 
+    <option value="MA">Maranhão</option> 
+    <option value="MT">Mato Grosso</option> 
+    <option value="MS">Mato Grosso do Sul</option> 
+    <option value="MG">Minas Gerais</option> 
+    <option value="PA">Pará</option> 
+    <option value="PB">Paraíba</option> 
+    <option value="PR">Paraná</option> 
+    <option value="PE">Pernambuco</option> 
+    <option value="PI">Piauí</option> 
+    <option value="RJ">Rio de Janeiro</option> 
+    <option value="RN">Rio Grande do Norte</option> 
+    <option value="RO">Rondônia</option> 
+    <option value="RS">Rio Grande do Sul</option> 
+    <option value="RR">Roraima</option> 
+    <option value="SC">Santa Catarina</option> 
+    <option value="SE">Sergipe</option> 
+    <option value="SP">São Paulo</option> 
+    <option value="TO">Tocantins</option> 
+   </select>
+   </td>
+  </tr>
+		
 		</p>
 	    
+	    
 	    <p>
-			cidadePresidio: <br />
-			<input type="text" name="cidadePresidio" value="${presidio.cidadePresidio}" />
+			CidadePresidio:<br />
+			<input type="text" name="CidadePresidio" value="${presidio.cidadePresidio}" />
+		    
+		
+		
 		</p>
 	
 	    <p>
-			tipoPresidio: <br />
-			<input type="text" name="tipoPresidio" value="${presidio.tipoPresidio}" />
+			<label for="tipo">TipoPresidio:</label>
+		   	<td align="left">
+		    <select name="tipoPresidio" id="tipoPresidio"> 
+            <option value=""></option>
+            <option value="Estadual">Estadual</option> 
+            <option value="Federal">Federal</option> 
+     
+   </select>
+	
 		</p>
 
-     
         <p> <input type="submit" value="Alterar"> </p>
 	   
 	   </form>

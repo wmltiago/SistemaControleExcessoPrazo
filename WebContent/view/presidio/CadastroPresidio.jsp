@@ -4,7 +4,6 @@
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<%@page import ="model.presidio.Presidio" %>
     
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,7 +14,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script type="text/javascript" src ="mycode.js"></script>
-
+<c:import url="/view/comum/menu.jsp" />
 
 </head>
 <body>
@@ -26,9 +25,11 @@
 
 <form action="cadastrarPresidio" method="post">
 
+
+
 <!-- TAGLIB form:errors logo abaixo -->
-<form:errors path="Presidio.nomePresidio" cssStyle="color:red" />
-<form:errors path="Presidio.cidade" cssStyle="color:red" />
+<form:errors path="presidio.nomePresidio" cssStyle="color:red" />
+<form:errors path="presidio.cidadePresidio" cssStyle="color:red" />
 
 <br />
 <!-- ENDEREÇO -->
@@ -53,33 +54,33 @@
    <td align="left">
     <select name="estadoPresidio" id="estado"> 
     <option value=""></option>
-    <option value="ac">Acre</option> 
-    <option value="al">Alagoas</option> 
-    <option value="am">Amazonas</option> 
-    <option value="ap">Amapá</option> 
-    <option value="ba">Bahia</option> 
-    <option value="ce">Ceará</option> 
-    <option value="df">Distrito Federal</option> 
-    <option value="es">Espírito Santo</option> 
-    <option value="go">Goiás</option> 
-    <option value="ma">Maranhão</option> 
-    <option value="mt">Mato Grosso</option> 
-    <option value="ms">Mato Grosso do Sul</option> 
-    <option value="mg">Minas Gerais</option> 
-    <option value="pa">Pará</option> 
-    <option value="pb">Paraíba</option> 
-    <option value="pr">Paraná</option> 
-    <option value="pe">Pernambuco</option> 
-    <option value="pi">Piauí</option> 
-    <option value="rj">Rio de Janeiro</option> 
-    <option value="rn">Rio Grande do Norte</option> 
-    <option value="ro">Rondônia</option> 
-    <option value="rs">Rio Grande do Sul</option> 
-    <option value="rr">Roraima</option> 
-    <option value="sc">Santa Catarina</option> 
-    <option value="se">Sergipe</option> 
-    <option value="sp">São Paulo</option> 
-    <option value="to">Tocantins</option> 
+    <option value="AC">Acre</option> 
+    <option value="AL">Alagoas</option> 
+    <option value="AM">Amazonas</option> 
+    <option value="AP">Amapá</option> 
+    <option value="BA">Bahia</option> 
+    <option value="CE">Ceará</option> 
+    <option value="DF">Distrito Federal</option> 
+    <option value="ES">Espírito Santo</option> 
+    <option value="GO">Goiás</option> 
+    <option value="MA">Maranhão</option> 
+    <option value="MT">Mato Grosso</option> 
+    <option value="MS">Mato Grosso do Sul</option> 
+    <option value="MG">Minas Gerais</option> 
+    <option value="PA">Pará</option> 
+    <option value="PB">Paraíba</option> 
+    <option value="PR">Paraná</option> 
+    <option value="PE">Pernambuco</option> 
+    <option value="PI">Piauí</option> 
+    <option value="RJ">Rio de Janeiro</option> 
+    <option value="RN">Rio Grande do Norte</option> 
+    <option value="RO">Rondônia</option> 
+    <option value="RS">Rio Grande do Sul</option> 
+    <option value="RR">Roraima</option> 
+    <option value="SC">Santa Catarina</option> 
+    <option value="SE">Sergipe</option> 
+    <option value="SP">São Paulo</option> 
+    <option value="TO">Tocantins</option> 
    </select>
    </td>
   </tr>

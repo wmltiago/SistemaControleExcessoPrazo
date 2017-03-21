@@ -28,14 +28,15 @@
 		
 			<td>ID</td>
 			
-			<td>NOME DO PRES√çDIO</td> 
+			<td>NOME DO PRESÕDIO</td> 
 			
 			<td>ESTADO</td> 
 			
 			<td>CIDADE</td> 
 			
-			<td>TIPO DO PRES√çDIO</td> 
+			<td>TIPO DO PRESÕDIO</td> 
 			
+			<td>A«’ES</td>
 			
 			
 			  
@@ -47,6 +48,7 @@
 					<td>${presidio.estadoPresidio}</td>
 					<td>${presidio.cidadePresidio}</td>
 					<td>${presidio.tipoPresidio}</td>
+					
 				     <td><a href='exibirAlterarPresidio?id=${presidio.idPresidio}'>Editar</a> &nbsp;
 	    		    <a href='removerPresidio?id=${presidio.idPresidio}'>Remover</a>
 				    </td>
