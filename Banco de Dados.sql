@@ -6,7 +6,7 @@ CREATE TABLE detento (
 	nomeMae varchar(120) NOT NULL,
 	enderecoDetento varchar(120) NOT NULL,
 	dataJulgamento DATE NOT NULL,
-	liberdadeProvisoria INT(1) NOT NULL,
+	liberdadeProvisoria varchar(10) NOT NULL,
 	numeroProcesso varchar(50) NOT NULL,
 	PRIMARY KEY (idDetento)
 );
@@ -33,7 +33,7 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE tipousuario (
-	idTipousuario INT NOT NULL ,
+	idTipousuario INT NOT NULL auto_increment,
 	descricaoUsuario varchar(50) NOT NULL,
 	PRIMARY KEY (idTipousuario)
 );
@@ -41,4 +41,3 @@ CREATE TABLE tipousuario (
 
 ALTER TABLE detento ADD CONSTRAINT detento_fk0 FOREIGN KEY (presidio_idPresidio) REFERENCES presidio(idPresidio);
 ALTER TABLE usuario ADD CONSTRAINT usuario_fk0 FOREIGN KEY (tipousuario_idTipousuario) REFERENCES tipousuario(idTipousuario);
-
