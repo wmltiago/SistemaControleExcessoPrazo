@@ -34,6 +34,10 @@ public class PresidioController {
 	@RequestMapping("/cadastrarPresidio")
 	public String incluirPresidio(@Valid Presidio presidio, BindingResult result,Model model) {
 
+		if (result.hasErrors()) {
+			return "forward:exibirCadastrarPresidio";
+			}
+		
 		model.addAttribute("msg", "Cadastrado Com Sucesso!" );
 		PresidioDao dao = new PresidioDao();
 		dao.salvar(presidio);
@@ -73,13 +77,17 @@ public class PresidioController {
 	}
 
 	@RequestMapping("/alterarPresidio")
-	public String alterarDetento(Presidio Presidio, Model model) {
+	public String alterarDetento(@Valid Presidio Presidio, BindingResult result, Model model) {
 
+		if (result.hasErrors()) {
+			return "forward:exibirCadastrarPresidio";
+			}
+		
 		PresidioDao dao = new PresidioDao();
 		dao.alterar(Presidio);
 		model.addAttribute("msg", "O presidio " + Presidio.getNomePresidio() + " foi alterado com sucesso !");
 
-		return "forward:pesquisarPresidio";
+		return "forward:listarPresidio";
 
 	}
 
@@ -90,7 +98,7 @@ public class PresidioController {
 	dao.remover(id);
 	model.addAttribute("msg", "Presidio Removido com Sucesso !");
 
-	return "forward:pesquisarPresidio";
+	return "forward:listarPresidio";
    
 	}
 }
