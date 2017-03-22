@@ -43,8 +43,12 @@
 			<input type="text" name="dataJulgamento" value="<fmt:formatDate value='${detento.dataJulgamento}' pattern='dd/MM/yyyy' />" />
 		</p>
 		<p>
-			liberdadeProvisoria: <br />
-			<input type="text" name="liberdadeProvisoria" value="${detento.liberdadeProvisoria}" />
+		Liberdade Provisória <br />
+		<select name="liberdadeProvisoria" >
+				<option value="${detento.liberdadeProvisoria}">${detento.liberdadeProvisoria}</option>
+				<option value="Sim">Sim</option>
+				<option value="Não">Não</option>
+			</select>	
 		</p>
 		<p>
 			numeroProcesso: <br />
