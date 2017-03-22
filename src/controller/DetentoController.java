@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -97,5 +98,20 @@ public class DetentoController {
 			return "forward:listarDetento";
 		    }
 	
+		 @RequestMapping("/situacaoDetento")
+		 public String situacaoDetento(Model model){
+				
+				DetentoDao dao = new DetentoDao();
+				
+				List<Detento> listaDetento = dao.listar();
+				
+				
+				model.addAttribute("listaDetento", listaDetento);
+
+				return "funcionalidade/visualizarStatusDetento";
+			}
+	
+		 
+		 
 	
 }

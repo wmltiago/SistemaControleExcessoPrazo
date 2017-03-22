@@ -25,7 +25,7 @@
 	
 		<tr style='background-color: #E6E6E6; font-weight: bold;'>
 		
-			<td>ID</td>
+			
 			
 			<td>NOME DO DETENTO</td> 
 			
@@ -33,11 +33,11 @@
 			
 			<td>NOME DA MÃE</td> 
 			
-			<td>ENDEREÇO</td>
+			
 			
 			<td>Data de Julgamento</td>
 			
-			<td>Liberdade Provisória</td>
+			
 			
 			<td>Numero do Processo</td>
 			
@@ -51,13 +51,13 @@
 			
 			<c:forEach var="detento" items="${listaDetento}">
 				<tr>
-					<td>${detento.idDetento}</td>
+					
 					<td>${detento.nomeDetento}</td> 
 					<td>${detento.cpfDetento}</td>
 					<td>${detento.nomeMae}</td>
-					<td>${detento.enderecoDetento}</td>
+					
 					<td><fmt:formatDate value='${detento.dataJulgamento}' pattern='dd/MM/yyyy' /></td>
-					<td>${detento.liberdadeProvisoria}</td>
+					
 					<td>${detento.numeroProcesso}</td>
 					<td>${detento.presidio.nomePresidio}</td>
 					<td><a href='exibirAlterarDetento?id=${detento.idDetento}'>Editar</a> &nbsp;

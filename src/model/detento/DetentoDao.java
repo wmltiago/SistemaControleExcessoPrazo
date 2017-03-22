@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import model.presidio.Presidio;
 import model.presidio.PresidioDao;
-import model.usuario.Usuario;
 import util.ConnectionFactory;
 
 public class DetentoDao {
@@ -75,7 +75,16 @@ public class DetentoDao {
 					Presidio descricao  = dao.buscarPorId(rs.getInt("presidio_idPresidio"));
 					detento.setPresidio(descricao);
 					
-					
+					Date date = new Date();
+					if(detento.getDataJulgamento().compareTo(date) > 0){
+						detento.setStatus("success");	
+						}else if(detento.getDataJulgamento().compareTo(date) == 0){
+							detento.setStatus("warning");	
+						}else if(detento.getDataJulgamento().compareTo(date) < 0){
+							detento.setStatus("danger");	
+						}else{
+							detento.setStatus("#0000FF");
+						}
 
 					listaDetento.add(detento);
 				}
