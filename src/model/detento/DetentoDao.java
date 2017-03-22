@@ -35,7 +35,7 @@ public class DetentoDao {
 			stmt.setString(4,detento.getNomeMae());
 			stmt.setString(5,detento.getEnderecoDetento());
 			stmt.setDate(6, new java.sql.Date(detento.getDataJulgamento().getTime()));
-			stmt.setInt(7,detento.getLiberdadeProvisoria());
+			stmt.setString(7,detento.getLiberdadeProvisoria());
 			stmt.setString(8,detento.getNumeroProcesso());
 			stmt.execute();
 			connection.close();
@@ -68,7 +68,7 @@ public class DetentoDao {
 					detento.setNomeMae(rs.getString("nomeMae"));
 					detento.setEnderecoDetento(rs.getString("enderecoDetento"));
 					detento.setDataJulgamento(rs.getDate("dataJulgamento"));
-					detento.setLiberdadeProvisoria(rs.getInt("liberdadeProvisoria"));
+					detento.setLiberdadeProvisoria(rs.getString("liberdadeProvisoria"));
 					detento.setNumeroProcesso(rs.getString("numeroProcesso"));
 
 					PresidioDao dao = new PresidioDao();
@@ -124,7 +124,7 @@ public class DetentoDao {
 					detento.setNomeMae(rs.getString("nomeMae"));
 					detento.setEnderecoDetento(rs.getString("enderecoDetento"));
 					detento.setDataJulgamento(rs.getDate("dataJulgamento"));
-					detento.setLiberdadeProvisoria(rs.getInt("liberdadeProvisoria"));
+					detento.setLiberdadeProvisoria(rs.getString("liberdadeProvisoria"));
 					detento.setNumeroProcesso(rs.getString("numeroProcesso"));
 
 					PresidioDao dao = new PresidioDao();
@@ -156,7 +156,7 @@ public class DetentoDao {
 				stmt.setString(4,detento.getNomeMae());
 				stmt.setString(5,detento.getEnderecoDetento());
 				stmt.setDate(6, new java.sql.Date(detento.getDataJulgamento().getTime()));
-				stmt.setInt(7, detento.getLiberdadeProvisoria());
+				stmt.setString(7, detento.getLiberdadeProvisoria());
 				stmt.setString(8,detento.getNumeroProcesso());
 				stmt.setInt(9,detento.getIdDetento());
 

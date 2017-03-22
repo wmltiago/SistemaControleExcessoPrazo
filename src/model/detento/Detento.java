@@ -31,12 +31,9 @@ public class Detento {
 
 	private Date dataJulgamento;
 	
-	private int liberdadeProvisoria;
+	private String liberdadeProvisoria;
 	private String numeroProcesso;
 	private String fotoDetento;
-	
-	
-	
 	public int getIdDetento() {
 		return idDetento;
 	}
@@ -79,10 +76,10 @@ public class Detento {
 	public void setDataJulgamento(Date dataJulgamento) {
 		this.dataJulgamento = dataJulgamento;
 	}
-	public int getLiberdadeProvisoria() {
+	public String getLiberdadeProvisoria() {
 		return liberdadeProvisoria;
 	}
-	public void setLiberdadeProvisoria(int liberdadeProvisoria) {
+	public void setLiberdadeProvisoria(String liberdadeProvisoria) {
 		this.liberdadeProvisoria = liberdadeProvisoria;
 	}
 	public String getNumeroProcesso() {
@@ -97,6 +94,7 @@ public class Detento {
 	public void setFotoDetento(String fotoDetento) {
 		this.fotoDetento = fotoDetento;
 	}
+	
 	
 	
 	
