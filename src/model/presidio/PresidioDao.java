@@ -30,7 +30,7 @@ public class PresidioDao {
 			stmt.setString(2, presidio.getEstadoPresidio());
 			stmt.setString(3, presidio.getCidadePresidio());
 			stmt.setString(4, presidio.getTipoPresidio());
-			
+
 
 			stmt.execute();
 			connection.close();
@@ -98,46 +98,46 @@ public class PresidioDao {
 			String sql = "UPDATE Presidio SET nomePresidio=?, estadoPresidio=?, cidadePresidio=?, tipoPresidio=? WHERE idPresidio = ? ";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
-			
+
 			stmt.setString(1, presidio.getNomePresidio());
 			stmt.setString(2, presidio.getEstadoPresidio());
 			stmt.setString(3, presidio.getCidadePresidio());
 			stmt.setString(4, presidio.getTipoPresidio());
 			stmt.setInt(5, presidio.getIdPresidio());
-			
-			
+
+
 			stmt.execute();
 			connection.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public Presidio buscarPorId(int id) {
 
 		try {
-			
+
 
 			String sql = "SELECT * FROM presidio where idPresidio = ?";
 			PreparedStatement stmt = this.connection.prepareStatement(sql);
-  
+
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 
-	
 
-				Presidio presidio = new Presidio();
-				if (rs.next()) {
+
+			Presidio presidio = new Presidio();
+			if (rs.next()) {
 				presidio.setIdPresidio(rs.getInt("idPresidio"));
 				presidio.setNomePresidio(rs.getString("nomePresidio"));
 				presidio.setEstadoPresidio(rs.getString("estadoPresidio"));
 				presidio.setCidadePresidio(rs.getString("cidadePresidio"));
 				presidio.setTipoPresidio(rs.getString("tipoPresidio"));
 
-				}
+			}
 
-				
-			
+
+
 
 			rs.close();
 			stmt.close();
@@ -154,18 +154,20 @@ public class PresidioDao {
 		try {
 			List<Presidio> listaProduto = new ArrayList<Presidio>();
 			PreparedStatement stmt = null;
-			
-			if (!presidio.getNomePresidio().equals("") && presidio.getEstadoPresidio() == null) {
+
+			if (!presidio.getNomePresidio().equals("") && (presidio.getEstadoPresidio() == null || presidio.getEstadoPresidio().isEmpty())) {
 				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE nomePresidio LIKE ? ORDER BY nomePresidio");
-						stmt.setString(1, "%" + presidio.getNomePresidio() + "%");
-						
+				stmt.setString(1, "%" + presidio.getNomePresidio() + "%");
+
 			} else if (presidio.getNomePresidio().equals("") && presidio.getEstadoPresidio() != null) {
 				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE estadoPresidio = ? ORDER BY nomePresidio");
-						stmt.setString(1, presidio.getEstadoPresidio());
+				stmt.setString(1, presidio.getEstadoPresidio());
+				
 			} else if (!presidio.getNomePresidio().equals("") && presidio.getEstadoPresidio() != null) {
-								stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE nomePresidio LIKE ? AND estadoPresidio = ? ORDER BY nomePresidio");
-								stmt.setString(1, "%" + presidio.getNomePresidio() + "%");
-								stmt.setString(2, presidio.getEstadoPresidio());
+				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE nomePresidio LIKE ? AND estadoPresidio = ? ORDER BY nomePresidio");
+				stmt.setString(1, "%" + presidio.getNomePresidio() + "%");
+				stmt.setString(2, presidio.getEstadoPresidio());
+				
 			} else {
 				stmt = this.connection.prepareStatement("SELECT * FROM presidio ORDER BY nomePresidio");
 			}
@@ -181,7 +183,7 @@ public class PresidioDao {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	private Presidio montarObjeto(ResultSet rs) throws SQLException {
 
 		Presidio presidio = new Presidio();
@@ -190,7 +192,7 @@ public class PresidioDao {
 		presidio.setCidadePresidio(rs.getString("cidadePresidio"));
 		presidio.setIdPresidio(rs.getInt("idPresidio"));
 		presidio.setTipoPresidio(rs.getString("tipoPresidio"));
-		
+
 
 		return presidio;
 	}

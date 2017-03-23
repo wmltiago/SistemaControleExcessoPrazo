@@ -23,7 +23,7 @@
 	<hr>
 	<h3>Pesquisar Presidio</h3>
 	<div>
-		<form action="pesquisarPresidio">
+		<form action="pesquisarPresidio" method="post">
 			<p>
 				Nome: <br /> <input type="text" id="nomePresidio"
 					name="nomePresidio" value="${presidio.nomePresidio}">
