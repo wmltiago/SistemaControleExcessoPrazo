@@ -16,6 +16,18 @@ import model.usuario.UsuarioDao;
 
 @Controller
 public class UsuarioController {
+	
+	@RequestMapping("/exibirCadastrarUsuario2")
+	public String exibirCadastrarUsuario2(Model model) {
+
+		// Codigo para popular o combo de categoria de produto
+		TipoUsuarioDao dao = new TipoUsuarioDao();
+		List<TipoUsuario> listaTipoUsuario = dao.listar();
+		model.addAttribute("listaTipoUsuario", listaTipoUsuario);
+
+		return "usuario/UsuarioBootstrap";
+
+	}
 
 	@RequestMapping("/exibirCadastrarUsuario")
 	public String exibirCadastrarUsuario(Model model) {

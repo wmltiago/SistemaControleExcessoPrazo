@@ -19,10 +19,57 @@
 <title>Listando PresÃ­dios</title>
 </head>
 <body>
+<c:import url="/view/comum/menu.jsp" />
+	<hr>
+	<h3>Pesquisar Presidio</h3>
+	<div>
+		<form action="pesquisarPresidio">
+			<p>
+				Nome: <br /> <input type="text" id="nomePresidio"
+					name="nomePresidio" value="${presidio.nomePresidio}">
+			</p>
+			<p>
+				Estado: <br />
+				 <select id="estadoPresidio"
+					name="estadoPresidio">
+					<option value=""></option>
+					<option value="AC">Acre</option> 
+				    <option value="AL">Alagoas</option> 
+				    <option value="AM">Amazonas</option> 
+				    <option value="AP">Amapá</option> 
+				    <option value="BA">Bahia</option> 
+				    <option value="CE">Ceará</option> 
+				    <option value="DF">Distrito Federal</option> 
+				    <option value="ES">Espírito Santo</option> 
+				    <option value="GO">Goiás</option> 
+				    <option value="MA">Maranhão</option> 
+				    <option value="MT">Mato Grosso</option> 
+				    <option value="MS">Mato Grosso do Sul</option> 
+				    <option value="MG">Minas Gerais</option> 
+				    <option value="PA">Pará</option> 
+				    <option value="PB">Paraíba</option> 
+				    <option value="PR">Paraná</option> 
+				    <option value="PE">Pernambuco</option> 
+				    <option value="PI">Piauí</option> 
+				    <option value="RJ">Rio de Janeiro</option> 
+				    <option value="RN">Rio Grande do Norte</option> 
+				    <option value="RO">Rondônia</option> 
+				    <option value="RS">Rio Grande do Sul</option> 
+				    <option value="RR">Roraima</option> 
+				    <option value="SC">Santa Catarina</option> 
+				    <option value="SE">Sergipe</option> 
+				    <option value="SP">São Paulo</option> 
+				    <option value="TO">Tocantins</option>
+				</select>
+			</p>
+			<p>
+				<input type="reset" value="Limpar"> &nbsp; &nbsp; <input
+					type="submit" value="Pesquisar">
+			</p>
+		</form>
+	</div>
 
-	<div style="text-align: center; color: red;"> ${msg} </div><br>
-
-		<table border='1' style='width: 100%;'>
+	<table border='1' style='width: 100%;'>
 	
 		<tr style='background-color: #E6E6E6; font-weight: bold;'>
 		

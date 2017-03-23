@@ -48,16 +48,31 @@ public class PresidioController {
 	// =========== daivson - listar =======================//
 
 	@RequestMapping("listarPresidio")
-	public String listarPresidio(Model model) {
-
+	public String listarPresidio(Presidio presidio, Model model) {
+		
+		PresidioDao dao2 = new PresidioDao();
 		PresidioDao dao = new PresidioDao();
 
 		List<Presidio> listaPresidio = dao.listar();
+		
 
 		model.addAttribute("listaPresidio", listaPresidio);
 
 		return "presidio/pesquisarPresidio";
 	}
+	 //=========================================================//
+	@RequestMapping("pesquisarPresidio")
+	public String pesquisarPresidio(Presidio presidio, Model model) {
+		
+		PresidioDao dao2 = new PresidioDao();
+		
+		List<Presidio> listaPresidio = dao2.pesquisar(presidio);
+		model.addAttribute("listaPresidio", listaPresidio);
+
+		return "presidio/pesquisarPresidio";
+	}
+	
+	
 	// ===================================================//
 
 	@RequestMapping("exibirAlterarPresidio")

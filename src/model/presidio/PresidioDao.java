@@ -112,6 +112,7 @@ public class PresidioDao {
 			throw new RuntimeException(e);
 		}
 	}
+	
 	public Presidio buscarPorId(int id) {
 
 		try {
@@ -149,6 +150,48 @@ public class PresidioDao {
 		}
 	}
 
+	public List<Presidio> pesquisar(Presidio presidio) {
+		try {
+			List<Presidio> listaProduto = new ArrayList<Presidio>();
+			PreparedStatement stmt = null;
+			
+			if (!presidio.getNomePresidio().equals("") && presidio.getEstadoPresidio() == null) {
+				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE nomePresidio LIKE ? ORDER BY nomePresidio");
+						stmt.setString(1, "%" + presidio.getNomePresidio() + "%");
+						
+			} else if (presidio.getNomePresidio().equals("") && presidio.getEstadoPresidio() != null) {
+				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE estadoPresidio = ? ORDER BY nomePresidio");
+						stmt.setString(1, presidio.getEstadoPresidio());
+			} else if (!presidio.getNomePresidio().equals("") && presidio.getEstadoPresidio() != null) {
+								stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE nomePresidio LIKE ? AND estadoPresidio = ? ORDER BY nomePresidio");
+								stmt.setString(1, "%" + presidio.getNomePresidio() + "%");
+								stmt.setString(2, presidio.getEstadoPresidio());
+			} else {
+				stmt = this.connection.prepareStatement("SELECT * FROM presidio ORDER BY nomePresidio");
+			}
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				listaProduto.add(montarObjeto(rs));
+			}
+			rs.close();
+			stmt.close();
+			connection.close();
+			return listaProduto;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 	
-	
+	private Presidio montarObjeto(ResultSet rs) throws SQLException {
+
+		Presidio presidio = new Presidio();
+		presidio.setNomePresidio(rs.getString("nomePresidio"));
+		presidio.setEstadoPresidio(rs.getString("estadoPresidio"));
+		presidio.setCidadePresidio(rs.getString("cidadePresidio"));
+		presidio.setIdPresidio(rs.getInt("idPresidio"));
+		presidio.setTipoPresidio(rs.getString("tipoPresidio"));
+		
+
+		return presidio;
+	}
 }
