@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import model.presidio.Presidio;
+import model.presidio.PresidioDao;
 import model.usuario.TipoUsuario;
 import model.usuario.TipoUsuarioDao;
 import model.usuario.Usuario;
@@ -106,4 +108,15 @@ public class UsuarioController {
 		return "forward:listarUsuario";
 	}
 
+	@RequestMapping("pesquisarUsuario")
+	public String pesquisarUsuario(Usuario usuario, Model model) {
+		
+		UsuarioDao dao2 = new UsuarioDao();
+		
+		List<Usuario> listaUsuario = dao2.pesquisar(usuario);
+		model.addAttribute("listaUsuario", listaUsuario);
+
+		return "usuario/ListarUsuario2";
+	}
+	
 }
