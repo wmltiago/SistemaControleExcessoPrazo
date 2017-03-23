@@ -150,23 +150,23 @@ public class PresidioDao {
 		}
 	}
 
-	public List<Presidio> pesquisar(Presidio presidio) {
+	public List<Presidio> pesquisar(String nomePresidio, String estadoPresidio) {
 		try {
 			List<Presidio> listaProduto = new ArrayList<Presidio>();
 			PreparedStatement stmt = null;
 
-			if (!presidio.getNomePresidio().equals("") && (presidio.getEstadoPresidio() == null || presidio.getEstadoPresidio().isEmpty())) {
+			if (!nomePresidio.equals("") && (estadoPresidio == null || estadoPresidio.isEmpty())) {
 				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE nomePresidio LIKE ? ORDER BY nomePresidio");
-				stmt.setString(1, "%" + presidio.getNomePresidio() + "%");
+				stmt.setString(1, "%" + nomePresidio + "%");
 
-			} else if (presidio.getNomePresidio().equals("") && presidio.getEstadoPresidio() != null) {
+			} else if (nomePresidio.equals("") && estadoPresidio != null) {
 				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE estadoPresidio = ? ORDER BY nomePresidio");
-				stmt.setString(1, presidio.getEstadoPresidio());
+				stmt.setString(1, estadoPresidio);
 				
-			} else if (!presidio.getNomePresidio().equals("") && presidio.getEstadoPresidio() != null) {
+			} else if (!nomePresidio.equals("") && estadoPresidio.isEmpty()) {
 				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE nomePresidio LIKE ? AND estadoPresidio = ? ORDER BY nomePresidio");
-				stmt.setString(1, "%" + presidio.getNomePresidio() + "%");
-				stmt.setString(2, presidio.getEstadoPresidio());
+				stmt.setString(1, "%" + nomePresidio + "%");
+				stmt.setString(2, estadoPresidio);
 				
 			} else {
 				stmt = this.connection.prepareStatement("SELECT * FROM presidio ORDER BY nomePresidio");

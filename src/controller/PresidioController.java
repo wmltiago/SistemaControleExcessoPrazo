@@ -2,21 +2,18 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import model.detento.Detento;
-import model.detento.DetentoDao;
 import model.presidio.Presidio;
 import model.presidio.PresidioDao;
-import model.usuario.TipoUsuario;
-import model.usuario.TipoUsuarioDao;
-import model.usuario.Usuario;
-import model.usuario.UsuarioDao;
 
 @Controller
 public class PresidioController {
@@ -62,15 +59,35 @@ public class PresidioController {
 	}
 	 //=========================================================//
 	@RequestMapping("pesquisarPresidio")
-	public String pesquisarPresidio(Presidio presidio, Model model) {
+	public @ResponseBody String pesquisarPresidio(@RequestParam String nomePresidio,@RequestParam String estadoPresidio, HttpServletResponse response, Model model) {
 		
 		PresidioDao dao2 = new PresidioDao();
 		
-		List<Presidio> listaPresidio = dao2.pesquisar(presidio);
+		List<Presidio> listaPresidio = dao2.pesquisar(nomePresidio, estadoPresidio);
 		model.addAttribute("listaPresidio", listaPresidio);
-
-		return "presidio/pesquisarPresidio";
-	}
+		
+		StringBuilder st = new StringBuilder();
+		st.append("<tr style='background-color: #E6E6E6; font-weight: bold;'>");
+		st.append("<td> Nome </td>");
+		st.append("<td> Estado </td>");
+		
+		st.append("</tr>");
+		for (Presidio presidio : listaPresidio) {
+		st.append("<tr>");
+		st.append("<td> " + presidio.getNomePresidio() + " </td>");
+		st.append("<td> " + presidio.getEstadoPresidio() + " </td>");
+		
+		
+		st.append("<td>");
+		st.append("<a href='exibirAlterarProduto?id=" + presidio.getIdPresidio() + "'>Editar</a> &nbsp;");
+		st.append("<a href='removerProduto?id=" + presidio.getIdPresidio() + "'>Remover</a>");
+		st.append("</td>");
+		st.append("</tr>");
+		}
+		response.setStatus(200);
+		return st.toString();
+		}
+	
 	
 	
 	// ===================================================//
@@ -82,9 +99,7 @@ public class PresidioController {
 		Presidio presidioCompleto = dao.buscarPorId(id);
 		model.addAttribute("presidio", presidioCompleto);
 
-		PresidioDao dao2 = new PresidioDao();
-		List<Presidio> listaPresidio= dao2.listar();
-		model.addAttribute("listaPresidio", listaPresidio);
+		
 
 
 		return "presidio/AlterarPresidio";
