@@ -33,7 +33,27 @@
 <div class="container">
     <div class="row">
     
+    <c:import url="/view/comum/menu.jsp" />
+	<hr>
+	<h3>Pesquisar Usuario</h3>
+	<div>
+		<form action="ListarUsuario2" method="post">
+			<p>
+				Nome: <br /> <input type="text" id="nomeUsuario"
+					name="nomeusuario" value="${usuario.nomeUsuario}">
+			</p>
+             
+             <p>
+				CPF: <br /> <input type="text" id="cpfUsuario"
+					name="cpfUsuario" value="${usuario.cpfUsuario}">
+			</p>
     
+            <p>
+				<input type="reset" value="Limpar"> &nbsp; &nbsp; <input
+					type="submit" value="Pesquisar">
+			</p>
+      
+           <br>
     
         <div class="col-md-10 col-md-offset-1">
 
