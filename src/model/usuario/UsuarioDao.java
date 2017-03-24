@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.presidio.Presidio;
 import util.ConnectionFactory;
 
 public class UsuarioDao {
@@ -156,5 +157,51 @@ public class UsuarioDao {
 		}
 	}
 
+	
+	public List<Usuario> pesquisar(Usuario usuario) {
+		try {
+			List<Usuario> listaProduto = new ArrayList<Usuario>();
+			PreparedStatement stmt = null;
+
+			if (!usuario.getNomeUsuario().equals("") && (usuario.getCpfUsuario() == null || usuario.getCpfUsuario().isEmpty())) {
+				stmt = this.connection.prepareStatement("SELECT * FROM usuario WHERE nomeUsuario LIKE ? ORDER BY nomeUsuario");
+				stmt.setString(1, "%" + usuario.getNomeUsuario() + "%");
+
+			} else if (usuario.getNomeUsuario().equals("") && usuario.getCpfUsuario() != null) {
+				stmt = this.connection.prepareStatement("SELECT * FROM usuario WHERE cpfUsuario = ? ORDER BY nomeUsuario");
+				stmt.setString(1, usuario.getCpfUsuario());
+				
+			} else if (!usuario.getNomeUsuario().equals("") && usuario.getCpfUsuario() != null) {
+				stmt = this.connection.prepareStatement("SELECT * FROM usuario WHERE nomeUsuario LIKE ? AND cpfUsuario = ? ORDER BY nomeUsuario");
+				stmt.setString(1, "%" + usuario.getNomeUsuario() + "%");
+				stmt.setString(2, usuario.getCpfUsuario());
+				
+			} else {
+				stmt = this.connection.prepareStatement("SELECT * FROM usuario ORDER BY nomeUsuario");
+			}
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				listaProduto.add(montarObjeto(rs));
+			}
+			rs.close();
+			stmt.close();
+			connection.close();
+			return listaProduto;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	private Usuario montarObjeto(ResultSet rs) throws SQLException {
+
+		Usuario usuario = new Usuario();
+		usuario.setId(rs.getInt("id"));
+		usuario.setCpfUsuario(rs.getString("cpfUsuario"));
+		usuario.setNomeUsuario(rs.getString("nomeUsuario"));
+		usuario.setSenhaUsuario(rs.getString("senhaUsuario"));
+        usuario.setEnderecoUsuario(rs.getString("enderecoUsuario"));
+
+		return usuario;
+	}
 
 }
