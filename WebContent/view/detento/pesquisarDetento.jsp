@@ -17,11 +17,69 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Listando Detentos</title>
+
+<!--  
+	<script type="text/javascript" src="view/js/jquery-2.1.4.js"></script>
+
+<script type="text/javascript" >
+
+	$(document).ready(function() {
+
+		$("#nomeDetento").keyup(function() {
+
+			var textoNome = $('#nomeDetento').val();
+			
+
+			$.post("pesquisandoDetento", {
+				'nomeDetento' : texto,
+				
+			}, function(dados) {
+				$('#tabelaListaDetento').html(dados);
+			});
+		});
+
+		
+	});
+</script>
+	
+	-->
+
+
 </head>
 <body>
 
 
-		<table border='1' style='width: 100%;'>
+	<hr>
+	<h3>Pesquisar Produto</h3>
+	<hr>
+	
+	<div>
+		<form action="pesquisandoDetento">
+		
+	 <tr>
+   <td>
+    <label >Nome</label>
+   </td>
+   <td align="left">
+    <input type="text" name="nomeDetento" id="nomeDetento" value="${detento.nomeDetento}">
+    <td>
+    
+   </td>
+
+  </tr>
+			
+			<p>
+			<input type="reset" value="Limpar"> &nbsp; &nbsp;
+			<input type="submit" value="Pesquisar">
+			</p>
+			
+			
+		</form>
+	</div>
+	
+
+
+		<table border='1' style='width: 100%;' id="tabelaListaDetento">
 	
 		<tr style='background-color: #E6E6E6; font-weight: bold;'>
 		

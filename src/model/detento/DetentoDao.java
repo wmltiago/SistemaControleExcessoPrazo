@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 import model.presidio.Presidio;
 import model.presidio.PresidioDao;
 import util.ConnectionFactory;
@@ -45,7 +46,8 @@ public class DetentoDao {
 		}
 	}
 	 
-	
+	 //==================================================================================//
+
 
 	 
 	 public List<Detento> listar() {
@@ -114,6 +116,11 @@ public class DetentoDao {
 				throw new RuntimeException(e);
 			}
 		}
+	 
+	 
+	 //==================================================================================//
+
+	 
 	 public Detento buscarPorId(int id) {
 
 			try {
@@ -154,6 +161,10 @@ public class DetentoDao {
 			}
 		}
 
+	 
+	 //==================================================================================//
+
+	 
 	 public void alterar(Detento detento) {
 
 			try {
@@ -176,4 +187,58 @@ public class DetentoDao {
 				throw new RuntimeException(e);
 			}
 		}
+	 
+	 
+	 //==================================================================================//
+
+	 
+	 public List<Detento> pesquisar(String nomeDetento) {
+
+			try {
+
+				List<Detento> listaDetento = new ArrayList<Detento>();
+				PreparedStatement stmt = null;
+
+				if (nomeDetento.equals("") ) {
+					
+					stmt = this.connection.prepareStatement("SELECT * FROM detento WHERE nomeDetento LIKE ? ORDER BY nomeDetento");
+					stmt.setString(1, "%" + nomeDetento + "%");
+					
+				
+					
+				} else {
+					
+					stmt = this.connection.prepareStatement("SELECT * FROM detento ORDER BY nomeDetento");
+				}
+
+				ResultSet rs = stmt.executeQuery();
+				while (rs.next()) {
+
+					Detento detento2 = new Detento();
+
+					detento2.setIdDetento(rs.getInt("idDetento"));
+					detento2.setNomeDetento(rs.getString("nomeDetento"));
+					detento2.setCpfDetento(rs.getString("cpfDetento"));
+					detento2.setNomeMae(rs.getString("nomeMae"));
+					detento2.setEnderecoDetento(rs.getString("enderecoDetento"));
+					detento2.setDataJulgamento(rs.getDate("dataJulgamento"));
+					detento2.setLiberdadeProvisoria(rs.getString("liberdadeProvisoria"));
+					detento2.setNumeroProcesso(rs.getString("numeroProcesso"));
+
+					
+
+					listaDetento.add(detento2);
+				}
+
+				rs.close();
+				stmt.close();
+				connection.close();
+
+				return listaDetento;
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
+	 
 }
