@@ -155,15 +155,15 @@ public class PresidioDao {
 			List<Presidio> listaProduto = new ArrayList<Presidio>();
 			PreparedStatement stmt = null;
 
-			if (!nomePresidio.equals("") && (estadoPresidio == null || estadoPresidio.isEmpty())) {
+			if (!nomePresidio.equals("") && (estadoPresidio == null || estadoPresidio.equals(""))) {
 				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE nomePresidio LIKE ? ORDER BY nomePresidio");
 				stmt.setString(1, "%" + nomePresidio + "%");
 
-			} else if (nomePresidio.equals("") && estadoPresidio != null) {
+			} else if ((nomePresidio.equals("") || nomePresidio == null) && !estadoPresidio.equals("")) {
 				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE estadoPresidio = ? ORDER BY nomePresidio");
 				stmt.setString(1, estadoPresidio);
 				
-			} else if (!nomePresidio.equals("") && estadoPresidio.isEmpty()) {
+			} else if (!nomePresidio.equals("") && !estadoPresidio.equals("")) {
 				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE nomePresidio LIKE ? AND estadoPresidio = ? ORDER BY nomePresidio");
 				stmt.setString(1, "%" + nomePresidio + "%");
 				stmt.setString(2, estadoPresidio);
