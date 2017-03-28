@@ -34,7 +34,7 @@ public class Detento {
 	private String liberdadeProvisoria;
 	private String numeroProcesso;
 	private String fotoDetento;
-	private String status;
+	private int status;
 	
 	
 	
@@ -42,10 +42,10 @@ public class Detento {
 	
 	
 	
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	public int getIdDetento() {
