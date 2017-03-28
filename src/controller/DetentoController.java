@@ -106,39 +106,32 @@ public class DetentoController {
 	}
 
 	@RequestMapping("pesquisandoDetento")
-	public @ResponseBody String pesquisandoProduto(@RequestParam String nomeDetento, HttpServletResponse response, Model model) {
-		
-		
-		
+	public @ResponseBody String pesquisandoProduto(@RequestParam String nomeDetento, @RequestParam String cpfDetento,
+			HttpServletResponse response) {
+
 		DetentoDao dao2 = new DetentoDao();
-		List<Detento> listaDetento = dao2.pesquisar(nomeDetento);
-		
-		model.addAttribute("listaDetento", listaDetento);
-		
+		List<Detento> listaDetento = dao2.pesquisar(nomeDetento, cpfDetento);
+
 		StringBuilder st = new StringBuilder();
 		st.append("<tr style='background-color: #E6E6E6; font-weight: bold;'>");
 		st.append("<td> Nome </td>");
-		
-		
+		st.append("<td> CPF </td>");
 		st.append("</tr>");
+		
 		for (Detento detento : listaDetento) {
-		st.append("<tr>");
-		st.append("<td> " + detento.getNomeDetento() + " </td>");
-		
-		
-		
-		st.append("<td>");
-		st.append("<a href='exibirAlterarDetento?id=" + detento.getIdDetento() + "'>Editar</a> &nbsp;");
-		st.append("<a href='removerDetento?id=" + detento.getIdDetento() + "'>Remover</a>");
-		st.append("</td>");
-		st.append("</tr>");
+			st.append("<tr>");
+			st.append("<td> " + detento.getNomeDetento() + " </td>");
+			st.append("<td> " + detento.getCpfDetento() + " </td>");
+			st.append("<td>");
+			
+			st.append("<a href='exibirAlterarDetento?id=" + detento.getIdDetento() + "'>Editar</a> &nbsp;");
+			st.append("<a href='removerDetento?id=" + detento.getIdDetento() + "'>Remover</a>");
+			st.append("</td>");
+			st.append("</tr>");
 		}
 		response.setStatus(200);
 		return st.toString();
-		
-		}
-		
-		
+
 	}
 
-
+}

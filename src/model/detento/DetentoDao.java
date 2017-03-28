@@ -182,22 +182,27 @@ public class DetentoDao {
 
 	// ==================================================================================//
 
-	public List<Detento> pesquisar(String nomeDetento) {
+	public List<Detento> pesquisar(String nomeDetento, String cpfDetento) {
 
 		try {
 
 			List<Detento> listaDetento = new ArrayList<Detento>();
 			PreparedStatement stmt = null;
-
-			if (nomeDetento.equals("")) {
-
-				stmt = this.connection
-						.prepareStatement("SELECT * FROM detento WHERE nomeDetento LIKE ? ORDER BY nomeDetento");
+			if (!nomeDetento.equals("") && (cpfDetento == null || cpfDetento.equals(""))) {
+				stmt = this.connection.prepareStatement("SELECT * FROM detento WHERE nomeDetento LIKE ? ORDER BY nomeDetento");
 				stmt.setString(1, "%" + nomeDetento + "%");
 
+			} else if ((nomeDetento.equals("") || nomeDetento == null) && !cpfDetento.equals("")) {
+				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE cpfDetento = ? ORDER BY nomeDetento");
+				stmt.setString(1, cpfDetento);
+				
+			} else if (!nomePresidio.equals("") && !estadoPresidio.equals("")) {
+				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE nomePresidio LIKE ? AND estadoPresidio = ? ORDER BY nomePresidio");
+				stmt.setString(1, "%" + nomePresidio + "%");
+				stmt.setString(2, estadoPresidio);
+				
 			} else {
-
-				stmt = this.connection.prepareStatement("SELECT * FROM detento ORDER BY nomeDetento");
+				stmt = this.connection.prepareStatement("SELECT * FROM presidio ORDER BY nomePresidio");
 			}
 
 			ResultSet rs = stmt.executeQuery();
