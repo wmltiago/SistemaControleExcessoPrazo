@@ -17,13 +17,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Listando Presídios</title>
+<script type="text/javascript" src="view/js/jquery-2.1.4.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#nomePresidio").keyup(function() {
+			
+			var texto = $('#nomePresidio').val();
+			var estadoPresidio = $('#estadoPresidio').val();
+			$.post("pesquisarPresidio", {
+				'nomePresidio' : texto,
+				'estadoPresidio' : estadoPresidio
+			}, function(dados) {
+				$('#tabelaListaPresidio').html(dados);
+			});
+		});
+		$("#estadoPresidio").change(function() {
+			var texto = $('#nomePresidio').val();
+			var estadoPresidio = $('#estadoPresidio').val();
+			$.post("pesquisarPresidio", {
+				'nomePresidio' : texto,
+				'estadoPresidio' : estadoPresidio
+			}, function(dados) {
+				$('#tabelaListaPresidio').html(dados);
+			});
+		});
+	});
+</script>
+
 </head>
 <body>
 <c:import url="/view/comum/menu.jsp" />
 	<hr>
 	<h3>Pesquisar Presidio</h3>
 	<div>
-		<form action="pesquisarPresidio" method="post">
+		
 			<p>
 				Nome: <br /> <input type="text" id="nomePresidio"
 					name="nomePresidio" value="${presidio.nomePresidio}">
@@ -62,14 +90,11 @@
 				    <option value="TO">Tocantins</option>
 				</select>
 			</p>
-			<p>
-				<input type="reset" value="Limpar"> &nbsp; &nbsp; <input
-					type="submit" value="Pesquisar">
-			</p>
-		</form>
+			
+		
 	</div>
 
-	<table border='1' style='width: 100%;'>
+	<table border='1' style='width: 100%;' id="tabelaListaPresidio">
 	
 		<tr style='background-color: #E6E6E6; font-weight: bold;'>
 		
