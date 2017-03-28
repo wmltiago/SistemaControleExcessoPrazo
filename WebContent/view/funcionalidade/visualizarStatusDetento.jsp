@@ -21,60 +21,43 @@
 </head>
 <body>
 
-<%-- 
-		<table border='1' style='width: 100%;'>
-	
-		<tr style='background-color: #E6E6E6; font-weight: bold;'>
-		
-			
-			
-			<td>NOME DO DETENTO</td> 
-			
-			<td>CPF</td> 
-			
-			<td>NOME DA MÃE</td> 
-			
-			
-			
-			<td>Data de Julgamento</td>
-			
-			
-			
-			<td>Numero do Processo</td>
-			
-			<td>PRESIDIO</td>
-			
-	<td>STATUS</td>
-			
-			
-			
-			  
-			
-			<c:forEach var="detento" items="${listaDetento}">
-				<tr>
-					
-					<td>${detento.nomeDetento}</td> 
-					<td>${detento.cpfDetento}</td>
-					<td>${detento.nomeMae}</td>
-					
-					<td><fmt:formatDate value='${detento.dataJulgamento}' pattern='dd/MM/yyyy' /></td>
-					
-					<td>${detento.numeroProcesso}</td>
-					<td>${detento.presidio.nomePresidio}</td>
-					<td   bgcolor="${detento.status}">    
-					
-					
+<form class="form-horizontal" action="pesquisarDetento">
+<fieldset>
 
-					
-					
-					
-					
-					
-					           </td>
-					
-					
-			</c:forEach>
-	</table> --%>
+<!-- Form Name -->
+<legend>Pesquisa de Detentos</legend>
+
+<!-- Multiple Checkboxes -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="status">Status</label>
+  <div class="col-md-4">
+  <div class="checkbox">
+    <label for="status-0">
+      <input type="checkbox" name="status" id="status-0" checked  value="-1">
+      Fora do Prazo
+    </label>
+	</div>
+  <div class="checkbox">
+    <label for="status-1">
+      <input type="checkbox" name="status" id="status-1" checked value="1">
+      Dentro do Prazo
+    </label>
+	</div>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="cpf">Cpf</label>  
+  <div class="col-md-4">
+  <input id="cpf" name="cpf" type="text" placeholder="" class="form-control input-md">
+  <span class="help-block">Ex. 11111111111</span>  
+  </div>
+</div>
+
+</fieldset>
+</form>
+
 	
 	<div class="container">
     <div class="row">
@@ -105,7 +88,18 @@
                 </thead>
                 <tbody>
                 <c:forEach var="detento" items="${listaDetento}">
-                    <tr class="${detento.status}">
+                 <c:if test="${detento.status == 2}">
+                 
+                    <tr class="danger">
+                    </c:if>
+                       <c:if test="${detento.status == 1}">
+                 
+                    <tr class="warning">
+                    </c:if>
+                       <c:if test="${detento.status == -1}">
+                 
+                    <tr class="success">
+                    </c:if>
                         <td>
                             ${detento.nomeDetento}
                         </td>
@@ -125,9 +119,19 @@
                         <td>
                             <fmt:formatDate value='${detento.dataJulgamento}' pattern='dd/MM/yyyy' />
                         </td>
-                        <td bgcolor="${detento.status}">
-                            TESTE
+                        <c:if test="${detento.status == -1}">
+                        <td >
+                            No prazo
                         </td>
+                        </c:if><c:if test="${detento.status == 1}">
+                        <td >
+                            Hoje
+                        </td>
+                        </c:if><c:if test="${detento.status == 2}">
+                        <td >
+                            Atrasado 
+                        </td>
+                        </c:if>
                     </tr>
                     	</c:forEach>
                 </tbody>
