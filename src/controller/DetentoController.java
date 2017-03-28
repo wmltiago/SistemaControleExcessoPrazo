@@ -35,6 +35,8 @@ public class DetentoController {
 	public String incluirDetento(@Valid Detento detento, BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
+			
+						
 			return "forward:exibirCadastrarDetento";
 
 		} else {
@@ -106,7 +108,7 @@ public class DetentoController {
 	}
 
 	@RequestMapping("pesquisandoDetento")
-	public @ResponseBody String pesquisandoProduto(@RequestParam String nomeDetento, @RequestParam String cpfDetento,
+	public @ResponseBody String pesquisandoDetento(@RequestParam String nomeDetento, @RequestParam String cpfDetento,
 			HttpServletResponse response) {
 
 		DetentoDao dao2 = new DetentoDao();

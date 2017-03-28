@@ -193,16 +193,16 @@ public class DetentoDao {
 				stmt.setString(1, "%" + nomeDetento + "%");
 
 			} else if ((nomeDetento.equals("") || nomeDetento == null) && !cpfDetento.equals("")) {
-				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE cpfDetento = ? ORDER BY nomeDetento");
+				stmt = this.connection.prepareStatement("SELECT * FROM detento WHERE cpfDetento = ? ORDER BY nomeDetento");
 				stmt.setString(1, cpfDetento);
 				
-			} else if (!nomePresidio.equals("") && !estadoPresidio.equals("")) {
-				stmt = this.connection.prepareStatement("SELECT * FROM presidio WHERE nomePresidio LIKE ? AND estadoPresidio = ? ORDER BY nomePresidio");
-				stmt.setString(1, "%" + nomePresidio + "%");
-				stmt.setString(2, estadoPresidio);
+			} else if (!nomeDetento.equals("") && !cpfDetento.equals("")) {
+				stmt = this.connection.prepareStatement("SELECT * FROM detento WHERE nomeDetento LIKE ? AND cpfDetento = ? ORDER BY nomeDetento");
+				stmt.setString(1, "%" + nomeDetento + "%");
+				stmt.setString(2, cpfDetento);
 				
 			} else {
-				stmt = this.connection.prepareStatement("SELECT * FROM presidio ORDER BY nomePresidio");
+				stmt = this.connection.prepareStatement("SELECT * FROM detento ORDER BY nomeDetento");
 			}
 
 			ResultSet rs = stmt.executeQuery();

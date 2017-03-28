@@ -1,11 +1,12 @@
 package model.detento;
 
 import java.util.Date;
+
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
-
-
+import org.springframework.format.annotation.DateTimeFormat;
 
 import model.presidio.Presidio;
 
@@ -27,8 +28,8 @@ public class Detento {
 	private String nomeMae;
 	private String enderecoDetento;
 	
-
-
+	@NotNull
+	@DateTimeFormat(pattern="dd/MM/YY")
 	private Date dataJulgamento;
 	
 	private String liberdadeProvisoria;

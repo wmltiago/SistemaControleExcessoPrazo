@@ -6,4 +6,6 @@
 <a href="listarTipoUsuario">Listar Tipo usuário</a> &nbsp; &nbsp; &nbsp;
 <a href="listarPresidio">Listar presídio</a> &nbsp; &nbsp; &nbsp;
 <a href="exibirCadastrarPresidio">Cadastrar presídio</a> &nbsp; &nbsp; &nbsp;
+<a href="exibirCadastrarDetento">Cadastrar detento</a> &nbsp; &nbsp; &nbsp;
+<a href="listarDetento">listar detento</a> &nbsp; &nbsp; &nbsp;
 <br /> <br />

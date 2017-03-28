@@ -18,35 +18,42 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Listando Detentos</title>
 
-<!--  
+ 
 	<script type="text/javascript" src="view/js/jquery-2.1.4.js"></script>
 
-<script type="text/javascript" >
-
+<script type="text/javascript">
 	$(document).ready(function() {
-
 		$("#nomeDetento").keyup(function() {
-
-			var textoNome = $('#nomeDetento').val();
 			
-
+			var texto = $('#nomeDetento').val();
+			var cpfDetento = $('#cpfDetento').val();
 			$.post("pesquisandoDetento", {
 				'nomeDetento' : texto,
-				
+				'cpfDetento' : cpfDetento
 			}, function(dados) {
 				$('#tabelaListaDetento').html(dados);
 			});
 		});
-
-		
+		$("#cpfDetento").change(function() {
+			var texto = $('#nomeDetento').val();
+			var cpfDetento = $('#cpfDetento').val();
+			$.post("pesquisandoDetento", {
+				'nomeDetento' : texto,
+				'cpfDetento' : cpfDetento
+			}, function(dados) {
+				$('#tabelaListaDetento').html(dados);
+			});
+		});
 	});
 </script>
 	
-	-->
+	
 
 
 </head>
 <body>
+
+<c:import url="/view/comum/menu.jsp" />
 
 
 	<hr>
@@ -54,27 +61,28 @@
 	<hr>
 	
 	<div>
-		<form action="pesquisandoDetento">
 		
-	 <tr>
-   <td>
-    <label >Nome</label>
-   </td>
-   <td align="left">
-    <input type="text" name="nomeDetento" id="nomeDetento" value="${detento.nomeDetento}">
-    <td>
-    
-   </td>
+		
 
-  </tr>
-			
-			<p>
-			<input type="reset" value="Limpar"> &nbsp; &nbsp;
-			<input type="submit" value="Pesquisar">
+  			<p>
+				Nome: <br /> <input type="text" id="nomeDetento"
+					name="nomeDetento" value="${detento.nomeDetento}">
 			</p>
 			
+			<p>
+				CPF: <br /> <input type="text" id="cpfDetento"
+					name="cpfDetento" value="${detento.cpfDetento}">
+			</p>
+    
+    
+  
+
+ 
 			
-		</form>
+			
+			
+			
+		
 	</div>
 	
 

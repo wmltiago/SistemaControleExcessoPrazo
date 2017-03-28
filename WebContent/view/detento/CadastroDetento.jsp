@@ -25,6 +25,7 @@
 </script>
 </head>
 <body>
+<c:import url="/view/comum/menu.jsp" />
 
 
   <h2><b> Cadastro de Detento</b></h2>
