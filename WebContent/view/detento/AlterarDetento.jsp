@@ -9,9 +9,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<c:import url="../bootstrapTiago/bootStrap.jsp"></c:import>
 </head>
 <body>
-
+<c:import url="../comum/MenuBoots.jsp"></c:import>
+<c:import url="../comum/MenuDetento.jsp"></c:import>
 	
 
 	<hr><h3>Alterar Detento</h3><hr>

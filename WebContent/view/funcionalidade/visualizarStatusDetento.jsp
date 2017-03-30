@@ -20,12 +20,13 @@
 <title>Listando Detentos</title>
 </head>
 <body>
-
+<c:import url="../comum/MenuBoots.jsp"></c:import>
+<c:import url="../comum/MenuDetento.jsp"></c:import>
 <form class="form-horizontal" action="pesquisarDetento">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Pesquisa de Detentos</legend>
+<center><legend>Pesquisa de Detentos</legend></center>
 
 <!-- Multiple Checkboxes -->
 <div class="form-group">

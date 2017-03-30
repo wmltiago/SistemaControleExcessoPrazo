@@ -13,26 +13,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript" src="view/js/maskedinput.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>CADASTRO DE DETENTO</title>
-<script type="text/javascript">
 
-    jQuery(function($){
-       $("#dataJulgamento").mask("99/99/9999");
-    });
-
-</script>
+<c:import url="../bootstrapTiago/bootStrap.jsp"></c:import>
 </head>
 <body>
-<c:import url="/view/comum/menu.jsp" />
+<c:import url="../comum/MenuBoots.jsp"></c:import>
+<c:import url="../comum/MenuDetento.jsp"></c:import>
 
 
   <h2><b> Cadastro de Detento</b></h2>
-  <div style="text-align: center; color: red;"> ${msg} </div>
+  
 <form action="CadastrarDetento" method="POST">
 
-
+<div style="text-align: center; color: red;"> ${msg} </div>
 
 <br />
 <!-- ENDEREÇO -->

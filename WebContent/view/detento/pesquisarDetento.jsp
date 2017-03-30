@@ -49,12 +49,13 @@
 	
 	
 
+<c:import url="../bootstrapTiago/bootStrap.jsp"></c:import>
 
 </head>
 <body>
 
-<c:import url="/view/comum/menu.jsp" />
-
+<c:import url="../comum/MenuBoots.jsp"></c:import>
+<c:import url="../comum/MenuDetento.jsp"></c:import>
 
 	<hr>
 	<h3>Pesquisar Produto</h3>
