@@ -12,7 +12,7 @@ private int id;
 private String cpfUsuario;
 
 @NotEmpty (message="O nome deve ser preenchido")
-@Size(min = 5, max = 7, message="O nome tem que ter no max 7 caracteres")
+@Size(min = 5, message="O nome tem que ter no max 7 caracteres")
 private String	nomeUsuario; 
 private String senhaUsuario;
 private String enderecoUsuario;

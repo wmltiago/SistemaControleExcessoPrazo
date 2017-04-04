@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.usuario.TipoUsuario;
 import model.usuario.TipoUsuarioDao;
@@ -108,15 +111,32 @@ public class UsuarioController {
 	}
 
 	@RequestMapping("pesquisarUsuario")
-	public String pesquisarUsuario(Usuario usuario, Model model) {
+	public @ResponseBody String pesquisarUsuario(@RequestParam String nomeUsuario, @RequestParam String cpfUsuario,HttpServletResponse response) {
 		
 		UsuarioDao dao2 = new UsuarioDao();
 		
-		List<Usuario> listaUsuario = dao2.pesquisar(usuario);
-		model.addAttribute("listaUsuario", listaUsuario);
-
-		return "usuario/ListarUsuario2";
-	}
+		UsuarioDao dao = new UsuarioDao();
+		List<Usuario> listaUsuario = dao.pesquisar(nomeUsuario, cpfUsuario);
+		StringBuilder st = new StringBuilder();
+		st.append("<tr style='background-color: #E6E6E6; font-weight: bold;'>");
+		st.append("<td> Nome </td>");
+		st.append("<td> CPF </td>");		
+		st.append("</tr>");
+		
+		for (Usuario usuario : listaUsuario) {
+		st.append("<tr>");
+		st.append("<td> " + usuario.getNomeUsuario() + " </td>");
+		st.append("<td> " + usuario.getCpfUsuario() + " </td>");		
+		st.append("<td>");
+		
+		st.append("<a href='exibirAlterarUsuario?id=" + usuario.getId() + "'>Editar</a> &nbsp;");
+		st.append("<a href='removerUsuario?id=" + usuario.getId() + "'>Remover</a>");
+		st.append("</td>");
+		st.append("</tr>");
+		}
+		response.setStatus(200);
+		return st.toString();
+		}
 	
 	
 	@RequestMapping("/exibirFazerLogin")
@@ -130,14 +150,19 @@ public class UsuarioController {
 	@RequestMapping("efetuarLogin")
 	public String efetuarLogin(Usuario usuario, HttpSession session	, Model model) {
 		
-	UsuarioDao dao = new UsuarioDao();
-	Usuario usuarioLogado = dao.buscarUsuario(usuario);
+		// Codigo para popular o combo de categoria de produto
+				TipoUsuarioDao dao = new TipoUsuarioDao();
+				List<TipoUsuario> listaTipoUsuario = dao.listar();
+				model.addAttribute("listaTipoUsuario", listaTipoUsuario);
+		
+	UsuarioDao dao2 = new UsuarioDao();
+	Usuario usuarioLogado = dao2.buscarUsuario(usuario);
 	
 	if (usuarioLogado != null) {
 	session.setAttribute("usuarioLogado", usuarioLogado);
 	return "usuario/teste";
 	}
-	model.addAttribute("msg", "N„o foi encontrado um usu·rio com o login e 	senha informados.");
+	model.addAttribute("msg", "N√£o foi encontrado um usu√°rio com o login e 	senha informados.");
 	return "index/login";
 	}
 	

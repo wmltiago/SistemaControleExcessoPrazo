@@ -158,35 +158,35 @@ public class UsuarioDao {
 	}
 
 	
-	public List<Usuario> pesquisar(Usuario usuario) {
+	public List<Usuario> pesquisar(String nomeUsuario, String cpfUsuario) {
 		try {
-			List<Usuario> listaProduto = new ArrayList<Usuario>();
+			List<Usuario> listaUsuario = new ArrayList<Usuario>();
 			PreparedStatement stmt = null;
 
-			if (!usuario.getNomeUsuario().equals("") && (usuario.getCpfUsuario() == null || usuario.getCpfUsuario().isEmpty())) {
+			if (!nomeUsuario.equals("") && (cpfUsuario == null || cpfUsuario.isEmpty())) {
 				stmt = this.connection.prepareStatement("SELECT * FROM usuario WHERE nomeUsuario LIKE ? ORDER BY nomeUsuario");
-				stmt.setString(1, "%" + usuario.getNomeUsuario() + "%");
+				stmt.setString(1, "%" + nomeUsuario + "%");
 
-			} else if (usuario.getNomeUsuario().equals("") && usuario.getCpfUsuario() != null) {
+			} else if ((cpfUsuario.equals("") || cpfUsuario == null) && !nomeUsuario.equals("")) {
 				stmt = this.connection.prepareStatement("SELECT * FROM usuario WHERE cpfUsuario = ? ORDER BY nomeUsuario");
-				stmt.setString(1, usuario.getCpfUsuario());
+				stmt.setString(1, cpfUsuario);
 				
-			} else if (!usuario.getNomeUsuario().equals("") && usuario.getCpfUsuario() != null) {
+			} else if (!nomeUsuario.equals("") && cpfUsuario != null) {
 				stmt = this.connection.prepareStatement("SELECT * FROM usuario WHERE nomeUsuario LIKE ? AND cpfUsuario = ? ORDER BY nomeUsuario");
-				stmt.setString(1, "%" + usuario.getNomeUsuario() + "%");
-				stmt.setString(2, usuario.getCpfUsuario());
+				stmt.setString(1, "%" + nomeUsuario + "%");
+				stmt.setString(2, cpfUsuario);
 				
 			} else {
 				stmt = this.connection.prepareStatement("SELECT * FROM usuario ORDER BY nomeUsuario");
 			}
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				listaProduto.add(montarObjeto(rs));
+				listaUsuario.add(montarObjeto(rs));
 			}
 			rs.close();
 			stmt.close();
 			connection.close();
-			return listaProduto;
+			return listaUsuario;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

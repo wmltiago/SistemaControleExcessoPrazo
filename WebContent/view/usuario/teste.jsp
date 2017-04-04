@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,7 +48,7 @@
       <a href="#" class="help-suggestions ico-question hidden-xs">Ajuda e Sugestões</a>
  
       <div class="dropdown hidden-xs">
-        <a href="#" data-toggle="dropdown" class="title-dropdown" >${usuarioLogado.nomeUsuario}</a>
+        <a href="#" data-toggle="dropdown" class="title-dropdown" style=" color:red" >${usuarioLogado.nomeUsuario}</a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
           <li><a href="#" role="menuitem">Option 1</a></li>
           <li><a href="#" role="menuitem">Option 2</a></li>
@@ -86,8 +91,17 @@
         
         
         <!-- AQUI COMEÇA O FORMULARIO DE USUARIO -->
+        
+        
          
          <form class="form-horizontal" action="CadastrarUsuario2" method="post">
+         <!-- NoScript Alert -->
+    <!-- <noscript> -->
+    	<div class="alert alert-success">
+		
+			<center><span><strong>SCEP </strong> ${msg} </span></center>
+		</div>
+	<!-- </noscript> -->
 
 		<fieldset>
 			<br>
@@ -120,8 +134,7 @@
 					<select id="id_tipousuario" name="tipoUsuario" class="form-control">
 						<option value=""></option>
 						<c:forEach items="${listaTipoUsuario}" var="obj">
-							<option value="${obj.idTipoUsuario}">
-								${obj.descricaoUsuario}</option>
+							<option value="${obj.idTipoUsuario}">${obj.descricaoUsuario}</option>
 							<!-- VARIAVEL IGUAL AO NOME DA CLASSE BASICA -->
 						</c:forEach>
 					</select>
@@ -191,8 +204,8 @@
           	<section class="sidebox">
 		<h1 class="sidebox-title ico-question">Outras ações</h1>
 		<ul class="sidebox-list">
-			<li><a class="ico-redo-2 ico-pos-right" href="#">Listar Usuário</a></li>
-			<li><a class="ico-redo-2 ico-pos-right" href="#">Tipos de Usuários</a></li>			
+			<li><a class="ico-redo-2 ico-pos-right" href="listarUsuario">Listar Usuário</a></li>
+			<li><a class="ico-redo-2 ico-pos-right" href="listarTipoUsuario">Tipos de Usuários</a></li>			
 		</ul>
 	</section>
         </aside>

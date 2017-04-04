@@ -19,10 +19,38 @@
 <link rel="stylesheet" type="text/css" href="ListarUsuario.css"> 
 		 
 	<link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+	
+	<script type="text/javascript" src="view/js/jquery-2.1.4.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#nomeUsuario").keyup(function() {
+			
+			var texto = $('#nomeUsuario').val();
+			var cpfUsuario = $('#cpfUsuario').val();
+			$.post("pesquisarUsuario", {
+				'nomeUsuario' : texto,
+				'cpfUsuario' : cpfUsuario
+			}, function(dados) {
+				$('#tabelaUsuario').html(dados);
+			});
+		});
+		$("#cpfUsuario").change(function() {
+			var texto = $('#nomeUsuario').val();
+			var cpfUsuario = $('#cpfUsuario').val();
+			$.post("pesquisarUsuario", {
+				'nomeUsuario' : texto,
+				'cpfUsuario' : cpfUsuario
+			}, function(dados) {
+				$('#tabelaUsuario').html(dados);
+			});
+		});
+	});
+</script>
 
 </head>
 <body>
-
+<c:import url="/view/comum/menu.jsp" />
 <center><hr><h3>Lista de usuários</h3><hr></center>
 	
 	<div style="text-align: center; color: red;"> ${mensagem} </div>
@@ -30,17 +58,9 @@
 <br>
 <br>
 
-<div class="container">
-    <div class="row">
-    
-    <c:import url="/view/comum/menu.jsp" />
-	<hr>
-	<h3>Pesquisar Usuario</h3>
-	<div>
-		<form action="ListarUsuario2" method="post">
-			<p>
+<p>
 				Nome: <br /> <input type="text" id="nomeUsuario"
-					name="nomeusuario" value="${usuario.nomeUsuario}">
+					name="nomeUsuario" value="${usuario.nomeUsuario}">
 			</p>
              
              <p>
@@ -48,10 +68,17 @@
 					name="cpfUsuario" value="${usuario.cpfUsuario}">
 			</p>
     
-            <p>
-				<input type="reset" value="Limpar"> &nbsp; &nbsp; <input
-					type="submit" value="Pesquisar">
-			</p>
+            
+
+<div class="container">
+    <div class="row">
+    
+    
+	<hr>
+	<h3>Pesquisar Usuario</h3>
+	<div>
+		
+			
       
            <br>
     
@@ -69,7 +96,7 @@
                 </div>
               </div>
               <div class="panel-body">
-                <table class="table table-striped table-bordered table-list">
+                <table class="table table-striped table-bordered table-list" id="tabelaUsuario">
                   <thead>
                     <tr>
                         <th><center><em class="fa fa-cog"></em></center></th>
