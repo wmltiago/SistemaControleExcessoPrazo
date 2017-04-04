@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -9,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import model.presidio.Presidio;
-import model.presidio.PresidioDao;
 import model.usuario.TipoUsuario;
 import model.usuario.TipoUsuarioDao;
 import model.usuario.Usuario;
@@ -27,7 +26,7 @@ public class UsuarioController {
 		List<TipoUsuario> listaTipoUsuario = dao.listar();
 		model.addAttribute("listaTipoUsuario", listaTipoUsuario);
 
-		return "usuario/UsuarioBootstrap";
+		return "usuario/teste";
 
 	}
 
@@ -117,6 +116,29 @@ public class UsuarioController {
 		model.addAttribute("listaUsuario", listaUsuario);
 
 		return "usuario/ListarUsuario2";
+	}
+	
+	
+	@RequestMapping("/exibirFazerLogin")
+	public String exibirFazerLogin(Model model) {
+
+		
+		return "index/login";
+
+	}
+	
+	@RequestMapping("efetuarLogin")
+	public String efetuarLogin(Usuario usuario, HttpSession session	, Model model) {
+		
+	UsuarioDao dao = new UsuarioDao();
+	Usuario usuarioLogado = dao.buscarUsuario(usuario);
+	
+	if (usuarioLogado != null) {
+	session.setAttribute("usuarioLogado", usuarioLogado);
+	return "usuario/teste";
+	}
+	model.addAttribute("msg", "Não foi encontrado um usuário com o login e 	senha informados.");
+	return "index/login";
 	}
 	
 }

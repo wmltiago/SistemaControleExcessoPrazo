@@ -33,5 +33,10 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+<!-- Para  configurar  5  minutos  como  o  padrão  de  tempo  para  o usuário  perder  a  sessão -->
+<session-config>
+<session-timeout> 5 </session-timeout>
+</session-config>
+
 
 </web-app>

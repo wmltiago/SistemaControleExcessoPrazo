@@ -20,7 +20,10 @@
 </head>
 <body  >
 
-
+<div style="text-align: center; color: red; font-size: 30px;">
+		${msg}</div>
+		
+<form action="efetuarLogin"	method="post">	
  <div class="container">
  <br>
     <div class="row">
@@ -33,16 +36,16 @@
 			    	<form accept-charset="UTF-8" role="form">
                     <fieldset>
 			    	  	<div class="form-group">
-			    		    <input class="form-control" placeholder="CPF" name="cpf" type="text">
+			    		    <input class="form-control" placeholder="CPF" name="cpfUsuario" type="text">
 			    		</div>
 			    		<div class="form-group">
-			    			<input class="form-control" placeholder="Senha" name="senha" type="password" value="">
+			    			<input class="form-control" placeholder="Senha" name="senhaUsuario" type="password" value="">
 			    		</div>
-			    		<div class="checkbox">
+			    		 <div class="checkbox">
 			    	    	<label>
 			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
 			    	    	</label>
-			    	    </div>
+			    	    </div> 
 			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Entrar">
 			    	</fieldset>
 			      	</form>
@@ -51,7 +54,7 @@
 		</div>
 	</div>
 </div>
-
+</form>
 
 
 

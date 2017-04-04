@@ -195,7 +195,7 @@ public class UsuarioDao {
 	private Usuario montarObjeto(ResultSet rs) throws SQLException {
 
 		Usuario usuario = new Usuario();
-		usuario.setId(rs.getInt("id"));
+		usuario.setId(rs.getInt("idUsuario"));
 		usuario.setCpfUsuario(rs.getString("cpfUsuario"));
 		usuario.setNomeUsuario(rs.getString("nomeUsuario"));
 		usuario.setSenhaUsuario(rs.getString("senhaUsuario"));
@@ -203,5 +203,23 @@ public class UsuarioDao {
 
 		return usuario;
 	}
+	
+	public Usuario buscarUsuario(Usuario usuario) {
+		try {
+		Usuario usuarioConsultado = null;
+		PreparedStatement stmt = this.connection.prepareStatement("select * from usuario where cpfUsuario = ? and senhaUsuario = ?");
+		stmt.setString(1, usuario.getCpfUsuario());
+		stmt.setString(2, usuario.getSenhaUsuario());
+		ResultSet rs = stmt.executeQuery();
+		if (rs.next()) {
+		usuarioConsultado = montarObjeto(rs);
+		}
+		rs.close();
+		stmt.close();
+		return usuarioConsultado;
+		} catch (SQLException e) {
+		throw new RuntimeException(e);
+		}
+		}
 
 }
