@@ -43,7 +43,7 @@
       <a href="#" class="help-suggestions ico-question hidden-xs">Ajuda e Sugestões</a>
  
       <div class="dropdown hidden-xs">
-        <a href="#" data-toggle="dropdown" class="title-dropdown" >Tiago</a>
+        <a href="#" data-toggle="dropdown" class="title-dropdown" >${usuarioLogado.nomeUsuario}</a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
           <li><a href="#" role="menuitem">Option 1</a></li>
           <li><a href="#" role="menuitem">Option 2</a></li>
