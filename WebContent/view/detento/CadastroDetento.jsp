@@ -81,7 +81,7 @@ function mascaraData( campo, e )
 <div style="text-align: center; color: red;"> ${msg} </div>
 
 <br />
-<!-- ENDERE«O -->
+<!-- ENDERE√áO -->
 <fieldset>
  <legend>Dados para cadastro do Detento</legend>
  <table cellspacing="10">
@@ -105,14 +105,14 @@ function mascaraData( campo, e )
    </td>
    <td align="left">
     <input type="text" name="cpfDetento" id="cpfDetento"  >
-    	<!-- se for colocar validaÁ„o em CPF coloca este no input: onkeypress="mascaraData( this, event )"  -->
+    	<!-- se for colocar mascara em CPF coloca este no input: onkeypress="mascaraData( this, event )"  -->
     <br>
     <form:errors path="detento.cpfDetento" cssStyle="color:red" />
    </td>
   </tr>
   <tr>
    <td>
-    <label for="nomeMae">nome da m„e</label>
+    <label for="nomeMae">nome da m√£e</label>
    </td>
    <td align="left">
     <input type="text" name="nomeMae" id="nomeMae">
@@ -120,7 +120,7 @@ function mascaraData( campo, e )
   </tr>
    <tr>
    <td>
-    <label for="enderecoDetento">EndereÁo:</label>
+    <label for="enderecoDetento">Endere√ßo:</label>
    </td>
    <td align="left">
     <input type="text" name="enderecoDetento" id="enderecoDetento">
@@ -155,13 +155,13 @@ function mascaraData( campo, e )
   </tr>
   <tr>
    <td>
-    <label for="liberdadeProvisoria">Liberdade ProvisÛria:</label>
+    <label for="liberdadeProvisoria">Liberdade Provis√≥ria:</label>
    </td>
    <td align="left">
     <select name="liberdadeProvisoria" >
      <option value="-1"> Selecione </option>
      <option value="Sim"> Sim </option>
-     <option value="N„o"> N„o </option>
+     <option value="N√£o"> N√£o </option>
 
 </select> 
    </td>
