@@ -105,7 +105,7 @@ function mascaraData( campo, e )
    </td>
    <td align="left">
     <input type="text" name="cpfDetento" id="cpfDetento"  >
-    	<!-- se for colocar mascara em CPF coloca este no input: onkeypress="mascaraData( this, event )"  -->
+    	<!-- se for colocar mascara em CPF coloca este no input: onkeyup="FormataCpf(this,event)"  -->
     <br>
     <form:errors path="detento.cpfDetento" cssStyle="color:red" />
    </td>
