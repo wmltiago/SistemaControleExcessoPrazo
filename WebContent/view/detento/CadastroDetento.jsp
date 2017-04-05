@@ -18,6 +18,56 @@
 <title>CADASTRO DE DETENTO</title>
 
 <c:import url="../bootstrapTiago/bootStrap.jsp"></c:import>
+
+<script language="JavaScript" type="text/javascript">
+
+// mascara cpf
+function FormataCpf(campo, teclapres)
+{
+	var tecla = teclapres.keyCode;
+	var vr = new String(campo.value);
+	vr = vr.replace(".", "");
+	vr = vr.replace("/", "");
+	vr = vr.replace("-", "");
+	tam = vr.length + 1;
+	if (tecla != 14)
+	{
+		if (tam == 4)
+			campo.value = vr.substr(0, 3) + '.';
+		if (tam == 7)
+			campo.value = vr.substr(0, 3) + '.' + vr.substr(3, 6) + '.';
+		if (tam == 11)
+			campo.value = vr.substr(0, 3) + '.' + vr.substr(3, 3) + '.' + vr.substr(7, 3) + '-' + vr.substr(11, 2);
+	}
+}
+
+//mascara data
+function mascaraData( campo, e )
+{
+	var kC = (document.all) ? event.keyCode : e.keyCode;
+	var data = campo.value;
+	
+	if( kC!=8 && kC!=46 )
+	{
+		if( data.length==2 )
+		{
+			campo.value = data += '/';
+		}
+		else if( data.length==5 )
+		{
+			campo.value = data += '/';
+		}
+		else
+			campo.value = data;
+	}
+}
+
+</script>
+
+
+
+
+
 </head>
 <body>
 <c:import url="../comum/MenuBoots.jsp"></c:import>
@@ -26,7 +76,7 @@
 
   <h2><b> Cadastro de Detento</b></h2>
   
-<form action="CadastrarDetento" method="POST">
+<form name="form1" action="CadastrarDetento" method="POST">
 
 <div style="text-align: center; color: red;"> ${msg} </div>
 
@@ -54,7 +104,8 @@
     <label for="Cpf">Cpf</label>
    </td>
    <td align="left">
-    <input type="text" name="cpfDetento" id="cpfDetento">
+    <input type="text" name="cpfDetento" id="cpfDetento"  >
+    	<!-- se for colocar validação em CPF coloca este no input: onkeypress="mascaraData( this, event )"  -->
     <br>
     <form:errors path="detento.cpfDetento" cssStyle="color:red" />
    </td>
@@ -87,7 +138,7 @@
     <label for="dataJulgamento">Data de Julgamento:</label>
    </td>
    <td align="left">
-    <input type="text" name="dataJulgamento" id="dataJulgamento"><br>
+    <input type="text" name="dataJulgamento" id="dataJulgamento" onkeypress="mascaraData( this, event )" maxlength="10"><br>
 
    </td>
   </tr>
