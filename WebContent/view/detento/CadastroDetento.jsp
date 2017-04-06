@@ -116,7 +116,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="cpfDetento">Cpf</label>  
   <div class="col-md-4">
-  <input id="cpfDetento" name="cpfDetento" type="text" placeholder="Cpf " class="form-control input-md" required="">
+  <input id="cpfDetento" name="cpfDetento" type="text" placeholder="Cpf " class="form-control input-md" required="" maxlength="11">
   <span class="help-block">Sem pontos ou vírgulas</span>
   <form:errors path="detento.cpfDetento" cssStyle="color:red" />  
   </div>

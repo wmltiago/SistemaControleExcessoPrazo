@@ -87,7 +87,7 @@
 				<div class="col-md-4">
 					<input id="textinput" name="cpfUsuario"
 						placeholder="000.000.000-00" class="form-control input-md"
-						type="text">
+						type="text" maxlength="11">
 					<div>
 						<form:errors path="usuario.cpfUsuario" cssStyle="color:red" />
 					</div>
