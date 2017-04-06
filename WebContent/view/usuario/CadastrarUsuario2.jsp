@@ -22,7 +22,8 @@
 <body>
 	<div style="text-align: center; color: red; font-size: 30px;">
 		${msg}</div>
-	<c:import url="/view/comum/menu.jsp" />
+	<c:import url="/view/comum/MenuBoots.jsp" />
+	<c:import url="/view/comum/MenuUsuario.jsp" />
 	<form class="form-horizontal" action="CadastrarUsuario2" method="post">
 
 

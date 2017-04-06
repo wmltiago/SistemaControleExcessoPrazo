@@ -19,38 +19,11 @@
 <link rel="stylesheet" type="text/css" href="ListarUsuario.css"> 
 		 
 	<link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-	
-	<script type="text/javascript" src="view/js/jquery-2.1.4.js"></script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#nomeUsuario").keyup(function() {
-			
-			var texto = $('#nomeUsuario').val();
-			var cpfUsuario = $('#cpfUsuario').val();
-			$.post("pesquisarUsuario", {
-				'nomeUsuario' : texto,
-				'cpfUsuario' : cpfUsuario
-			}, function(dados) {
-				$('#tabelaUsuario').html(dados);
-			});
-		});
-		$("#cpfUsuario").change(function() {
-			var texto = $('#nomeUsuario').val();
-			var cpfUsuario = $('#cpfUsuario').val();
-			$.post("pesquisarUsuario", {
-				'nomeUsuario' : texto,
-				'cpfUsuario' : cpfUsuario
-			}, function(dados) {
-				$('#tabelaUsuario').html(dados);
-			});
-		});
-	});
-</script>
 
 </head>
 <body>
-<c:import url="/view/comum/menu.jsp" />
+	<c:import url="/view/comum/MenuBoots.jsp" />
+	<c:import url="/view/comum/MenuUsuario.jsp" />
 <center><hr><h3>Lista de usuários</h3><hr></center>
 	
 	<div style="text-align: center; color: red;"> ${mensagem} </div>
@@ -58,9 +31,59 @@
 <br>
 <br>
 
-<p>
+<div class="container">
+    <div class="row">
+    
+
+	<hr>
+	<center><h3>Pesquisar Usuario</h3></center>
+	<div>
+	<form class="form-horizontal" method="POST" >
+			<fieldset>
+
+
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="nomeDetento">Nome</label>
+					<div class="col-md-6">
+						<input id="nomeUsuario" name="nomeusuario" type="text" placeholder="placeholder" class="form-control input-md"
+							 value="${usuario.nomeUsuario}">
+
+
+
+
+					</div>
+
+				</div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="cpfDetento">Cpf</label>
+					<div class="col-md-6">
+						<input id="cpfUsuario" name="cpfUsuario" type="text" placeholder="placeholder" class="form-control input-md"
+							 value="${usuario.cpfUsuario}">
+
+
+
+
+					</div><br><br>
+<!-- <div class="col-md-6">
+<input type="reset" value="Limpar" class="btn btn-default"> &nbsp; &nbsp; <input
+					type="submit" value="Pesquisar" class="btn btn-success">
+
+
+					</div> -->
+				</div>
+
+
+
+			</fieldset>
+		</form>
+	
+		<%-- <form action="ListarUsuario2" method="post" class="form-horizontal">
+			<p>
 				Nome: <br /> <input type="text" id="nomeUsuario"
-					name="nomeUsuario" value="${usuario.nomeUsuario}">
+					name="nomeusuario" value="${usuario.nomeUsuario}">
 			</p>
              
              <p>
@@ -68,21 +91,72 @@
 					name="cpfUsuario" value="${usuario.cpfUsuario}">
 			</p>
     
-            
-
-<div class="container">
-    <div class="row">
-    
-    
-	<hr>
-	<h3>Pesquisar Usuario</h3>
-	<div>
-		
-			
+            <p>
+				<input type="reset" value="Limpar"> &nbsp; &nbsp; <input
+					type="submit" value="Pesquisar">
+			</p> --%>
       
            <br>
+           
+           
+           
+           <div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+
+				<table class="table" id="tabelaListaDetento">
+					<thead>
+						<tr>
+							<th class="hidden-xs">ID</th>
+                        <th>CPF</th>
+                        <th>NOME</th>
+                        <th>ENDEREÇO</th>
+                        <th>TIPO USUARIO</th>
+                        <th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+                  <c:forEach var="usuario" items="${listaUsuario}">
+
+								<tr class="success">
+							
+						
+							<td class="hidden-xs">${usuario.id}</td>
+                            <td>${usuario.cpfUsuario} </td>
+                            <td>${usuario.nomeUsuario}</td>
+                            <td>${usuario.enderecoUsuario}</td>
+                            <td>${usuario.tipoUsuario.descricaoUsuario}</td> <!-- aqui chamo a descricao ou id do tipo suuario ex: usuario.tipousuario.id_tipousuario -->
+                          <td><a href="exibirAlterarUsuario?id=${usuario.id}" >Alterar</a>
+                              <a href="removerUsuario?id=${usuario.id}" >Remover</a></td>
+					
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
     
-        <div class="col-md-10 col-md-offset-1">
+        <%-- <div class="col-md-10 col-md-offset-1">
 
             <div class="panel panel-default panel-table">
               <div class="panel-heading">
@@ -96,7 +170,7 @@
                 </div>
               </div>
               <div class="panel-body">
-                <table class="table table-striped table-bordered table-list" id="tabelaUsuario">
+                <table class="table table-striped table-bordered table-list">
                   <thead>
                     <tr>
                         <th><center><em class="fa fa-cog"></em></center></th>
@@ -151,7 +225,7 @@
               </div>
             </div>
 
-</div></div></div>
-
+</div> --%></div></div>
+</div>
 </body>
 </html>
