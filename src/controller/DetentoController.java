@@ -135,5 +135,13 @@ public class DetentoController {
 		return st.toString();
 
 	}
+	@RequestMapping("/pesquisarSituacao")
+	public String pesquisarProduto(String cpf, Model model) {
 
+	
+	DetentoDao dao2 = new DetentoDao();
+	List<Detento> listaDetento = dao2.pesquisarSituacao(cpf);
+	model.addAttribute("listaDetento", listaDetento);
+	return "funcionalidade/visualizarStatusDetento";
+	}
 }
