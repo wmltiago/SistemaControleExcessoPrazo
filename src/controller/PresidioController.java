@@ -33,7 +33,7 @@ public class PresidioController {
 			return "forward:exibirCadastrarPresidio";
 		}
 
-		model.addAttribute("msg", "Cadastrado Com Sucesso!");
+		model.addAttribute("msg", ": O Presídio <b>'" + presidio.getNomePresidio()+ "'</b> foi Cadastrado Com Sucesso!");
 		PresidioDao dao = new PresidioDao();
 		dao.salvar(presidio);
 
