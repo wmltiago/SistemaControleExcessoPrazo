@@ -16,36 +16,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+        <script src="http://tablesorter.com/__jquery.tablesorter.min.js" type="text/javascript"></script> 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Listando Detentos</title>
+<style>
+  th{
+  cursor:pointer;
+  }
+  </style>
 </head>
 <body>
 <c:import url="../comum/MenuBoots.jsp"></c:import>
 <c:import url="../comum/MenuDetento.jsp"></c:import>
-<form class="form-horizontal" action="pesquisarDetento">
+<form class="form-horizontal" action="pesquisarSituacao" method="POST">
 <fieldset>
 
 <!-- Form Name -->
 <center><legend>Pesquisa de Detentos</legend></center>
 
-<!-- Multiple Checkboxes -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="status">Status</label>
-  <div class="col-md-4">
-  <div class="checkbox">
-    <label for="status-0">
-      <input type="checkbox" name="status" id="status-0" checked  value="-1">
-      Fora do Prazo
-    </label>
-	</div>
-  <div class="checkbox">
-    <label for="status-1">
-      <input type="checkbox" name="status" id="status-1" checked value="1">
-      Dentro do Prazo
-    </label>
-	</div>
-  </div>
-</div>
+
+
 
 <!-- Text input-->
 <div class="form-group">
@@ -53,6 +44,13 @@
   <div class="col-md-4">
   <input id="cpf" name="cpf" type="text" placeholder="" class="form-control input-md">
   <span class="help-block">Ex. 11111111111</span>  
+  </div>
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for=""></label>
+  <div class="col-md-8">
+    <input id="" name="" type="submit" class="btn btn-success" value="Pesquisar"></input>
+    <input id="" name="" type="reset" class="btn btn-inverse" value="Limpar"></input>
   </div>
 </div>
 
@@ -65,7 +63,7 @@
         <div class="col-md-12">
           
    
-            <table class="table">
+            <table class="table" id="myTable">
                 <thead>
                     <tr>
                         <th>
@@ -144,6 +142,12 @@
 	<br><br>
 	
 	
-
+<script>
+            $(document).ready(function() 
+            { 
+                $("#myTable").tablesorter(); 
+            } 
+        ); 
+        </script>
 </body>
 </html>
