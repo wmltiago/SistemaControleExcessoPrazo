@@ -18,7 +18,7 @@
 	<c:import url="/view/comum/menu.jsp" />
 
 	<hr>
-	<h3>Alterar Produto</h3>
+	<h3>Alterar Tipo de Usuario</h3>
 	<hr>
 	
 	<form action="AlterarTipoUsuario" method="post">
@@ -29,7 +29,7 @@
 		
 		<p>
 			Descrição: <br />
-			<input type="text" name="descricao" value="${usuario.descricao}" style="width: 400px;" />
+			<input type="text" name="descricao" value="${usuario.descricaoUsuario}" style="width: 400px;" />
 		</p>
 		
 		<br />

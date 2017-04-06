@@ -54,7 +54,7 @@
     <menu class="menu"  >
       <ul class="container">
         <li><a href="#" class="active ico-home" role="menuitem">Home</a></li>
-        <li><a href="exibirCadastrarUsuario2" role="menuitem">Usuários</a></li>
+        <li><a href="exibirCadastrarUsuario" role="menuitem">Usuários</a></li>
         <li><a href="exibirCadastrarPresidio" role="menuitem">Presídios</a>
         <!--    <ul>
             <li><a href="#">Enviar</a></li>
@@ -88,15 +88,17 @@
   <form class="form-horizontal" action="CadastrarDetento" method="POST">
 <fieldset>
 
-<!-- Form Name -->
-<center><legend> Cadastro de Detento</legend></center>
+
 <!-- NoScript Alert -->
     <!-- <noscript> -->
     	<div class="alert alert-success">
 		
-			<center><span><strong>SCEP          </strong>  ${msg} .</span></center>
+			<center><span><strong>SCEP          </strong>  ${msg} </span></center>
 		</div>
 	<!-- </noscript> -->
+<!-- Form Name -->
+<center><legend> Cadastro de Detento</legend></center>
+
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="nomeDetento">Nome</label>  
@@ -105,8 +107,7 @@
   <span class="help-block">Nome COMPLETO</span>  
  
     	
-			<form:errors path="detento.nomeDetento"  />
-		
+			<form:errors path="detento.nomeDetento"  />		
 	
   </div>
   
@@ -114,7 +115,7 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="cpfDetento">Cpf</label>  
+  <label class="col-md-4 control-label" for="cpfDetento">CPF</label>  
   <div class="col-md-4">
   <input id="cpfDetento" name="cpfDetento" type="text" placeholder="Cpf " class="form-control input-md" required="" maxlength="11">
   <span class="help-block">Sem pontos ou vírgulas</span>
