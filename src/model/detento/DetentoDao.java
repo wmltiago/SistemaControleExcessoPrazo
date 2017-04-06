@@ -232,6 +232,59 @@ public class DetentoDao {
 			throw new RuntimeException(e);
 		}
 	}
+	public List<Detento> pesquisarSituacao(String cpf) {
+		try {
+		List<Detento> listaDetento = new ArrayList<Detento>();
+		PreparedStatement stmt = null;
+		if (cpf.equals("")) {
+		stmt = this.connection.prepareStatement("SELECT * FROM detento");
+		
+		} else if (!cpf.equals("")) {
+		stmt = this.connection.prepareStatement("SELECT * FROM detento WHERE cpfDetento = ? ");
+		stmt.setString(1, cpf);
+		}
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+
+			Detento detento2 = new Detento();
+
+			detento2.setIdDetento(rs.getInt("idDetento"));
+			detento2.setNomeDetento(rs.getString("nomeDetento"));
+			detento2.setCpfDetento(rs.getString("cpfDetento"));
+			detento2.setNomeMae(rs.getString("nomeMae"));
+			detento2.setEnderecoDetento(rs.getString("enderecoDetento"));
+			detento2.setDataJulgamento(rs.getDate("dataJulgamento"));
+			detento2.setLiberdadeProvisoria(rs.getString("liberdadeProvisoria"));
+			detento2.setNumeroProcesso(rs.getString("numeroProcesso"));
+
+			
+			
+			Date date = new Date();
+			if (detento2.getDataJulgamento().compareTo(date) > 0) {
+				detento2.setStatus(-1);
+			} else if (detento2.getDataJulgamento().compareTo(date) == 0) {
+				detento2.setStatus(1);
+			} else if (detento2.getDataJulgamento().compareTo(date) < 0) {
+				detento2.setStatus(2);
+			} else {
+				detento2.setStatus(0);
+			}
+			
+			
+			
+			listaDetento.add(detento2);
+		}
+		
+		rs.close();
+		stmt.close();
+		connection.close();
+		return listaDetento;
+		} catch (SQLException e) {
+		throw new RuntimeException(e);
+		}
+		
+	
+}
 
 	
 }
