@@ -15,7 +15,7 @@
 <head>
 <c:import url="../bootstrapTiago/bootStrap.jsp"></c:import>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>CADASTRO DE DETENTO</title>
+<title>Cadastro de detento</title>
 
 <!-- Isso é necessário para funcionar a versão mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -217,8 +217,8 @@
           	<section class="sidebox">
 		<h1 class="sidebox-title ico-question">Outras ações</h1>
 		<ul class="sidebox-list">
-			<li><a class="ico-redo-2 ico-pos-right" href="listarUsuario">Listar Usuário</a></li>
-			<li><a class="ico-redo-2 ico-pos-right" href="listarTipoUsuario">Tipos de Usuários</a></li>			
+			<li><a class="ico-redo-2 ico-pos-right" href="listarDetento">Listar Detentos</a></li>
+					
 		</ul>
 	</section>
         </aside>      

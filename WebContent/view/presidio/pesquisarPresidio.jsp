@@ -209,8 +209,8 @@
           	<section class="sidebox">
 		<h1 class="sidebox-title ico-question">Outras ações</h1>
 		<ul class="sidebox-list">
-			<li><a class="ico-redo-2 ico-pos-right" href="listarUsuario">Listar Usuário</a></li>
-			<li><a class="ico-redo-2 ico-pos-right" href="listarTipoUsuario">Tipos de Usuários</a></li>			
+			<li><a class="ico-redo-2 ico-pos-right" href="exibirCadastrarPresidio">Cadastrar Presídio</a></li>
+					
 		</ul>
 	</section>
         </aside>

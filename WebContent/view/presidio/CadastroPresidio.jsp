@@ -52,16 +52,16 @@
     <menu class="menu"  >
       <ul class="container">
         <li><a href="#" class="active ico-home" role="menuitem">Home</a></li>
-        <li><a href="#" role="menuitem">Usuários</a></li>
-        <li><a href="#" role="menuitem">Presídios</a>
-          <ul>
+        <li><a href="exibirCadastrarUsuario" role="menuitem">Usuários</a></li>
+        <li><a href="exibirCadastrarPresidio" role="menuitem">Presídios</a>
+         <!--  <ul>
             <li><a href="#">Enviar</a></li>
             <li><a href="#">Criar</a></li>
             <li><a href="#">Editar</a></li>
             <li><a href="#">Relatórios</a></li>
-          </ul>
+          </ul>   -->
         </li>
-        <li><a href="#" role="menuitem">Detentos</a></li>
+        <li><a href="exibirCadastrarDetento" role="menuitem">Detentos</a></li>
         
       </ul>
     </menu>
@@ -204,7 +204,7 @@
           	<section class="sidebox">
 		<h1 class="sidebox-title ico-question">Outras ações</h1>
 		<ul class="sidebox-list">
-			<li><a class="ico-redo-2 ico-pos-right" href="listarUsuario">Listar Usuário</a></li>
+			<li><a class="ico-redo-2 ico-pos-right" href="listarPresidio">Listar Presídio</a></li>
 			<li><a class="ico-redo-2 ico-pos-right" href="listarTipoUsuario">Tipos de Usuários</a></li>			
 		</ul>
 	</section>
