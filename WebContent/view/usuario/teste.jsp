@@ -20,21 +20,7 @@
   <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/2.0.6/stylesheets/locastyle.css">
   <script type="text/javascript" src="view/js/jquery-2.1.4.js"></script>
   
- <script type="text/javascript">
- $("#cpfUsuario").keyup(function(){
-	    try {
-	        $("#cpfUsuario").unmask();
-	    } catch (e) {}
-
-	    var tamanho = $("#cpfUsuario").val().length;
-
-	    if(tamanho < 11){
-	        $("#cpfUsuario").mask("999.999.999-99");
-	    } else {
-	        $("#cpfUsuario").mask("99.999.999/9999-99");
-	    }                   
-	});
-</script>
+ 
  
 </head>
 <body>
@@ -44,15 +30,15 @@
     <div class="container">
       <span class="control-menu visible-xs ico-menu-2"></span>
       <span class="control-sidebar visible-xs ico-list"></span>
-      <h1 class="project-name"><a href="#">SCEP - Sistema Conttrole Excesso de Prazo</a></h1>
+      <h1 class="project-name"><a href="#">SCEP - Sistema Controle Excesso de Prazo</a></h1>
       <a href="#" class="help-suggestions ico-question hidden-xs">Ajuda e Sugestões</a>
  
       <div class="dropdown hidden-xs">
         <a href="#" data-toggle="dropdown" class="title-dropdown" style=" color:red" >${usuarioLogado.nomeUsuario}</a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <li><a href="#" role="menuitem">Option 1</a></li>
-          <li><a href="#" role="menuitem">Option 2</a></li>
-          <li><a href="#" role="menuitem">Option 3</a></li>
+          <li><a href="#" role="menuitem">Sair</a></li>
+         <!--   <li><a href="#" role="menuitem">Option 2</a></li>
+          <li><a href="#" role="menuitem">Option 3</a></li> -->
         </ul>
       </div>
     </div>
@@ -63,16 +49,16 @@
     <menu class="menu"  >
       <ul class="container">
         <li><a href="#" class="active ico-home" role="menuitem">Home</a></li>
-        <li><a href="#" role="menuitem">Usuários</a></li>
-        <li><a href="#" role="menuitem">Presídios</a>
-          <ul>
+        <li><a href="exibirCadastrarUsuario2" role="menuitem">Usuários</a></li>
+        <li><a href="exibirCadastrarPresidio" role="menuitem">Presídios</a>
+        <!--    <ul>
             <li><a href="#">Enviar</a></li>
             <li><a href="#">Criar</a></li>
             <li><a href="#">Editar</a></li>
             <li><a href="#">Relatórios</a></li>
-          </ul>
+          </ul> -->
         </li>
-        <li><a href="#" role="menuitem">Detentos</a></li>
+        <li><a href="exibirCadastrarDetento" role="menuitem">Detentos</a></li>        
         
       </ul>
     </menu>
@@ -197,7 +183,7 @@
         
         
         
-        <!-- AQUI COMEÇA O SIDE BAR -->
+        <!-- AQUI COMEÇA O SIDE BAR (TEM QUE ESTÁ ENTRE A DIV DA COL-MD-9 E A DIV DA ROW) -->
         
         <aside class="col-md-3 sidebar" role="complementary">
          
@@ -209,6 +195,7 @@
 		</ul>
 	</section>
         </aside>
+        
       </div>
     </div>
   </main>
