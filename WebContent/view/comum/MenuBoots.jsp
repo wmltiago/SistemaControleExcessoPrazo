@@ -26,17 +26,17 @@
                 </a>
             </li>
             <li>
-                <a href="#" title="Sample">
+                <a href="exibirCadastrarDetento" title="Sample">
                     <span>Detento</span>
                 </a>
             </li>
             <li>
-                <a href="#" title="Sample">
+                <a href="exibirCadastrarUsuario" title="Sample">
                     <span>Usuário</span>
                 </a>
             </li>
             <li>
-                <a href="#" title="Sample">
+                <a href="exibirCadastrarPresidio" title="Sample">
                     <span>Presidio</span>
                 </a>
             </li>
