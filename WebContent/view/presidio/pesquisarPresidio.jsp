@@ -112,7 +112,7 @@
         <!-- AQUI COMEÇA O LISTAR DE PRESIDIO -->
         
 <div>
-<c:import url="/view/comum/menu.jsp" />
+
 	<hr>
 	<h3>Pesquisar Presidio</h3>
 	<div>

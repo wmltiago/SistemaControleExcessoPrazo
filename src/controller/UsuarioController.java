@@ -160,9 +160,9 @@ public class UsuarioController {
 	
 	if (usuarioLogado != null) {
 	session.setAttribute("usuarioLogado", usuarioLogado);
-	return "usuario/teste";
+	return "usuario/CadastrarUsuario2";
 	}
-	model.addAttribute("msg", "N√£o foi encontrado um usu√°rio com o login e 	senha informados.");
+	model.addAttribute("msg", "N„o foi encontrado um usu·rio com o login e 	senha informados.");
 	return "index/login";
 	}
 	
