@@ -39,9 +39,9 @@
       <div class="dropdown hidden-xs">
         <a href="#" data-toggle="dropdown" class="title-dropdown" style=" color:red" >${usuarioLogado.nomeUsuario}</a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <li><a href="#" role="menuitem">Option 1</a></li>
-          <li><a href="#" role="menuitem">Option 2</a></li>
-          <li><a href="#" role="menuitem">Option 3</a></li>
+          <li><a href="logout" role="menuitem">Sair</a></li>
+       <!--     <li><a href="#" role="menuitem">Option 2</a></li>
+          <li><a href="#" role="menuitem">Option 3</a></li> -->
         </ul>
       </div>
     </div>

@@ -166,4 +166,11 @@ public class UsuarioController {
 	return "index/login";
 	}
 	
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+	session.invalidate();
+	return "index/login";
+	}
+	
 }

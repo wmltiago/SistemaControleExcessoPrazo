@@ -31,4 +31,9 @@
 	
 	<mvc:default-servlet-handler/>
 	
+	
+	<mvc:interceptors>
+<bean class="util.AutorizadorInterceptor" />
+</mvc:interceptors>
+	
 </beans>
